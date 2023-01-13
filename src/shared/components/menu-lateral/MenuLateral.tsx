@@ -11,7 +11,39 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useDrawerContext } from '../../contexts';
+
+interface ListItemLinkProps {
+  label: string;
+  icon: string;
+  to: string;
+  onClick: (() => void) | undefined;
+}
+
+const ListItemLink: React.FC<ListItemLinkProps> = ({
+  to,
+  icon,
+  label,
+  onClick,
+}) => {
+  const navigate = useNavigate();
+
+  const resolvePath = useResolvedPath(to);
+  const match = useMatch({ path: resolvePath.pathname, end: false });
+  const handleClick = () => {
+    navigate(to);
+    onClick?.();
+  };
+  return (
+    <ListItemButton selected={!!match} onClick={handleClick}>
+      <ListItemIcon>
+        <Icon>{icon}</Icon>
+      </ListItemIcon>
+      <ListItemText primary={label} />
+    </ListItemButton>
+  );
+};
 
 interface MenuLateralProps {
   children: React.ReactNode;
@@ -21,7 +53,7 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
 
   return (
     <>
@@ -57,12 +89,15 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
 
           <Box flex={1}>
             <List component={'nav'}>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Icon>home</Icon>
-                </ListItemIcon>
-                <ListItemText primary="Página inicial" />
-              </ListItemButton>
+              {drawerOptions.map((drawerOption) => (
+                <ListItemLink
+                  key={drawerOption.path}
+                  icon={drawerOption.icon}
+                  to={drawerOption.path}
+                  label={drawerOption.label}
+                  onClick={smDown ? toggleDrawerOpen : undefined}
+                />
+              ))}
             </List>
           </Box>
         </Box>

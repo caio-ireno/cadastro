@@ -2,7 +2,15 @@ import { createContext, useCallback, useContext, useState } from 'react';
 
 interface DrawerContextData {
   isDrawerOpen: boolean;
+  drawerOptions: DrawerOptionsProps[];
   toggleDrawerOpen: () => void;
+  setDrawerOption: (newDrawerOptions: DrawerOptionsProps[]) => void;
+}
+
+interface DrawerOptionsProps {
+  icon: string;
+  label: string;
+  path: string;
 }
 
 interface DrawerProviderProps {
@@ -17,12 +25,28 @@ export const useDrawerContext = () => {
 
 export const DrawerProvider: React.FC<DrawerProviderProps> = ({ children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerOptions, setDrawerOptions] = useState<DrawerOptionsProps[]>([]);
+
   const toggleDrawerOpen = useCallback(() => {
     setIsDrawerOpen((OldDrawerOpen) => !OldDrawerOpen);
   }, []);
 
+  const handleSetDrawerOptions = useCallback(
+    (newDrawerOptions: DrawerOptionsProps[]) => {
+      setDrawerOptions(newDrawerOptions);
+    },
+    [],
+  );
+
   return (
-    <DrawerContext.Provider value={{ isDrawerOpen, toggleDrawerOpen }}>
+    <DrawerContext.Provider
+      value={{
+        isDrawerOpen,
+        toggleDrawerOpen,
+        drawerOptions,
+        setDrawerOption: handleSetDrawerOptions,
+      }}
+    >
       {children}
     </DrawerContext.Provider>
   );
