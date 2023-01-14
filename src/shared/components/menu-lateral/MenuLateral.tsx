@@ -1,4 +1,5 @@
 import {
+  Button,
   Divider,
   Drawer,
   Icon,
@@ -12,7 +13,7 @@ import {
 import { Box } from '@mui/system';
 import React from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { useDrawerContext } from '../../contexts';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 interface ListItemLinkProps {
   label: string;
@@ -50,6 +51,7 @@ interface MenuLateralProps {
 }
 
 export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
+  const { toggleTheme, themeName } = useAppThemeContext();
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -86,6 +88,20 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
           </Box>
 
           <Divider />
+          <Button onClick={toggleTheme}>
+            <Box
+              component="img"
+              sx={{
+                height: theme.spacing(3),
+                width: theme.spacing(3),
+              }}
+              src={
+                themeName === 'dark'
+                  ? require('../../../assets/lua.png')
+                  : require('../../../assets/sun.png')
+              }
+            ></Box>
+          </Button>
 
           <Box flex={1}>
             <List component={'nav'}>
