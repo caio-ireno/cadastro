@@ -8,7 +8,7 @@ import {
 import { ThemeProvider } from '@emotion/react';
 import { DarkTheme, LightTheme } from '../theme';
 import { Box } from '@mui/system';
- 
+
 interface ThemeContextData {
   themeName: 'light' | 'dark';
   toggleTheme: () => void;
@@ -24,9 +24,11 @@ export const useAppThemeContext = () => {
   return useContext(ThemeContext);
 };
 
-export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({children}) => {
+export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({
+  children,
+}) => {
   const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
-  
+
   const toggleTheme = useCallback(() => {
     setThemeName((OldThemeName) =>
       OldThemeName === 'light' ? 'dark' : 'light',
@@ -37,7 +39,7 @@ export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({children}) =>
     if (themeName === 'light') return LightTheme;
     return DarkTheme;
   }, [themeName]);
-  
+
   return (
     <ThemeContext.Provider value={{ themeName, toggleTheme }}>
       <ThemeProvider theme={theme}>

@@ -1,5 +1,4 @@
 import {
-  Button,
   Divider,
   Drawer,
   Icon,
@@ -88,20 +87,28 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
           </Box>
 
           <Divider />
-          <Button onClick={toggleTheme}>
-            <Box
-              component="img"
-              sx={{
-                height: theme.spacing(3),
-                width: theme.spacing(3),
-              }}
-              src={
-                themeName === 'dark'
-                  ? require('../../../assets/lua.png')
-                  : require('../../../assets/sun.png')
-              }
-            ></Box>
-          </Button>
+
+          <List component="nav">
+            <ListItemButton onClick={toggleTheme}>
+              <ListItemIcon>
+                <Box
+                  component="img"
+                  sx={{
+                    height: theme.spacing(3),
+                    width: theme.spacing(3),
+                  }}
+                  src={
+                    themeName === 'dark'
+                      ? require('../../../assets/lua.png')
+                      : require('../../../assets/sun.png')
+                  }
+                />
+              </ListItemIcon>
+              <ListItemText
+                primary={themeName === 'dark' ? 'Modo Escuro' : 'Modo Claro'}
+              />
+            </ListItemButton>
+          </List>
 
           <Box flex={1}>
             <List component={'nav'}>
