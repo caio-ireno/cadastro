@@ -1,13 +1,13 @@
 import { Paper, TextField, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 
-interface BarraDeFerramentasProps {
+interface FerramentasDaListaProps {
   textoBusca?: string;
   mostarInputBusca?: boolean;
   aoMudarTextoBusca?: (novotexto: string) => void;
 }
 
-export const BarraDeFerramentas: React.FC<BarraDeFerramentasProps> = ({
+export const FerramentasDaLista: React.FC<FerramentasDaListaProps> = ({
   aoMudarTextoBusca,
   mostarInputBusca = false,
   textoBusca = '',
