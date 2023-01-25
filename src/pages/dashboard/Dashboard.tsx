@@ -4,7 +4,7 @@ import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/
 export const Dashboard = () => {
   return (
     <LayoutBaseDePagina
-      barraDeFerramentas={<FerramentasDeDetalhe mostarBotaoSalvarEFechar />}
+      barraDeFerramentas={<FerramentasDeDetalhe />}
       titulo="pagina inicial"
     >
       Testandos

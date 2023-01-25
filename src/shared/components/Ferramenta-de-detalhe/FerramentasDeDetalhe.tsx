@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import {
   Button,
   Divider,
@@ -5,6 +6,7 @@ import {
   Paper,
   Skeleton,
   Typography,
+  useMediaQuery,
   useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
@@ -54,6 +56,8 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
   aoClicarEmSalvrEFechar,
 }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box
@@ -74,39 +78,43 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           variant="contained"
           startIcon={<Icon>save</Icon>}
         >
-          <Typography
-            variant="button"
-            whiteSpace={'nowrap'}
-            textOverflow="ellipsis"
-            overflow={'hidden'}
-          >
-            Salvar
-          </Typography>
+          {!smDown && (
+            <Typography
+              variant="button"
+              whiteSpace={'nowrap'}
+              textOverflow="ellipsis"
+              overflow={'hidden'}
+            >
+              Salvar
+            </Typography>
+          )}
         </Button>
       )}
 
       {mostarBotaoSalvarCarregando && <Skeleton width={110} height={60} />}
 
-      {mostarBotaoSalvarEFechar && !mostarBotaoSalvarEFecharCarregando && (
-        <Button
-          onClick={aoClicarEmSalvrEFechar}
-          color="primary"
-          disableElevation
-          variant="outlined"
-          startIcon={<Icon>save</Icon>}
-        >
-          <Typography
-            variant="button"
-            whiteSpace={'nowrap'}
-            textOverflow="ellipsis"
-            overflow={'hidden'}
+      {mostarBotaoSalvarEFechar &&
+        !mostarBotaoSalvarEFecharCarregando &&
+        !mdDown && (
+          <Button
+            onClick={aoClicarEmSalvrEFechar}
+            color="primary"
+            disableElevation
+            variant="outlined"
+            startIcon={<Icon>save</Icon>}
           >
-            salvar e voltar
-          </Typography>
-        </Button>
-      )}
+            <Typography
+              variant="button"
+              whiteSpace={'nowrap'}
+              textOverflow="ellipsis"
+              overflow={'hidden'}
+            >
+              salvar e voltar
+            </Typography>
+          </Button>
+        )}
 
-      {mostarBotaoSalvarEFecharCarregando && (
+      {mostarBotaoSalvarEFecharCarregando && !mdDown && (
         <Skeleton width={180} height={60} />
       )}
 
@@ -118,14 +126,16 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           variant="outlined"
           startIcon={<Icon>delete</Icon>}
         >
-          <Typography
-            variant="button"
-            whiteSpace={'nowrap'}
-            textOverflow="ellipsis"
-            overflow={'hidden'}
-          >
-            apagar
-          </Typography>
+          {!smDown && (
+            <Typography
+              variant="button"
+              whiteSpace={'nowrap'}
+              textOverflow="ellipsis"
+              overflow={'hidden'}
+            >
+              apagar
+            </Typography>
+          )}
         </Button>
       )}
 
@@ -139,14 +149,16 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           variant="outlined"
           startIcon={<Icon>add</Icon>}
         >
-          <Typography
-            variant="button"
-            whiteSpace={'nowrap'}
-            textOverflow="ellipsis"
-            overflow={'hidden'}
-          >
-            {TextoBotaoNovo}
-          </Typography>
+          {!smDown && (
+            <Typography
+              variant="button"
+              whiteSpace={'nowrap'}
+              textOverflow="ellipsis"
+              overflow={'hidden'}
+            >
+              {TextoBotaoNovo}
+            </Typography>
+          )}
         </Button>
       )}
       {mostarBotaoNovoCarregando && <Skeleton width={110} height={60} />}
@@ -160,14 +172,16 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           variant="outlined"
           startIcon={<Icon>arrow_back</Icon>}
         >
-          <Typography
-            variant="button"
-            whiteSpace={'nowrap'}
-            textOverflow="ellipsis"
-            overflow={'hidden'}
-          >
-            Voltar
-          </Typography>
+          {!smDown && (
+            <Typography
+              variant="button"
+              whiteSpace={'nowrap'}
+              textOverflow="ellipsis"
+              overflow={'hidden'}
+            >
+              Voltar
+            </Typography>
+          )}
         </Button>
       )}
       {mostarBotaoVoltarCarregando && <Skeleton width={110} height={60} />}
