@@ -109,7 +109,7 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
               textOverflow="ellipsis"
               overflow={'hidden'}
             >
-              salvar e voltar
+              salvar e fechar
             </Typography>
           </Button>
         )}
