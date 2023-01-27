@@ -10,9 +10,9 @@ interface SorveteProps{
 
 interface ListaSorveteProps{
   id: number;
+  sorveteId:number;
   nomeSorvete: string;
   tipoSorvete: string;
-  sorveteId:number;
 }
 
 type SorveteComTotalCount = {
@@ -22,7 +22,7 @@ type SorveteComTotalCount = {
 
 const getAll = async (page=1, filter=''): Promise<SorveteComTotalCount | Error> => {
   try{
-    const urlRelativa=`'/sorvete?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&sorvete_like=${filter}'`;
+    const urlRelativa=`/sorvetes?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeSorvete_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){
@@ -89,7 +89,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
   }
 };
 
-export const PessoaService ={
+export const SorveteService ={
   getAll,
   getById,
   create,

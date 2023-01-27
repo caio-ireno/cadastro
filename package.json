@@ -33,7 +33,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "mock": "yarn run json-server -w -p 3333 ./mock/database.json",
+    "mock": "json-server -w -p 3333 ./mock/database.json",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

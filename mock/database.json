@@ -2,8 +2,21 @@
   "sorvetes": [
     {
       "id": 1,
-      "nome": "Banana com Nutella",
-      "tipo": "Gourmet"
+      "nomeSorvete": "banana",
+      "tipoSorvete": "gourmet",
+      "sorveteId": 2
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "flocos",
+      "tipoSorvete": "normaL",
+      "sorveteId": 1
+    },
+    {
+      "id": 1,
+      "nomeSorvete": "chocolate",
+      "tipoSorvete": "normaL",
+      "sorveteId": 1
     }
   ]
 }
