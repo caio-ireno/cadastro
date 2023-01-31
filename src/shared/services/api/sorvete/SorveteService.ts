@@ -1,18 +1,18 @@
 import { Environment } from '../../../environment';
 import { Api } from '../axios-config';
 
-interface SorveteProps{
+export interface SorveteProps{
   id: number;
   nomeSorvete: string;
   tipoSorvete: string;
-  sorveteId:number;
+  preço:number;
 }
 
-interface ListaSorveteProps{
+export interface ListaSorveteProps{
   id: number;
   sorveteId:number;
   nomeSorvete: string;
-  tipoSorvete: string;
+  preço: string;
 }
 
 type SorveteComTotalCount = {

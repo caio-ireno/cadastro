@@ -2,21 +2,39 @@
   "sorvetes": [
     {
       "id": 1,
-      "nomeSorvete": "banana",
+      "nomeSorvete": "Banana com Nutella",
       "tipoSorvete": "gourmet",
-      "sorveteId": 2
+      "preço": 13
     },
     {
       "id": 2,
-      "nomeSorvete": "flocos",
-      "tipoSorvete": "normaL",
-      "sorveteId": 1
+      "nomeSorvete": "Flocos",
+      "tipoSorvete": "normal",
+      "preço": 10
     },
     {
-      "id": 1,
-      "nomeSorvete": "chocolate",
-      "tipoSorvete": "normaL",
-      "sorveteId": 1
+      "id": 3,
+      "nomeSorvete": "Chocolate",
+      "tipoSorvete": "normal",
+      "preço": 10
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "tipoSorvete": "Especial",
+      "preço": 10
+    },
+    {
+      "id": 5,
+      "nomeSorvete": "Kinder Bueno",
+      "tipoSorvete": "gourmet",
+      "preço": 13
+    },
+    {
+      "id": 6,
+      "nomeSorvete": "Morango",
+      "tipoSorvete": "normal",
+      "preço": 10
     }
   ]
 }
