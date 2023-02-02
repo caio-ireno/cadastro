@@ -1,28 +1,32 @@
 import { Environment } from '../../../environment';
 import { Api } from '../axios-config';
 
-export interface SorveteProps{
+export interface LojasProps{
   id: number;
-  nomeSorvete: string;
-  tipoSorvete: string;
-  preço:number;
+  telefone:string;
+  nomeLoja: string;
+  endereço: string;
+  imgLoja:string;
+  rota:string;
 }
 
-export interface ListaSorveteProps{
+export interface ListaLojasProps{
   id: number;
-  sorveteId:number;
-  nomeSorvete: string;
-  preço: string;
+  telefone:string;
+  nomeLoja: string;
+  endereço: string;
+  imgLoja:string;
+  rota:string;
 }
 
-type SorveteComTotalCount = {
-  data: SorveteProps[];
+type LojasComTotalCount = {
+  data: LojasProps[];
   totalCount: number;
 }
 
-const getAll = async (page=1, filter=''): Promise<SorveteComTotalCount | Error> => {
+const getAll = async ( filter=''): Promise<LojasComTotalCount | Error> => {
   try{
-    const urlRelativa=`/sorvetes?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeSorvete_like=${filter}`;
+    const urlRelativa=`/lojas?&nomeLoja_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){
@@ -39,9 +43,9 @@ const getAll = async (page=1, filter=''): Promise<SorveteComTotalCount | Error> 
   }
 };
 
-const getById = async (id:number): Promise<ListaSorveteProps | Error> => {
+const getById = async (id:number): Promise<ListaLojasProps | Error> => {
   try{
-    const {data} = await Api.get(`/pessoas/${id}`);
+    const {data} = await Api.get(`/lojas/${id}`);
 
     if(data){
       return data;
@@ -54,9 +58,9 @@ const getById = async (id:number): Promise<ListaSorveteProps | Error> => {
   }
 };
 
-const create = async (dados:Omit<ListaSorveteProps, 'id'>): Promise<number | Error> => {
+const create = async (dados:Omit<ListaLojasProps, 'id'>): Promise<number | Error> => {
   try{
-    const {data} = await Api.post<ListaSorveteProps>('/sorvetes', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+    const {data} = await Api.post<ListaLojasProps>('/lojas', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
 
     if(data){
       return data.id;
@@ -69,9 +73,9 @@ const create = async (dados:Omit<ListaSorveteProps, 'id'>): Promise<number | Err
   }
 };
 
-const updateById = async (id:number, dados:ListaSorveteProps): Promise<void | Error> => {
+const updateById = async (id:number, dados:ListaLojasProps): Promise<void | Error> => {
   try{
-    await Api.put(`/sorvetes/${id}`, dados); 
+    await Api.put(`/lojas/${id}`, dados); 
 
   } catch (error){
     console.error(error);
@@ -81,7 +85,7 @@ const updateById = async (id:number, dados:ListaSorveteProps): Promise<void | Er
 
 const deleteById = async (id:number): Promise<void | Error> => {
   try{
-    await Api.delete<ListaSorveteProps>(`/sorvetes/${id}`); 
+    await Api.delete<ListaLojasProps>(`/lojas/${id}`); 
 
   } catch (error){
     console.error(error);
@@ -89,7 +93,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
   }
 };
 
-export const SorveteService ={
+export const LojasServices ={
   getAll,
   getById,
   create,

@@ -6,23 +6,34 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableFooter,
+  LinearProgress,
+  Pagination,
+  Box,
   Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Icon,
 } from '@mui/material';
-import { Box } from '@mui/system';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { FerramentasDaLista } from '../../shared/components';
+import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import {
   SorveteProps,
   SorveteService,
 } from '../../shared/services/api/sorvete/SorveteService';
+import { DarkTheme } from '../../shared/theme';
 
 export const ListaSorvetes: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
+
+  const theme = DarkTheme;
 
   const [rows, setRows] = useState<SorveteProps[]>([]);
   const [totalCount, SetTotalCount] = useState(0);
@@ -32,10 +43,14 @@ export const ListaSorvetes: React.FC = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
+  const pagina = useMemo(() => {
+    return Number(searchParams.get('pagina') || '1');
+  }, [searchParams]);
+
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      SorveteService.getAll(1, busca).then((result) => {
+      SorveteService.getAll(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -48,7 +63,7 @@ export const ListaSorvetes: React.FC = () => {
         }
       });
     });
-  }, [busca]);
+  }, [busca, pagina]);
 
   return (
     <LayoutBaseDePagina
@@ -58,47 +73,97 @@ export const ListaSorvetes: React.FC = () => {
           mostarInputBusca
           textoBusca={busca}
           aoMudarTextoBusca={(texto) =>
-            setSearchParams({ busca: texto }, { replace: true })
+            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
           }
         />
       }
     >
-      {isLoading && (
-        <Box
-          margin={5}
-          display={'flex'}
-          alignItems="center"
-          justifyContent={'center'}
-        >
-          <Typography> Carregando...</Typography>
-        </Box>
-      )}
-      {!isLoading && (
-        <TableContainer
-          component={Paper}
-          variant="outlined"
-          sx={{ m: 1, width: 'auto' }}
-        >
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Nome</TableCell>
-                <TableCell>Tipo</TableCell>
-                <TableCell>Preço</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell>{row.nomeSorvete}</TableCell>
-                  <TableCell>{row.tipoSorvete}</TableCell>
-                  <TableCell>R$ {row.preço}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      )}
+      <Box padding={1}>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Icon>expand_more</Icon>}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography color={theme.palette.primary.dark}>
+              Sorvete Gourmet
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Icon>expand_more</Icon>}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography color={theme.palette.primary.dark}>
+              Sorvete Standart
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Icon>expand_more</Icon>}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography color={theme.palette.primary.dark}>
+              Sorvete Especial
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
+              eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Icon>expand_more</Icon>}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography color={theme.palette.primary.dark}>Açai</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              it amet, consectetur adipiscing elit. Suspendisse malesuada lacus
+              ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<Icon>expand_more</Icon>}
+            aria-controls="panel2a-content"
+            id="panel2a-header"
+          >
+            <Typography color={theme.palette.primary.dark}>Palito</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography>
+              it amet, consectetur adipiscing elit. Suspendisse malesuada lacus
+              ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
+      </Box>
     </LayoutBaseDePagina>
   );
 };

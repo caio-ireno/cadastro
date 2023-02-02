@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Dashboard, ListaSorvetes } from '../pages';
+import { ListaAdm } from '../pages/adm/ListaAdm';
+import { ListaLojas } from '../pages/lojas/ListaLojas';
 import { useDrawerContext } from '../shared/contexts';
 export const AppRoutes = () => {
   const { setDrawerOption } = useDrawerContext();
@@ -10,7 +12,7 @@ export const AppRoutes = () => {
       {
         icon: 'home',
         label: 'Página inicial',
-        path: '/',
+        path: '/pagina-inicial',
       },
       {
         icon: 'icecream',
@@ -22,13 +24,20 @@ export const AppRoutes = () => {
         label: 'Lojas',
         path: '/lojas',
       },
+      {
+        icon: 'admin_panel_settings',
+        label: 'Adm',
+        path: '/adm-page',
+      },
     ]);
   }, []);
 
   return (
     <Routes>
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/pagina-inicial" element={<Dashboard />} />
       <Route path="/sorvetes" element={<ListaSorvetes />} />
+      <Route path="/lojas" element={<ListaLojas />} />
+      <Route path="/adm-page" element={<ListaAdm />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

@@ -13,6 +13,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
+import { DarkTheme } from '../../theme';
 
 interface ListItemLinkProps {
   label: string;
@@ -27,8 +28,8 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({
   label,
   onClick,
 }) => {
+  const theme = DarkTheme;
   const navigate = useNavigate();
-
   const resolvePath = useResolvedPath(to);
   const match = useMatch({ path: resolvePath.pathname, end: false });
   const handleClick = () => {

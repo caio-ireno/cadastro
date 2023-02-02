@@ -9,7 +9,7 @@ import { Box } from '@mui/system';
 import { useDrawerContext } from '../contexts';
 
 interface LayoutBaseDePaginaProps {
-  titulo: string;
+  titulo?: string;
   barraDeFerramentas?: React.ReactNode;
   children: React.ReactNode;
 }
