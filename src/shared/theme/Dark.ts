@@ -1,6 +1,7 @@
 import {createTheme} from '@mui/material';
 import { blue,  orange } from '@mui/material/colors';
 
+
 export const DarkTheme = createTheme({
   palette:{
     mode:'dark',
@@ -24,7 +25,8 @@ export const DarkTheme = createTheme({
   },
   typography:{
     allVariants:{
-      color: 'white'
+      color: 'white',
+      fontFamily: 'Philosopher',
     }
   }
 });

@@ -10,19 +10,21 @@ export const LightTheme = createTheme({
       contrastText:'#fff',
     },
     secondary:{
-      main:orange[500],
+      main:'#EAEDED',
       dark:orange[600],
       light:orange[300],
       contrastText:'#fff',
     },
     background:{
-      default:'#f7f6f3',
+      default:'#fff',
       paper:'#fff',
+      
     }
   },
   typography:{
     allVariants:{
-      color: 'black'
+      color: 'black',
+      fontFamily: 'Philosopher',
     }
   }
 });

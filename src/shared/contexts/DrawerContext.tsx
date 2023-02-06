@@ -8,7 +8,6 @@ interface DrawerContextData {
 }
 
 interface DrawerOptionsProps {
-  icon: string;
   label: string;
   path: string;
 }

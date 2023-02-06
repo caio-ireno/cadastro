@@ -10,22 +10,22 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOption([
       {
-        icon: 'home',
         label: 'Página inicial',
         path: '/pagina-inicial',
       },
       {
-        icon: 'icecream',
         label: 'Sorvetes',
         path: '/sorvetes',
       },
       {
-        icon: 'location_city',
         label: 'Lojas',
         path: '/lojas',
       },
       {
-        icon: 'admin_panel_settings',
+        label: 'Historia',
+        path: '/historia',
+      },
+      {
         label: 'Adm',
         path: '/adm-page',
       },

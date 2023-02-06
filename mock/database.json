@@ -1,12 +1,6 @@
 {
   "sorvetes": [
     {
-      "id": 4,
-      "nomeSorvete": "Floresta Negra",
-      "tipoSorvete": "Especial",
-      "preço": 10
-    },
-    {
       "id": 5,
       "nomeSorvete": "Kinder Bueno",
       "tipoSorvete": "gourmet",
@@ -69,14 +63,6 @@
   ],
   "lojas": [
     {
-      "id": 3,
-      "telefone": "15996641722",
-      "nomeLoja": "Urla Aeroporto",
-      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://www.remingtonarchitecture.com/wp-content/uploads/Hisroric-Store-Front-Renovation-Remington-Traditional-Commercial-Architecture-01.jpg",
-      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
-    },
-    {
       "id": 4,
       "telefone": "15996641722",
       "nomeLoja": "Urla Itavuvu",
@@ -105,20 +91,17 @@
     {
       "id": 1,
       "nomeNoticia": "Promoção de verão",
-      "imgUrl": "https://blog.2dcb.com.br/wp-content/uploads/2020/08/propaganda-comparativa-1110x508.webp",
-      "urlNoticia": "/sorvetes"
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/37308177_1003979983093443_8630238315997560832_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=NpYa521T4SwAX_xn0qA&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArhqItbLNV4lpHHdh-IfTS_lexylfIoHT4TV_HKp80Ig&oe=640893F3"
     },
     {
       "id": 2,
       "nomeNoticia": "Sorvete Solidário",
-      "imgUrl": "https://blog.2dcb.com.br/wp-content/uploads/2020/08/veja-o-que-e-propaganda-comparativa-e-quais-os-cuidados-necessarios.webp",
-      "urlNoticia": "/sorvetes"
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/43087084_1067798720044902_186964985866354688_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=9JVYcnJz3YoAX8gGcj2&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC15PESmj2b_3X0L5W-B7cc2kRmedf_Jn4syZlexFtvDA&oe=6408918D"
     },
     {
       "id": 3,
       "nomeNoticia": "Inauguração Loja",
-      "imgUrl": "https://blog.2dcb.com.br/wp-content/uploads/2020/08/propaganda-comparativa-1110x508.webp",
-      "urlNoticia": "/sorvetes"
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
     }
   ]
 }
