@@ -4,6 +4,8 @@ import { Dashboard, ListaSorvetes } from '../pages';
 import { ListaAdm } from '../pages/adm/ListaAdm';
 import { ListaLojas } from '../pages/lojas/ListaLojas';
 import { useDrawerContext } from '../shared/contexts';
+
+
 export const AppRoutes = () => {
   const { setDrawerOption } = useDrawerContext();
 

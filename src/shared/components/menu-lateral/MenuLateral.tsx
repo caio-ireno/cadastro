@@ -1,4 +1,3 @@
-import { BorderBottom } from '@mui/icons-material';
 import {
   Drawer,
   ListItemButton,
@@ -8,8 +7,8 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { useAppThemeContext, useDrawerContext } from '../../contexts';
+import { useNavigate } from 'react-router-dom';
+import { useDrawerContext } from '../../contexts';
 
 interface ListItemLinkProps {
   label: string;
@@ -19,17 +18,27 @@ interface ListItemLinkProps {
 
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  // const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
-  const resolvePath = useResolvedPath(to);
-  const match = useMatch({ path: resolvePath.pathname, end: false });
+
   const handleClick = () => {
     navigate(to);
     onClick?.();
   };
   return (
-    <ListItemButton selected={!!match} onClick={handleClick}>
+    <ListItemButton
+      sx={{
+        ':hover': {
+          backgroundColor: '#fff',
+          textDecorationLine: 'underline',
+          textDecorationColor: '#5DADE2',
+          textDecorationThickness: '5px ',
+          textDecorationSkipInk: 'none',
+        },
+      }}
+      onClick={handleClick}
+    >
       <Typography fontSize={mdDown ? 18 : 25} fontWeight={'bold'}>
         {label}
       </Typography>
@@ -64,6 +73,7 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
         onClose={toggleDrawerOpen}
       >
         <Box
+          py={2}
           display="flex"
           alignItems={'center'}
           justifyContent="center"
@@ -101,9 +111,7 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginTop={smDown ? 0 : theme.spacing(8)}>
-        {children}
-      </Box>
+      <Box marginTop={smDown ? 0 : theme.spacing(12)}>{children}</Box>
     </>
   );
 };

@@ -10,7 +10,7 @@ export const LightTheme = createTheme({
       contrastText:'#fff',
     },
     secondary:{
-      main:'#EAEDED',
+      main:orange[400],
       dark:orange[600],
       light:orange[300],
       contrastText:'#fff',

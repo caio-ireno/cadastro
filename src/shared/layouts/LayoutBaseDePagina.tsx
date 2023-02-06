@@ -23,16 +23,33 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const { toggleDrawerOpen } = useDrawerContext();
   return (
-    <Box height="100%" display="flex" flexDirection={'column'}>
-      <Box display="flex" alignItems={'center'}>
+    <Box width={'100%'} height="100%" display="flex" flexDirection={'column'}>
+      <Box display="flex">
         {smDown && (
-          <IconButton onClick={toggleDrawerOpen}>
-            <Icon>menu</Icon>
-          </IconButton>
+          <Box
+            px={2}
+            py={1}
+            width={'100%'}
+            display={'flex'}
+            alignItems="center"
+            justifyContent={'space-between'}
+          >
+            <IconButton onClick={toggleDrawerOpen}>
+              <Icon>menu</Icon>
+            </IconButton>
+            <Box
+              sx={{
+                height: theme.spacing(6),
+                width: theme.spacing(10),
+              }}
+              component="img"
+              src="https://static.goomer.app/stores/63568/products/mobile_menu/templates/91794/logo_v1600432939.png"
+            />
+          </Box>
         )}
       </Box>
 
-      <Box>{children}</Box>
+      <Box p={1}>{children}</Box>
     </Box>
   );
 };
