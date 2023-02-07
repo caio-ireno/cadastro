@@ -52,43 +52,72 @@ export const ListaLojas: React.FC = () => {
   }, [busca]);
 
   return (
-    <LayoutBaseDePagina
-      titulo="Lojas"
-      barraDeFerramentas={
-        <FerramentasDaLista
-          mostarInputBusca
-          textoBusca={busca}
-          aoMudarTextoBusca={(texto) =>
-            setSearchParams({ busca: texto }, { replace: true })
-          }
+    <LayoutBaseDePagina>
+      <Box>
+        <Box
+          width={'100%'}
+          height="250px"
+          sx={{
+            objectFit: 'cover',
+          }}
+          component="img"
+          src="https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/51545035_1146664905491616_6910668749393625088_n.png?_nc_cat=105&ccb=1-7&_nc_sid=730e14&_nc_ohc=2YqfDYEx0CsAX_WV8DL&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCJKJ5KLvvtZGt9Q9Wcv9AN0BxYZCm-iPTfoZ00fKlq_g&oe=640A58C8"
         />
-      }
-    >
+      </Box>
       {isLoading && <LinearProgress variant="indeterminate"></LinearProgress>}
-      {!isLoading && (
-        <Box padding={1}>
-          {rows.map((row) => (
+
+      <Box
+        padding={1}
+        mt={5}
+        sx={{
+          backgroundColor: '#F2F4F4 ',
+        }}
+        pt={10}
+        pb={10}
+        display={'flex'}
+        flexWrap={'wrap'}
+        alignItems="center"
+        justifyContent={'center'}
+        flexDirection="row"
+        gap={5}
+      >
+        {rows.map((row) => (
+          <Box
+            display="flex"
+            justifyContent={'center'}
+            alignItems="center"
+            marginBottom={10}
+            key={row.id}
+            gap={2}
+            border="1px solid"
+            p={1}
+          >
             <Box
-              display="flex"
-              component={Paper}
-              marginBottom={3}
-              key={row.id}
-              gap={3}
+              borderRadius={'5px'}
+              display={smDown ? 'none' : ''}
+              width={smDown ? '200px' : mdDown ? '180px' : '300px'}
+              height={smDown ? '200px' : mdDown ? '180px' : '200px'}
+              component="img"
+              sx={{
+                objectFit: 'cover',
+              }}
+              src={row.imgLoja}
+            />
+
+            <Box
+              padding={1}
+              gap={1}
+              display={'flex'}
+              flexWrap="wrap"
+              flexDirection="column"
+              alignItems={'start'}
+              justifyContent="space-between"
             >
               <Box
-                display={smDown ? 'none' : ''}
-                width={smDown ? '200px' : mdDown ? '200px' : '300px'}
-                component="img"
-                src={row.imgLoja}
-              />
-              <Box
-                padding={1}
-                gap={1}
                 display={'flex'}
-                flexWrap="wrap"
-                flexDirection="column"
-                alignItems={'start'}
-                justifyContent="center"
+                alignItems="start"
+                flexDirection={'column'}
+                gap={smDown ? 1 : mdDown ? 2 : 4}
               >
                 <Typography variant={smDown ? 'h6' : mdDown ? 'h5' : 'h4'}>
                   {row.nomeLoja}
@@ -104,18 +133,18 @@ export const ListaLojas: React.FC = () => {
                   <Icon>phone</Icon>
                   <Typography>{row.telefone}</Typography>
                 </Box>
-                <Button
-                  sx={{ width: '100%' }}
-                  variant="contained"
-                  href={row.rota}
-                >
-                  Rota
-                </Button>
               </Box>
+              <Button
+                sx={{ width: '100%' }}
+                variant="contained"
+                href={row.rota}
+              >
+                Rota
+              </Button>
             </Box>
-          ))}
-        </Box>
-      )}
+          </Box>
+        ))}
+      </Box>
     </LayoutBaseDePagina>
   );
 };

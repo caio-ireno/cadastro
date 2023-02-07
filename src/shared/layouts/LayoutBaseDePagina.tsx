@@ -6,6 +6,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
+import { Footer } from '../components/footer/Footer';
 import { useDrawerContext } from '../contexts';
 import { DarkTheme } from '../theme';
 
@@ -50,6 +51,8 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
       </Box>
 
       <Box p={1}>{children}</Box>
+
+      <Footer />
     </Box>
   );
 };

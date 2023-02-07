@@ -4,15 +4,16 @@ import { Api } from '../axios-config';
 export interface SorveteProps{
   id: number;
   nomeSorvete: string;
-  tipoSorvete: string;
-  preço:number;
+  descrição: string;
+  img:string;
+ 
 }
 
 export interface ListaSorveteProps{
   id: number;
-  sorveteId:number;
   nomeSorvete: string;
-  preço: string;
+  descrição: string;
+  img:string;
 }
 
 type SorveteComTotalCount = {
@@ -22,7 +23,7 @@ type SorveteComTotalCount = {
 
 const getAll = async (page=1, filter=''): Promise<SorveteComTotalCount | Error> => {
   try{
-    const urlRelativa=`/sorvetes?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeSorvete_like=${filter}`;
+    const urlRelativa=`/picole?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeSorvete_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){
@@ -89,7 +90,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
   }
 };
 
-export const SorveteService ={
+export const SorveteServicePicole ={
   getAll,
   getById,
   create,

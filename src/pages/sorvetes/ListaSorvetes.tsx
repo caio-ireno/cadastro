@@ -1,169 +1,105 @@
 import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableFooter,
-  LinearProgress,
-  Pagination,
   Box,
   Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Icon,
+  Button,
+  useTheme,
+  useMediaQuery,
+  ListItemButton,
 } from '@mui/material';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { match } from 'assert';
+import React from 'react';
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
-import { FerramentasDaLista } from '../../shared/components';
-import { Environment } from '../../shared/environment';
-import { useDebounce } from '../../shared/hooks';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import {
-  SorveteProps,
-  SorveteService,
-} from '../../shared/services/api/sorvete/SorveteService';
-import { DarkTheme } from '../../shared/theme';
 
-export const ListaSorvetes: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { debounce } = useDebounce();
+interface ListItemLinkProps {
+  label: string;
+  to: string;
+}
 
-  const theme = DarkTheme;
+const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
-  const [rows, setRows] = useState<SorveteProps[]>([]);
-  const [totalCount, SetTotalCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const resolvedPath = useResolvedPath(to);
+  const pathName = resolvedPath.pathname.replace('/sorvete/', '');
 
-  const busca = useMemo(() => {
-    return searchParams.get('busca') || '';
-  }, [searchParams]);
-
-  const pagina = useMemo(() => {
-    return Number(searchParams.get('pagina') || '1');
-  }, [searchParams]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    debounce(() => {
-      SorveteService.getAll(pagina, busca).then((result) => {
-        setIsLoading(false);
-        if (result instanceof Error) {
-          alert(result.message);
-          return;
-        } else {
-          console.log(result);
-
-          setRows(result.data);
-          SetTotalCount(result.totalCount);
-        }
-      });
-    });
-  }, [busca, pagina]);
-
+  const match = useMatch({ path: pathName, end: false });
+  console.log(match);
+  const handleClick = () => {
+    navigate(to);
+  };
   return (
-    <LayoutBaseDePagina
-      titulo="Lista Sorvetes"
-      barraDeFerramentas={
-        <FerramentasDaLista
-          mostarInputBusca
-          textoBusca={busca}
-          aoMudarTextoBusca={(texto) =>
-            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-          }
-        />
-      }
+    <Box
+      display={'flex'}
+      sx={{
+        ':hover': {
+          backgroundColor: '#fff',
+          textDecorationLine: 'underline',
+          textDecorationColor: '#5DADE2',
+          textDecorationThickness: '5px ',
+          textDecorationSkipInk: 'none',
+        },
+      }}
+      onClick={handleClick}
     >
-      <Box padding={1}>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<Icon>expand_more</Icon>}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography color={theme.palette.primary.dark}>
-              Sorvete Gourmet
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<Icon>expand_more</Icon>}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography color={theme.palette.primary.dark}>
-              Sorvete Standart
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<Icon>expand_more</Icon>}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography color={theme.palette.primary.dark}>
-              Sorvete Especial
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse malesuada lacus ex, sit amet blandit leo lobortis
-              eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<Icon>expand_more</Icon>}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography color={theme.palette.primary.dark}>Açai</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              it amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-              ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<Icon>expand_more</Icon>}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography color={theme.palette.primary.dark}>Palito</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-              it amet, consectetur adipiscing elit. Suspendisse malesuada lacus
-              ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
+      <Typography
+        selected={!!match}
+        component={ListItemButton}
+        fontSize={mdDown ? 15 : 20}
+        fontWeight={'bold'}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+};
+
+interface ListaSorvetelProps {
+  children?: React.ReactNode;
+}
+export const ListaSorvetes: React.FC<ListaSorvetelProps> = ({ children }) => {
+  const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  return (
+    <LayoutBaseDePagina>
+      <Box>
+        <Box
+          width={'100%'}
+          height="250px"
+          sx={{
+            objectFit: 'cover',
+          }}
+          component="img"
+          src="https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/66519501_1254182294739876_5684698909167845376_n.png?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_ohc=Lp9HcMhNDQkAX_wEcoE&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfDmDg7ile9A5fifYYhYM3LjWD09SJiF1qWDTXm9fpGJug&oe=6409A5F2"
+        />
       </Box>
+
+      <Box
+        borderBottom={'1px solid'}
+        width={'100%'}
+        display={'flex'}
+        flexDirection="row"
+        justifyContent={'center'}
+        alignItems="center"
+        flexWrap={'wrap'}
+        mt={mdDown ? 5 : 10}
+        gap={mdDown ? 1 : 3}
+      >
+        <ListItemLink to="/sorvetes/mais-populares" label="mais populares" />
+        <ListItemLink to="/sorvetes/gourmet" label="Gourmet" />
+        <ListItemLink to="/sorvetes/standart" label="Standart" />
+        <ListItemLink to="/sorvetes/especial" label="Especial" />
+        <ListItemLink to="/sorvetes/picole" label="Picole" />
+        <ListItemLink to="/sorvetes/linha-zero" label="Linha Zero" />
+        <ListItemLink to="/sorvetes/acai" label="Açai" />
+        <ListItemLink to="/sorvetes/copao" label="Copão" />
+      </Box>
+
+      <Box>{children}</Box>
     </LayoutBaseDePagina>
   );
 };

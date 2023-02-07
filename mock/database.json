@@ -1,73 +1,244 @@
 {
-  "sorvetes": [
+  "sorveteGourmet": [
+    {
+      "id": 1,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    }
+  ],
+  "sorveteEspecial": [
+    {
+      "id": 1,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
     {
       "id": 5,
-      "nomeSorvete": "Kinder Bueno",
-      "tipoSorvete": "gourmet",
-      "preço": 13
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
     },
     {
       "id": 6,
-      "nomeSorvete": "Morango",
-      "tipoSorvete": "standart",
-      "preço": 10
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
     },
     {
       "id": 7,
       "nomeSorvete": "Morango do Nordeste",
-      "tipoSorvete": "standart",
-      "preço": 10
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
     },
     {
       "id": 8,
-      "nomeSorvete": "Abacaxi vom vinho",
-      "tipoSorvete": "standart",
-      "preço": 10
-    },
-    {
-      "id": 9,
-      "nomeSorvete": "Chocomenta",
-      "tipoSorvete": "especial",
-      "preço": 12
-    },
-    {
-      "id": 10,
-      "nomeSorvete": "Kit Kat",
-      "tipoSorvete": "gourmet",
-      "preço": 13
-    },
-    {
-      "id": 11,
-      "nomeSorvete": "Napolitano",
-      "tipoSorvete": "Standart",
-      "preço": 10
-    },
-    {
-      "id": 12,
-      "nomeSorvete": "creme",
-      "tipoSorvete": "Standart",
-      "preço": 10
-    },
-    {
-      "id": 13,
-      "nomeSorvete": "Kit Kat",
-      "tipoSorvete": "gourmet",
-      "preço": 13
-    },
-    {
-      "id": 14,
-      "nomeSorvete": "Napolitano",
-      "tipoSorvete": "Standart",
-      "preço": 10
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
     }
   ],
+  "sorveteStandart": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "picole": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "linha-zero": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "acai": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "copao": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "mais-populares": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+
   "lojas": [
     {
       "id": 4,
       "telefone": "15996641722",
       "nomeLoja": "Urla Itavuvu",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://img.freepik.com/premium-psd/facade-storefront_77323-66.jpg?w=2000",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
@@ -75,7 +246,7 @@
       "telefone": "15996641722",
       "nomeLoja": "Urla JJ lacerda",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://i.pinimg.com/736x/f1/bc/2f/f1bc2fc4bb6ce72162e158225cabea44--store-fronts-charcoal.jpg",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/12028775_492467377578042_2632125282552569981_o.jpg?_nc_cat=104&ccb=1-7&_nc_sid=19026a&_nc_ohc=EUFnGWqn2DsAX_zaX-t&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB_NyNWF3-nQcrJ1kk8TEW3IAfD_e8UokDZABNzZnRtuQ&oe=640A066E",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
@@ -83,8 +254,7 @@
       "telefone": "15996641722",
       "nomeLoja": "Urla Aeroporto",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://www.remingtonarchitecture.com/wp-content/uploads/Hisroric-Store-Front-Renovation-Remington-Traditional-Commercial-Architecture-01.jpg",
-      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6"
     }
   ],
   "noticias": [
@@ -119,6 +289,18 @@
       "id": 3,
       "nomeNoticia": "Inauguração Loja",
       "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
+    }
+  ],
+  "historia": [
+    {
+      "id": 1,
+      "p1": "Something powerful happens when we gather around a table together. We become connected to each other, to the food on the table, to the producers who grew, raised, and crafted the delicious food, and connected to the land where it came from. Gathering around a table together creates community. On a mission of Creating Community Through Food, Bi-Rite strives every day to cultivate meaningful relationships with each member at our proverbial table. We believe it’s our responsibility to cultivate an organization that helps our community – you, our guests, our producers and partners, our staff, and our planet – thrive for generations to come. That might sound overly ambitious. But with community values of Lead with LOVE, Pursue with PASSION, and Act with INTEGRITY, we’re up for the challenge. We hope you’ll join us on the journey to build a sustaining, vibrant food community.",
+      "p2": "Something powerful happens when we gather around a table together. We become connected to each other, to the food on the table, to the producers who grew, raised, and crafted the delicious food, and connected to the land where it came from. Gathering around a table together creates community. On a mission of Creating Community Through Food, Bi-Rite strives every day to cultivate meaningful relationships with each member at our proverbial table. We believe it’s our responsibility to cultivate an organization that helps our community – you, our guests, our producers and partners, our staff, and our planet – thrive for generations to come. That might sound overly ambitious. But with community values of Lead with LOVE, Pursue with PASSION, and Act with INTEGRITY, we’re up for the challenge. We hope you’ll join us on the journey to build a sustaining, vibrant food community.",
+      "img1": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19400459_783179481840162_3870091448060667070_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=JdDB5s-1TQgAX_JJY4U&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAf9ihh-IzJf2qgWGj9dQqsKxLr9FAYrq7-l1Ql36pGpA&oe=640A1427",
+      "img2": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19400459_783179481840162_3870091448060667070_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=JdDB5s-1TQgAX_JJY4U&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAf9ihh-IzJf2qgWGj9dQqsKxLr9FAYrq7-l1Ql36pGpA&oe=640A1427",
+      "img3": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19400459_783179481840162_3870091448060667070_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=JdDB5s-1TQgAX_JJY4U&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAf9ihh-IzJf2qgWGj9dQqsKxLr9FAYrq7-l1Ql36pGpA&oe=640A1427",
+      "img4": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19400459_783179481840162_3870091448060667070_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=JdDB5s-1TQgAX_JJY4U&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAf9ihh-IzJf2qgWGj9dQqsKxLr9FAYrq7-l1Ql36pGpA&oe=640A1427",
+      "img5": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19400459_783179481840162_3870091448060667070_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=730e14&_nc_ohc=JdDB5s-1TQgAX_JJY4U&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAf9ihh-Iz"
     }
   ]
 }

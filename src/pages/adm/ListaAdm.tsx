@@ -3,7 +3,6 @@ import { Box } from '@mui/system';
 import { useState } from 'react';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { LojaAdm } from './LojaAdm';
-import { SorveteAdm } from './SorveteAdm';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -52,9 +51,7 @@ export const ListaAdm: React.FC = () => {
       }
     >
       <Box sx={{ width: '100%' }}>
-        <TabPanel value={value} index={0}>
-          <SorveteAdm />
-        </TabPanel>
+        <TabPanel value={value} index={0}></TabPanel>
         <TabPanel value={value} index={1}>
           <LojaAdm />
         </TabPanel>

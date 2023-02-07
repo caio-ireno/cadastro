@@ -1,5 +1,6 @@
 import {createTheme} from '@mui/material';
 import { blue,  orange } from '@mui/material/colors';
+import { Component } from 'react';
 
 export const LightTheme = createTheme({
   palette:{
@@ -18,13 +19,28 @@ export const LightTheme = createTheme({
     background:{
       default:'#fff',
       paper:'#fff',
-      
-    }
+    },
+     
+    
   },
   typography:{
     allVariants:{
       color: 'black',
       fontFamily: 'Philosopher',
     }
+  },
+
+  components:{
+    MuiListItemButton:{
+      styleOverrides:{
+        selected:{
+          backgroundColor:'#ffa726',
+        },
+        root:{
+          
+        }
+      }
+    },    
   }
+      
 });
