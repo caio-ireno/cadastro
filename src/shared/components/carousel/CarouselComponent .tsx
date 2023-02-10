@@ -1,7 +1,6 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material';
-import { useEffect, useMemo, useState } from 'react';
+import { Box, CircularProgress, useMediaQuery, useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel';
-import { useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../hooks';
 import {
   NoticiaProps,
@@ -9,7 +8,6 @@ import {
 } from '../../services/api/noticias/NoticiasService';
 
 export const CarouselComponent = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
@@ -18,18 +16,10 @@ export const CarouselComponent = () => {
   const [rows, setRows] = useState<NoticiaProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const busca = useMemo(() => {
-    return searchParams.get('busca') || '';
-  }, [searchParams]);
-
-  const pagina = useMemo(() => {
-    return Number(searchParams.get('pagina') || '1');
-  }, [searchParams]);
-
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      NoticiaServices.getAll(busca).then((result) => {
+      NoticiaServices.getAll().then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -41,27 +31,34 @@ export const CarouselComponent = () => {
         }
       });
     });
-  }, [busca, pagina]);
+  }, []);
   return (
     <Box>
-      <Carousel autoPlay navButtonsAlwaysVisible>
-        {rows.map((row) => (
-          <Box
-            width={'100%'}
-            maxHeight={smDown ? '200px' : mdDown ? '300px' : '700px'}
-            display="flex"
-            justifyContent={'center'}
-            key={row.id}
-          >
+      {isLoading && (
+        <Box display="flex" alignItems={'center'} justifyContent="center">
+          <CircularProgress />
+        </Box>
+      )}
+      {!isLoading && (
+        <Carousel autoPlay navButtonsAlwaysVisible>
+          {rows.map((row) => (
             <Box
               width={'100%'}
-              height="auto"
-              component="img"
-              src={row.imgNoticia}
-            />
-          </Box>
-        ))}
-      </Carousel>
+              maxHeight={smDown ? '200px' : mdDown ? '300px' : '700px'}
+              display="flex"
+              justifyContent={'center'}
+              key={row.id}
+            >
+              <Box
+                width={'100%'}
+                height="auto"
+                component="img"
+                src={row.imgNoticia}
+              />
+            </Box>
+          ))}
+        </Carousel>
+      )}
     </Box>
   );
 };

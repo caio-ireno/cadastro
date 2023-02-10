@@ -1,36 +1,25 @@
 import { Environment } from '../../../environment';
 import { Api } from '../axios-config';
 
-export interface HistoriaProps{
+export interface ImageProps{
   id:number
-  p1: string;
-  p2:string;
-  img1:string;
-  img2:string;
-  img3:string;
-  img4:string;
-  img5:string;
+  imgbase: string;
+
 }
 
-export interface ListaHistoriaProps{
+export interface ListaImageProps{
   id:number
-  p1: string;
-  p2:string;
-  img1:string;
-  img2:string;
-  img3:string;
-  img4:string;
-  img5:string;
+  imgbase: string;
 }
 
-type HistoriaComTotalCount = {
-  data: HistoriaProps[];
+type ImageComTotalCount = {
+  data: ImageProps[];
   totalCount: number;
 }
 
-const getAll = async ( filter=''): Promise<HistoriaComTotalCount | Error> => {
+const getAll = async ( filter=''): Promise<ImageComTotalCount | Error> => {
   try{
-    const urlRelativa=`/historia?&nomeNoticia_like=${filter}`;
+    const urlRelativa=`/image-base?&nomeNoticia_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){
@@ -47,7 +36,7 @@ const getAll = async ( filter=''): Promise<HistoriaComTotalCount | Error> => {
   }
 };
 
-const getById = async (id:number): Promise<ListaHistoriaProps | Error> => {
+const getById = async (id:number): Promise<ListaImageProps | Error> => {
   try{
     const {data} = await Api.get(`/noticias/${id}`);
 
@@ -62,9 +51,9 @@ const getById = async (id:number): Promise<ListaHistoriaProps | Error> => {
   }
 };
 
-const create = async (dados:Omit<ListaHistoriaProps, 'id'>): Promise<number | Error> => {
+const create = async (dados:Omit<ListaImageProps, 'id'>): Promise<number | Error> => {
   try{
-    const {data} = await Api.post<ListaHistoriaProps>('/noticias', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+    const {data} = await Api.post<ListaImageProps>('/noticias', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
 
     if(data){
       return data.id;
@@ -77,7 +66,7 @@ const create = async (dados:Omit<ListaHistoriaProps, 'id'>): Promise<number | Er
   }
 };
 
-const updateById = async (id:number, dados:ListaHistoriaProps): Promise<void | Error> => {
+const updateById = async (id:number, dados:ListaImageProps): Promise<void | Error> => {
   try{
     await Api.put(`/noticias/${id}`, dados); 
 
@@ -89,7 +78,7 @@ const updateById = async (id:number, dados:ListaHistoriaProps): Promise<void | E
 
 const deleteById = async (id:number): Promise<void | Error> => {
   try{
-    await Api.delete<ListaHistoriaProps>(`/noticias/${id}`); 
+    await Api.delete<ListaImageProps>(`/noticias/${id}`); 
 
   } catch (error){
     console.error(error);
@@ -97,7 +86,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
   }
 };
 
-export const HistoriaService ={
+export const ImageService ={
   getAll,
   getById,
   create,

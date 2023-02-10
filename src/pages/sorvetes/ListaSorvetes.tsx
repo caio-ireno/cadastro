@@ -1,12 +1,10 @@
 import {
   Box,
   Typography,
-  Button,
   useTheme,
   useMediaQuery,
   ListItemButton,
 } from '@mui/material';
-import { match } from 'assert';
 import React from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
@@ -19,7 +17,6 @@ interface ListItemLinkProps {
 
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
 
@@ -62,7 +59,6 @@ interface ListaSorvetelProps {
 }
 export const ListaSorvetes: React.FC<ListaSorvetelProps> = ({ children }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <LayoutBaseDePagina>
