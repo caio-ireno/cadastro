@@ -308,5 +308,53 @@
       "id": 4,
       "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
     }
+  ],
+
+  "sorvetes": [
+    {
+      "tipo": "gourmet",
+      "sabores": [
+        {
+          "nome": "Chocolate Belga",
+          "imagem": "https://example.com/chocolate-belga.jpg",
+          "descricao": "Um sorvete feito com chocolate belga e cobertura crocante"
+        },
+        {
+          "nome": "Frutas Vermelhas",
+          "imagem": "https://example.com/frutas-vermelhas.jpg",
+          "descricao": "Um sorvete feito com frutas vermelhas frescas e creme suave"
+        }
+      ]
+    },
+    {
+      "tipo": "standart",
+      "sabores": [
+        {
+          "nome": "Morango",
+          "imagem": "https://example.com/morango.jpg",
+          "descricao": "Um sorvete feito com morangos frescos e creme suave"
+        },
+        {
+          "nome": "Baunilha",
+          "imagem": "https://example.com/baunilha.jpg",
+          "descricao": "Um sorvete feito com baunilha pura e creme suave"
+        }
+      ]
+    },
+    {
+      "tipo": "especial",
+      "sabores": [
+        {
+          "nome": "Trufado",
+          "imagem": "https://example.com/trufado.jpg",
+          "descricao": "Um sorvete feito com chocolate trufado e cobertura crocante"
+        },
+        {
+          "nome": "Flocos",
+          "imagem": "https://example.com/flocos.jpg",
+          "descricao": "Um sorvete feito com flocos crocantes e cobertura suave"
+        }
+      ]
+    }
   ]
 }

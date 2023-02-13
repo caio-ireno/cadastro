@@ -22,9 +22,8 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
 
   const resolvedPath = useResolvedPath(to);
   const pathName = resolvedPath.pathname.replace('/sorvete/', '');
-
   const match = useMatch({ path: pathName, end: false });
-  console.log(match);
+
   const handleClick = () => {
     navigate(to);
   };

@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Dashboard, ListaSorvetes } from '../pages';
-import { ListaAdm } from '../pages/adm/ListaAdm';
+import { Dashboard } from '../pages';
 import { Historia } from '../pages/historia/Historia';
 import { ListaLojas } from '../pages/lojas/ListaLojas';
-import { SorveteAçai } from '../pages/sorvetes/SorveteAçai';
-import { SorveteCopão } from '../pages/sorvetes/SorveteCopão';
-import { SorveteEspecial } from '../pages/sorvetes/SorveteEspecial';
-import { SorveteGourmet } from '../pages/sorvetes/SorveteGourmet';
-import { SorveteLinhaZero } from '../pages/sorvetes/SorveteLinhaZero';
-import { SorveteMaisPopulares } from '../pages/sorvetes/SorveteMaisPopulares';
-import { SorvetePicole } from '../pages/sorvetes/SorvetePicole';
-import { SorveteStandart } from '../pages/sorvetes/SorveteStandart';
+// import { SorveteAçai } from '../pages/sorvetes/SorveteAçai';
+// import { SorveteCopão } from '../pages/sorvetes/SorveteCopão';
+// import { SorveteEspecial } from '../pages/sorvetes/SorveteEspecial';
+// import { SorveteGourmet } from '../pages/sorvetes/SorveteGourmet';
+// import { SorveteLinhaZero } from '../pages/sorvetes/SorveteLinhaZero';
+// import { SorveteMaisPopulares } from '../pages/sorvetes/SorveteMaisPopulares';
+// import { SorvetePicole } from '../pages/sorvetes/SorvetePicole';
+// import { SorveteStandart } from '../pages/sorvetes/SorveteStandart';
+import { TesteSorvete } from '../pages/Teste Sorvete/TesteSorvete';
 import { useDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
@@ -37,7 +37,7 @@ export const AppRoutes = () => {
       },
       {
         label: 'Adm',
-        path: '/adm-page',
+        path: '/especial',
       },
     ]);
   }, []);
@@ -45,19 +45,17 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/pagina-inicial" element={<Dashboard />} />
+      <Route path="/especial" element={<TesteSorvete />} />
       <Route path="/lojas" element={<ListaLojas />} />
       <Route path="/historia" element={<Historia />} />
-      <Route path="/sorvetes/especial" element={<SorveteEspecial />} />
-      <Route path="/sorvetes/standart" element={<SorveteStandart />} />
-      <Route path="/sorvetes/gourmet" element={<SorveteGourmet />} />
-      <Route path="/sorvetes/picole" element={<SorvetePicole />} />
-      <Route path="/sorvetes/acai" element={<SorveteAçai />} />
-      <Route path="/sorvetes/copao" element={<SorveteCopão />} />
-      <Route path="/sorvetes/linha-zero" element={<SorveteLinhaZero />} />
-      <Route
-        path="/sorvetes/mais-populares"
-        element={<SorveteMaisPopulares />}
-      />
+      <Route path="/sorvetes/especial" element={<TesteSorvete />} />
+      <Route path="/sorvetes/standart" element={<TesteSorvete />} />
+      <Route path="/sorvetes/gourmet" element={<TesteSorvete />} />
+      <Route path="/sorvetes/picole" element={<TesteSorvete />} />
+      <Route path="/sorvetes/acai" element={<TesteSorvete />} />
+      <Route path="/sorvetes/copao" element={<TesteSorvete />} />
+      <Route path="/sorvetes/linha-zero" element={<TesteSorvete />} />
+      <Route path="/sorvetes/mais-populares" element={<TesteSorvete />} />
 
       <Route path="*" element={<Navigate to="/pagina-inicial" />} />
       <Route

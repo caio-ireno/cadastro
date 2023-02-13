@@ -42,7 +42,7 @@ const getAll = async (page=1, filter=''): Promise<SorveteComTotalCount | Error> 
 
 const getById = async (id:number): Promise<ListaSorveteProps | Error> => {
   try{
-    const {data} = await Api.get(`/pessoas/${id}`);
+    const {data} = await Api.get(`/sorveteGourmet/${id}`);
 
     if(data){
       return data;
@@ -57,7 +57,7 @@ const getById = async (id:number): Promise<ListaSorveteProps | Error> => {
 
 const create = async (dados:Omit<ListaSorveteProps, 'id'>): Promise<number | Error> => {
   try{
-    const {data} = await Api.post<ListaSorveteProps>('/sorvetes', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+    const {data} = await Api.post<ListaSorveteProps>('/sorveteGourmet', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
 
     if(data){
       return data.id;
@@ -72,7 +72,7 @@ const create = async (dados:Omit<ListaSorveteProps, 'id'>): Promise<number | Err
 
 const updateById = async (id:number, dados:ListaSorveteProps): Promise<void | Error> => {
   try{
-    await Api.put(`/sorvetes/${id}`, dados); 
+    await Api.put(`/sorveteGourmet/${id}`, dados); 
 
   } catch (error){
     console.error(error);
@@ -82,7 +82,7 @@ const updateById = async (id:number, dados:ListaSorveteProps): Promise<void | Er
 
 const deleteById = async (id:number): Promise<void | Error> => {
   try{
-    await Api.delete<ListaSorveteProps>(`/sorvetes/${id}`); 
+    await Api.delete<ListaSorveteProps>(`/sorveteGourmet/${id}`); 
 
   } catch (error){
     console.error(error);

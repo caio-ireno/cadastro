@@ -52,7 +52,7 @@ export const SorveteAçai: React.FC = () => {
           <CircularProgress />
         </Box>
       )}
-      
+
       {!isLoading && (
         <Box
           sx={{
@@ -63,7 +63,7 @@ export const SorveteAçai: React.FC = () => {
           display={'flex'}
           flexWrap={'wrap'}
           alignItems="center"
-          justifyContent={'center'}
+          justifyContent={'flex-start'}
           flexDirection="row"
           gap={5}
         >

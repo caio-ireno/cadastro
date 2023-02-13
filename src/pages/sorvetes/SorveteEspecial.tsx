@@ -60,7 +60,7 @@ export const SorveteEspecial: React.FC = () => {
           display={'flex'}
           flexWrap={'wrap'}
           alignItems="center"
-          justifyContent={'center'}
+          justifyContent={'flex-start'}
           flexDirection="row"
           gap={5}
         >
