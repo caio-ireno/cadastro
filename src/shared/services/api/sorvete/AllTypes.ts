@@ -2,12 +2,18 @@ import { Environment } from '../../../environment';
 import { Api } from '../axios-config';
 
 export interface SorveteProps{
+  id:number;
   tipo:string;
-  sabores: SaboresProps[];
- 
+  sabores: {
+    id:number,
+    nome:string,
+    imagem: string,
+    descricao:string,
+  };
 }
 
 export interface SaboresProps{
+  id:number,
   nome:string;
   imagem: string;
   descricao:string;

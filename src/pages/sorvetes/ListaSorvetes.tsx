@@ -4,11 +4,18 @@ import {
   useTheme,
   useMediaQuery,
   ListItemButton,
+  CircularProgress,
 } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
+import { useDebounce } from '../../shared/hooks';
 
 import { LayoutBaseDePagina } from '../../shared/layouts';
+import {
+  AllTypes,
+  SaboresProps,
+  SorveteProps,
+} from '../../shared/services/api/sorvete/AllTypes';
 
 interface ListItemLinkProps {
   label: string;
@@ -56,9 +63,38 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
 interface ListaSorvetelProps {
   children?: React.ReactNode;
 }
-export const ListaSorvetes: React.FC<ListaSorvetelProps> = ({ children }) => {
+export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
+  const { debounce } = useDebounce();
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const [rows, setRows] = useState<SorveteProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    debounce(() => {
+      AllTypes.getAll().then((result) => {
+        setIsLoading(false);
+        if (result instanceof Error) {
+          alert(result.message);
+          return;
+        } else {
+          setRows(result.data);
+        }
+      });
+    });
+  }, []);
+  const results = [];
+  const pathName = window.location.pathname.replace('/sorvetes/', '');
+  console.log(pathName);
+  for (let i = 0; i < rows.length; i++) {
+    if (pathName === rows[i].tipo) {
+      results.push(rows[i].sabores);
+      console.log(results);
+    }
+  }
+
   return (
     <LayoutBaseDePagina>
       <Box>
@@ -93,8 +129,66 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = ({ children }) => {
         <ListItemLink to="/sorvetes/acai" label="Açai" />
         <ListItemLink to="/sorvetes/copao" label="Copão" />
       </Box>
-
-      <Box>{children}</Box>
+      {isLoading && (
+        <Box
+          p={10}
+          display="flex"
+          alignItems={'center'}
+          justifyContent="center"
+        >
+          <CircularProgress />
+        </Box>
+      )}
+      {!isLoading && (
+        <Box
+          sx={{
+            backgroundColor: '#F2F4F4 ',
+          }}
+          pt={10}
+          pb={10}
+          display={'flex'}
+          flexWrap={'wrap'}
+          alignItems="center"
+          justifyContent={'center'}
+          flexDirection="row"
+          gap={5}
+        >
+          {results.flat().map((result) => (
+            <Box
+              p={1}
+              width={'500px'}
+              height={smDown ? 'auto' : 'auto'}
+              justifyContent={'space-between'}
+              key={result.id}
+              display="flex"
+              flexDirection={'row'}
+              border="1px solid"
+            >
+              <Box>
+                <Typography
+                  fontWeight={'bold'}
+                  fontSize={smDown ? 15 : mdDown ? 20 : 25}
+                >
+                  {result.nome}
+                </Typography>
+                <Typography fontSize={smDown ? 12 : mdDown ? 15 : 20}>
+                  {result.descricao}
+                </Typography>
+              </Box>
+              <Box display="flex" alignItems={'center'} justifyContent="center">
+                <Box
+                  sx={{
+                    height: smDown ? '100px' : '200px',
+                    width: smDown ? theme.spacing(15) : theme.spacing(24),
+                  }}
+                  component="img"
+                  src={result.imagem}
+                />
+              </Box>
+            </Box>
+          ))}
+        </Box>
+      )}
     </LayoutBaseDePagina>
   );
 };
