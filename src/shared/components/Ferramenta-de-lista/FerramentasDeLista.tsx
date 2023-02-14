@@ -1,4 +1,4 @@
-import { Paper, TextField, useTheme } from '@mui/material';
+import { TextField, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 
 import { Environment } from '../../environment';
@@ -17,11 +17,10 @@ export const FerramentasDaLista: React.FC<FerramentasDaListaProps> = ({
   const theme = useTheme();
   return (
     <Box
-      component={Paper}
       height={theme.spacing(5)}
       marginX={1}
-      padding={1}
-      paddingX={2}
+      padding={2}
+      paddingX={1}
       display="flex"
       alignItems="center"
     >

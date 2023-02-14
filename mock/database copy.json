@@ -1,0 +1,507 @@
+{
+  "sorveteGourmet": [
+    {
+      "id": 1,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Kinder Bueno",
+      "descrição": "Delicioso sorvete a base de creme com recheio de Kinder Bueno",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/175064184_1822831104541656_6860002990172712441_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_ohc=yk_tZSXGfIIAX-vtKMS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCyJ1gMTXWGj31kTIYOEtO8q9LnCalcqYENr0pMpMrqvQ&oe=6409D1A0"
+    }
+  ],
+  "sorveteEspecial": [
+    {
+      "id": 1,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 5,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 6,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 7,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    },
+    {
+      "id": 8,
+      "nomeSorvete": "Morango do Nordeste",
+      "descrição": "Delicioso sorvete a base de creme com recheio de morango azedinho ",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_ohc=0R324EDvNpEAX-n-Ten&_nc_ht=scontent.fsod2-1.fna&oh=00_AfABqkfA_A2lFwvo1SDUeGUY2d6CuZU6fSnwCPqzP9dItg&oe=63E81E58"
+    }
+  ],
+  "sorveteStandart": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "picole": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "linha-zero": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "acai": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "copao": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+  "mais-populares": [
+    {
+      "id": 1,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 2,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 3,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    },
+    {
+      "id": 4,
+      "nomeSorvete": "Floresta Negra",
+      "descrição": "Delicioso sorvete a base de chocolate com recheio de cereja",
+      "img": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/173328409_1815525391938894_9156804171385832835_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_ohc=sarA_jsFQm4AX_2vlh1&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB2_fozRviJ0OmFIhc3e277wl4jOsg5hO_lks_N0V6jvg&oe=6409D0EC"
+    }
+  ],
+
+  "lojas": [
+    {
+      "id": 1,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 2,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 3,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 4,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 5,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla JJ lacerda",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/12028775_492467377578042_2632125282552569981_o.jpg?_nc_cat=104&ccb=1-7&_nc_sid=19026a&_nc_ohc=EUFnGWqn2DsAX_zaX-t&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB_NyNWF3-nQcrJ1kk8TEW3IAfD_e8UokDZABNzZnRtuQ&oe=640A066E",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 6,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Aeroporto",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6"
+    },
+    {
+      "id": 7,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 8,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    },
+    {
+      "id": 9,
+      "telefone": "15996641722",
+      "nomeLoja": "Urla Itavuvu",
+      "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
+    }
+  ],
+  "noticias": [
+    {
+      "id": 1,
+      "nomeNoticia": "Promoção de verão",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/37308177_1003979983093443_8630238315997560832_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=NpYa521T4SwAX_xn0qA&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArhqItbLNV4lpHHdh-IfTS_lexylfIoHT4TV_HKp80Ig&oe=640893F3"
+    },
+    {
+      "id": 2,
+      "nomeNoticia": "Sorvete Solidário",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/43087084_1067798720044902_186964985866354688_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=9JVYcnJz3YoAX8gGcj2&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC15PESmj2b_3X0L5W-B7cc2kRmedf_Jn4syZlexFtvDA&oe=6408918D"
+    },
+    {
+      "id": 3,
+      "nomeNoticia": "Inauguração Loja",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
+    }
+  ],
+  "imgHomePag": [
+    {
+      "id": 1,
+      "nomeNoticia": "Promoção de verão",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/37308177_1003979983093443_8630238315997560832_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=NpYa521T4SwAX_xn0qA&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArhqItbLNV4lpHHdh-IfTS_lexylfIoHT4TV_HKp80Ig&oe=640893F3"
+    },
+    {
+      "id": 2,
+      "nomeNoticia": "Sorvete Solidário",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/43087084_1067798720044902_186964985866354688_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=9JVYcnJz3YoAX8gGcj2&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC15PESmj2b_3X0L5W-B7cc2kRmedf_Jn4syZlexFtvDA&oe=6408918D"
+    },
+    {
+      "id": 3,
+      "nomeNoticia": "Inauguração Loja",
+      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
+    }
+  ],
+  "image-base": [
+    {
+      "id": 1,
+      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
+    },
+    {
+      "id": 2,
+      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
+    },
+    {
+      "id": 3,
+      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
+    },
+    {
+      "id": 4,
+      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
+    }
+  ],
+
+  "sorvetes": [
+    {
+      "id": 1,
+      "tipo": "gourmet",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Chocolate Belga",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/279077852_2102038179954279_3571340583351959848_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFxLb78ueWEfuzeubp6beCg5PUdIIxdpnXk9R0gjF2mdSmqSpHIEb9XoZTF4KKBIveHCo1YymsDXYuSg6oJwTP8&_nc_ohc=x1Zhnjr7sZ4AX8nT_wJ&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCu2xYiqM1vEFWrith2COZZ7ygar8jeAey-IlM3kAuo0w&oe=63F05A51",
+          "descricao": "Um sorvete feito com chocolate belga e cobertura crocante"
+        },
+        {
+          "id": 2,
+          "nome": "Frutas Vermelhas",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/273377337_2043422565815841_5236806115537407201_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeH1rxjblsJrAvB_rB_c_6QMAyeKqQa9h0MDJ4qpBr2HQ9rSuNE3a2LQ0kJimCmMjePQWRLNbJSrZhoK8FAIhuGS&_nc_ohc=WI5QdgPcHJwAX8bbMO8&_nc_oc=AQk1hwyzm1aA_T8nw_6CXL207AyUoQeN2cmOvgf0titXha4unjolnYiUDM6AM67e9ERn_5XjvUn-clEUROCbmx35&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBxKNRZhwz1QUplF0qHu1VBEK58_kHfhnxxdX6h1yJEFg&oe=63F08614",
+          "descricao": "Um sorvete feito com frutas vermelhas frescas e creme suave"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "tipo": "standart",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Baunilha",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/203699969_1866803810144385_7737357976082027448_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFfxX8pdTn73kYm--ZTs-cD9orj0haX-FP2iuPSFpf4U_DSyQ1CNNqBG0KRzw2tVgoRo21MAQcEG5-JVH_v96MQ&_nc_ohc=xIW88pIuTh4AX8TihaS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAav_zdNS5Hu5kwCrDa6GdFRvibEPM7_fxAbZQUEXs-zQ&oe=641315BE",
+          "descricao": "Um sorvete clássico de baunilha, cremoso e delicioso"
+        },
+        {
+          "id": 2,
+          "nome": "Chocolate",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFGUd41BY0goYMO3ViaqN2tuWa8vbAMc9-5Zry9sAxz31N3YxsdGQAIe9c9ZbsIcVQrnClnc5HB2hQdN0jDjO9w&_nc_ohc=DCm_dUSODfwAX_GQ-Ij&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBto0vssjrjz2biDZBa1ycN-puY_CrOj7W7EsG9xDkdVw&oe=63F00758",
+          "descricao": "Um sorvete rico em cacau, perfeito para os amantes de chocolate"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "tipo": "especial",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Romeu e Julieta",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/290444884_2152200044938092_1570328251448798307_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeGf-b64ORraY31u_igq6lLfjecek1rt1IyN5x6TWu3UjPBYbogkvLeFeFFiz7ADEGYQey3TCawyKaSG_XHxuCzv&_nc_ohc=InrCbb87hoQAX_xTM1t&_nc_ht=scontent.fsod2-1.fna&oh=00_AfDrS_XtGAwgzcIs42lBUEVMhyZdmpoMAkSMWWSiB1UmEA&oe=63EFE7BA",
+          "descricao": "Um sorvete que mistura queijo e goiabada, uma combinação clássica e deliciosa"
+        },
+        {
+          "id": 2,
+          "nome": "Tapioca",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/290266291_2152200041604759_6000156674380998575_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeHiFYh76T5n9xGH-Yvy-_j5lZP_YjEX7pOVk_9iMRfuk5MzsmVeKiICBrqHIKMNF2dqElQ6wSh0pICq79MQHpUH&_nc_ohc=4IJficGVz2IAX878PGs&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA0Bs5IBJGUJHNK0dPSCfl1Qoi8t7BjEx_MI9NUzs3otA&oe=63EFC093",
+          "descricao": "Um sorvete de tapioca com leite condensado, ideal para quem gosta de sobremesas nordestinas"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "tipo": "acai",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Tradicional",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/291806429_2158923400932423_2192750023899841751_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeHxbmw6f12PRbu959SOXYNmgpy2qd4UpT2CnLap3hSlPRtFcYAwVAidPdT0zPA03Djn09r0GgVIoOBNoWnjNeMU&_nc_ohc=46rOiSGK0gMAX87ibpS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCDWaAaqYkoWbkecAJob3pUqj8Lf8n9fRX2Yv86oL772A&oe=63F0D0E3",
+          "descricao": "Um sorvete de açaí com banana, granola e mel"
+        },
+        {
+          "id": 2,
+          "nome": "Com Leite Condensado",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/144050315_1759765744181526_7015746035337583629_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeHZiYue3-2I1rbLsAXr2Hkzmr4wILGPoOCavjAgsY-g4BWgg0h5a0liojB6oBDkO1qrgXkswb5DsDmT9KE66gAc&_nc_ohc=IULZCoBtLGgAX-JlN0d&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBZMrRtRV3oZt6Njrf8sTldIBWdpefmK8ZofpxKSJOegg&oe=641319B1",
+          "descricao": "Um sorvete de açaí com leite condensado e farofa crocante"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "tipo": "copao",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Morango",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/290673669_2155604737930956_9142647826379532744_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeEU1wloMhbOeCkY-iaa_YM5UDKXMUjuz4xQMpcxSO7PjE-0GBS_WONNZinGTQxtzonrqcWmp8hcqv0Aa_Y5fahY&_nc_ohc=CHOQHXXFSAMAX9VH4RG&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArl3tOR8jKzZs-Ms5IYAgoJx04SRfvHSmwnGFMxew3cQ&oe=63F06F91",
+          "descricao": "Um copão de sorvete de morango com calda de frutas vermelhas"
+        },
+        {
+          "id": 2,
+          "nome": "Crocante",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/170814717_1812440985580668_5555894202009073672_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeHkMMH99_ixNKWy58tHjEOlzPFV87gb94LM8VXzuBv3goHd4f11Qt75rUm9rA3dCRZXG8OyWu0GYv2tEbHke3CT&_nc_ohc=MH216s_4RPEAX_tOQmd&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCSsd1Y2tdjQwUJ1FU08KMEpMhclmbg7f4K1tHoh0QWYA&oe=6412F25C",
+          "descricao": "Um copão de sorvete crocante com calda de chocolate"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "tipo": "picole",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Limão",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/274699330_2056027884555309_332701729881021208_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeE83Iha9fDFrTFg6WlkY4LaNuCGLae_Vow24IYtp79WjLjeeC_lsqvIosr1eagjgc-02fNXtOTxLqxoKQkZ_cze&_nc_ohc=OnPRKSIEf7oAX-Boeur&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAuxzXbhGXdwwWXV82j4NlHE2dOX_imkMIfTSkIOGB-Jg&oe=63EFC3F0",
+          "descricao": "Um picolé refrescante de limão, perfeito para o verão"
+        },
+        {
+          "id": 2,
+          "nome": "Abacaxi",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/250721328_1973240266167405_2913755283079245674_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFPg60WVZY9G2nNoitJaRZj4Z4A5DLfALbhngDkMt8AtpM3BAc37vmstUJVKinPCgWcgqPbkxXuqpTdVXV7qzdZ&_nc_ohc=lukPajyuLCsAX8lSOqK&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBqgJkGabwNZyJ2brDwC6pAalp8kIOCZFesjo-AHIYkdw&oe=63F11077",
+          "descricao": "Um picolé de abacaxi com pedaços da fruta, ideal para quem gosta de sabores tropicais"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "tipo": "linha-zero",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Chocolate",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/274652554_2057591454398952_5688350027723751933_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFhgMq73MxwJDNhsxFktlj0srfrUNJ72gGyt-tQ0nvaAbou-Vf2j4F1FlBhtKAIZvN-wnmHRnGbCadRMptTPZYu&_nc_ohc=qt5nKIBRM0UAX8LuCla&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBUtAMUfHewsGnE3TEA3G9LW9mUywF4Rzp39nh94EAf5A&oe=63F060CD",
+          "descricao": "Um sorvete de chocolate sem açúcar, perfeito para quem tem restrições alimentares"
+        },
+        {
+          "id": 2,
+          "nome": "Frutas Vermelhas",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/278429794_2095251060632991_5493227440282220637_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeHUJEjqzM45cRu3J6liD7P83qgwR4dgQ4feqDBHh2BDh1asujyQ2SWHziF5ApGmPeu9E87xwsvFV_7rGkvAjoVC&_nc_ohc=rJt310lVWRkAX9Qxq0o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC5r11YJ-mAcwp9M8TaQMgylEaqk1J4zti7OVq5iSJlQQ&oe=63F0D713",
+          "descricao": "Um sorvete sem açúcar feito com frutas vermelhas frescas e creme suave"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "tipo": "mais-populares",
+      "sabores": [
+        {
+          "id": 1,
+          "nome": "Chocolate",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/186452212_1838080546350045_3963599475701251317_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeE0DEHozQHfgifVLfCyTEp-7r65vxmclkvuvrm_GZyWSyMAwEOV_Qzg4JYSI7-yWCIkFHfUO_vTgmNF1nw7iOqr&_nc_ohc=nd4vQM0Tb6YAX8lQsHo&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAPS6nXB98iOuziSKxxxxomycVDDCsaJmWctGCnMRGIJg&oe=6412F0CD",
+          "descricao": "Um sorvete de chocolate sem açúcar, perfeito para quem tem restrições alimentares"
+        },
+        {
+          "id": 2,
+          "nome": "Frutas Vermelhas",
+          "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFGUd41BY0goYMO3ViaqN2tuWa8vbAMc9-5Zry9sAxz31N3YxsdGQAIe9c9ZbsIcVQrnClnc5HB2hQdN0jDjO9w&_nc_ohc=DCm_dUSODfwAX_GQ-Ij&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBto0vssjrjz2biDZBa1ycN-puY_CrOj7W7EsG9xDkdVw&oe=63F00758",
+          "descricao": "Um sorvete sem açúcar feito com frutas vermelhas frescas e creme suave"
+        }
+      ]
+    }
+  ]
+}

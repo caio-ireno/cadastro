@@ -1,5 +1,4 @@
 import {
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -11,23 +10,79 @@ import {
   Pagination,
   IconButton,
   Icon,
+  Typography,
+  ListItemButton,
+  Box,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import {
+  useMatch,
+  useNavigate,
+  useResolvedPath,
+  useSearchParams,
+} from 'react-router-dom';
 
 import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
+
 import {
-  LojasProps,
-  LojasServices,
-} from '../../shared/services/api/lojas/LojasService';
+  AllTypes,
+  SorveteProps,
+} from '../../shared/services/api/sorvete/AllTypes';
 import { ListaAdm } from './ListaAdm';
 
-export const LojaAdm: React.FC = () => {
+interface ListItemLinkProps {
+  label: string;
+  to: string;
+}
+
+const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
+
+  const resolvedPath = useResolvedPath(to);
+  const pathName = resolvedPath.pathname.replace('/sorvete/', '');
+  const match = useMatch({ path: pathName, end: false });
+
+  const handleClick = () => {
+    navigate(to);
+  };
+  return (
+    <Box
+      display={'flex'}
+      sx={{
+        ':hover': {
+          backgroundColor: '#fff',
+          textDecorationLine: 'underline',
+          textDecorationColor: '#5DADE2',
+          textDecorationThickness: '5px ',
+          textDecorationSkipInk: 'none',
+        },
+      }}
+      onClick={handleClick}
+    >
+      <Typography
+        selected={!!match}
+        component={ListItemButton}
+        fontSize={mdDown ? 15 : 20}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+};
+
+export const SorveteAdm: React.FC = () => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
 
-  const [rows, setRows] = useState<LojasProps[]>([]);
+  const [rows, setRows] = useState<SorveteProps[]>([]);
   const [totalCount, SetTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -42,24 +97,32 @@ export const LojaAdm: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      LojasServices.getAll(pagina, busca).then((result) => {
+      AllTypes.getAll(pagina).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
           return;
         } else {
-          console.log(result);
-
           setRows(result.data);
           SetTotalCount(result.totalCount);
         }
       });
     });
-  }, [busca, pagina]);
+  }, [pagina]);
+
+  console.log(rows);
+
+  const results = [];
+  const pathName = window.location.pathname.replace('/adm-page/', '');
+  for (let i = 0; i < rows.length; i++) {
+    if (pathName === rows[i].tipo) {
+      results.push(rows[i].sabores);
+    }
+  }
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      LojasServices.deleteById(id).then((result) => {
+      AllTypes.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
@@ -74,36 +137,50 @@ export const LojaAdm: React.FC = () => {
 
   return (
     <ListaAdm>
-      <TableContainer
-        component={Paper}
-        variant="outlined"
-        sx={{ m: 1, width: 'auto' }}
-      >
+      <TableContainer>
+        <Box
+          borderBottom={'1px solid'}
+          width={'100%'}
+          display={'flex'}
+          flexDirection="row"
+          justifyContent={'center'}
+          alignItems="center"
+          flexWrap={'wrap'}
+          mt={mdDown ? 5 : 3}
+          gap={mdDown ? 1 : 3}
+        >
+          <ListItemLink to="/adm-page/mais-populares" label="Mais populares" />
+          <ListItemLink to="/adm-page/gourmet" label="Gourmet" />
+          <ListItemLink to="/adm-page/standart" label="Standart" />
+          <ListItemLink to="/adm-page/especial" label="Especial" />
+          <ListItemLink to="/adm-page/picole" label="Picole" />
+          <ListItemLink to="/adm-page/linha-zero" label="Linha Zero" />
+          <ListItemLink to="/adm-page/acai" label="Açai" />
+          <ListItemLink to="/adm-page/copao" label="Copão" />
+        </Box>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell width={100}>Ação</TableCell>
               <TableCell>Nome</TableCell>
-              <TableCell>Endereço</TableCell>
-              <TableCell>Telefone</TableCell>
-              <TableCell>Url image</TableCell>
+              <TableCell>Descrição</TableCell>
+              <TableCell>Imagem</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id}>
+            {results.flat().map((result) => (
+              <TableRow key={result.id}>
                 <TableCell>
-                  <IconButton onClick={() => handleDelete(row.id)}>
+                  <IconButton onClick={() => handleDelete(result.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
                   <IconButton>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{row.nomeLoja}</TableCell>
-                <TableCell>{row.endereço}</TableCell>
-                <TableCell>{row.telefone}</TableCell>
-                <TableCell>{row.imgLoja}</TableCell>
+                <TableCell>{result.nome}</TableCell>
+                <TableCell>{result.descricao}</TableCell>
+                <TableCell>{result.imagem}</TableCell>
               </TableRow>
             ))}
           </TableBody>

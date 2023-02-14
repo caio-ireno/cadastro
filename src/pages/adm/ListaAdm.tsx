@@ -1,64 +1,85 @@
-import { Tabs, Tab, Typography } from '@mui/material';
+import {
+  Typography,
+  useMediaQuery,
+  useTheme,
+  ListItemButton,
+} from '@mui/material';
 import { Box } from '@mui/system';
-import { useState } from 'react';
+import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import { LojaAdm } from './LojaAdm';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
+interface ListItemLinkProps {
+  label: string;
+  to: string;
 }
 
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
+  const resolvedPath = useResolvedPath(to);
+  const pathName = resolvedPath.pathname.replace('/sorvete/', '');
+  const match = useMatch({ path: pathName, end: false });
 
-export const ListaAdm: React.FC = () => {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const handleClick = () => {
+    navigate(to);
   };
+  return (
+    <Box display={'flex'} onClick={handleClick}>
+      <Typography
+        selected={!!match}
+        component={ListItemButton}
+        fontSize={mdDown ? 15 : 20}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+};
+
+interface ListaAdmProps {
+  children?: React.ReactNode;
+}
+
+export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <LayoutBaseDePagina
-      titulo="Adm"
-      barraDeFerramentas={
+    <LayoutBaseDePagina>
+      <Box
+        sx={{
+          backgroundColor: '#F2F4F4 ',
+        }}
+        border={'1px solid'}
+        width={'100%'}
+        display={'flex'}
+        flexDirection="column"
+        justifyContent={'center'}
+        alignItems="center"
+        flexWrap={'wrap'}
+        py={2}
+        mt={mdDown ? 5 : 0}
+        gap={mdDown ? 1 : 3}
+      >
+        <Typography fontSize={smDown ? 12 : mdDown ? 15 : 30}>
+          Painel de controle Administrativo
+        </Typography>
         <Box
-          marginTop={2}
-          display="flex"
-          alignItems={'center'}
-          justifyContent="center"
+          display={'flex'}
+          flexDirection="row"
+          justifyContent={'center'}
+          alignItems="center"
         >
-          <Tabs value={value} onChange={handleChange}>
-            <Typography component={Tab} label="Sorvete" fontWeight={'500'} />
-            <Typography component={Tab} label="Lojas" fontWeight={'500'} />
-            <Typography component={Tab} label="Noticias" fontWeight={'500'} />
-          </Tabs>
+          <ListItemLink to="/adm-page/sorvetes" label="Sorvetes" />
+          <ListItemLink to="/adm-page/noticias" label="Noticias" />
+          <ListItemLink to="/adm-page/lojas" label="Lojas" />
         </Box>
-      }
-    >
-      <Box sx={{ width: '100%' }}>
-        <TabPanel value={value} index={0}></TabPanel>
-        <TabPanel value={value} index={1}>
-          <LojaAdm />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
       </Box>
+
+      <Box sx={{ width: '100%' }}>{children}</Box>
     </LayoutBaseDePagina>
   );
 };

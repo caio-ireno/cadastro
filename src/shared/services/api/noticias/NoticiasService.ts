@@ -18,9 +18,9 @@ type LojasComTotalCount = {
   totalCount: number;
 }
 
-const getAll = async ( filter=''): Promise<LojasComTotalCount | Error> => {
+const getAll = async ( page=1, filter=''): Promise<LojasComTotalCount | Error> => {
   try{
-    const urlRelativa=`/noticias?&nomeNoticia_like=${filter}`;
+    const urlRelativa=`/noticias?_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeNoticia_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){

@@ -1,14 +1,7 @@
-import {
-  Icon,
-  IconButton,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Icon, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import { Footer } from '../components/footer/Footer';
 import { useDrawerContext } from '../contexts';
-import { DarkTheme } from '../theme';
 
 interface LayoutBaseDePaginaProps {
   titulo?: string;

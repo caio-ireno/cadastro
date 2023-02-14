@@ -24,9 +24,9 @@ type LojasComTotalCount = {
   totalCount: number;
 }
 
-const getAll = async ( filter=''): Promise<LojasComTotalCount | Error> => {
+const getAll = async (page=1, filter=''): Promise<LojasComTotalCount | Error> => {
   try{
-    const urlRelativa=`/lojas?&nomeLoja_like=${filter}`;
+    const urlRelativa=`/lojas?&_page=${page}&_limit=${Environment.LIMITE_LINHAS}nomeLoja_like=${filter}`;
     const {data, headers} = await Api.get(urlRelativa);
 
     if(data){
@@ -40,6 +40,16 @@ const getAll = async ( filter=''): Promise<LojasComTotalCount | Error> => {
   } catch (error){
     console.error(error);
     return new Error((error as {message:string}).message || 'Erro ao Carregar');
+  }
+};
+
+const deleteById = async (id:number): Promise<void | Error> => {
+  try{
+    await Api.delete<ListaLojasProps>(`/lojas/${id}`); 
+
+  } catch (error){
+    console.error(error);
+    return new Error((error as {message:string}).message || 'Erro ao apagar');
   }
 };
 
@@ -83,15 +93,7 @@ const updateById = async (id:number, dados:ListaLojasProps): Promise<void | Erro
   }
 };
 
-const deleteById = async (id:number): Promise<void | Error> => {
-  try{
-    await Api.delete<ListaLojasProps>(`/lojas/${id}`); 
 
-  } catch (error){
-    console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao apagar');
-  }
-};
 
 export const LojasServices ={
   getAll,

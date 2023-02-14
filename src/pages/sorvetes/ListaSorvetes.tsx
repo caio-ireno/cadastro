@@ -13,7 +13,6 @@ import { useDebounce } from '../../shared/hooks';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import {
   AllTypes,
-  SaboresProps,
   SorveteProps,
 } from '../../shared/services/api/sorvete/AllTypes';
 
@@ -120,7 +119,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
         mt={mdDown ? 5 : 10}
         gap={mdDown ? 1 : 3}
       >
-        <ListItemLink to="/sorvetes/mais-populares" label="mais populares" />
+        <ListItemLink to="/sorvetes/mais-populares" label="Mais populares" />
         <ListItemLink to="/sorvetes/gourmet" label="Gourmet" />
         <ListItemLink to="/sorvetes/standart" label="Standart" />
         <ListItemLink to="/sorvetes/especial" label="Especial" />
