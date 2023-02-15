@@ -61,7 +61,6 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
 
   return (
     <Box
-      component={Paper}
       height={theme.spacing(5)}
       marginX={1}
       padding={1}
@@ -69,6 +68,7 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
       gap={2}
       display="flex"
       alignItems="center"
+      mt={3}
     >
       {mostarBotaoSalvar && !mostarBotaoSalvarCarregando && (
         <Button

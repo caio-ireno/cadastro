@@ -1,6 +1,5 @@
 import { Icon, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
-import { Footer } from '../components/footer/Footer';
 import { useDrawerContext } from '../contexts';
 
 interface LayoutBaseDePaginaProps {
@@ -12,6 +11,7 @@ interface LayoutBaseDePaginaProps {
 //Layout que fica dentro da pagina que queremos que tenha esse design
 export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
   children,
+  barraDeFerramentas,
 }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
@@ -43,9 +43,13 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
         )}
       </Box>
 
-      <Box p={1}>{children}</Box>
+      {barraDeFerramentas && (
+        <Box display="flex" alignItems={'center'} justifyContent="center">
+          {barraDeFerramentas}
+        </Box>
+      )}
 
-      <Footer />
+      <Box p={1}>{children}</Box>
     </Box>
   );
 };

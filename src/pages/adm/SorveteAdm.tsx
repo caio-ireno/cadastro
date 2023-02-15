@@ -10,79 +10,33 @@ import {
   Pagination,
   IconButton,
   Icon,
-  Typography,
-  ListItemButton,
-  Box,
   useTheme,
   useMediaQuery,
 } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
-import {
-  useMatch,
-  useNavigate,
-  useResolvedPath,
-  useSearchParams,
-} from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { FerramentasDaLista } from '../../shared/components';
 
 import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
 
 import {
   AllTypes,
-  SorveteProps,
+  ListaSorveteProps,
 } from '../../shared/services/api/sorvete/AllTypes';
 import { ListaAdm } from './ListaAdm';
-
-interface ListItemLinkProps {
-  label: string;
-  to: string;
-}
-
-const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
-  const theme = useTheme();
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-  const navigate = useNavigate();
-
-  const resolvedPath = useResolvedPath(to);
-  const pathName = resolvedPath.pathname.replace('/sorvete/', '');
-  const match = useMatch({ path: pathName, end: false });
-
-  const handleClick = () => {
-    navigate(to);
-  };
-  return (
-    <Box
-      display={'flex'}
-      sx={{
-        ':hover': {
-          backgroundColor: '#fff',
-          textDecorationLine: 'underline',
-          textDecorationColor: '#5DADE2',
-          textDecorationThickness: '5px ',
-          textDecorationSkipInk: 'none',
-        },
-      }}
-      onClick={handleClick}
-    >
-      <Typography
-        selected={!!match}
-        component={ListItemButton}
-        fontSize={mdDown ? 15 : 20}
-      >
-        {label}
-      </Typography>
-    </Box>
-  );
-};
 
 export const SorveteAdm: React.FC = () => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
 
-  const [rows, setRows] = useState<SorveteProps[]>([]);
+  const navigate = useNavigate();
+
+  const [rows, setRows] = useState<ListaSorveteProps[]>([]);
   const [totalCount, SetTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -97,7 +51,7 @@ export const SorveteAdm: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      AllTypes.getAll(pagina).then((result) => {
+      AllTypes.getAllSabores(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -108,17 +62,7 @@ export const SorveteAdm: React.FC = () => {
         }
       });
     });
-  }, [pagina]);
-
-  console.log(rows);
-
-  const results = [];
-  const pathName = window.location.pathname.replace('/adm-page/', '');
-  for (let i = 0; i < rows.length; i++) {
-    if (pathName === rows[i].tipo) {
-      results.push(rows[i].sabores);
-    }
-  }
+  }, [busca, pagina]);
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
@@ -138,49 +82,47 @@ export const SorveteAdm: React.FC = () => {
   return (
     <ListaAdm>
       <TableContainer>
-        <Box
-          borderBottom={'1px solid'}
-          width={'100%'}
-          display={'flex'}
-          flexDirection="row"
-          justifyContent={'center'}
-          alignItems="center"
-          flexWrap={'wrap'}
-          mt={mdDown ? 5 : 3}
-          gap={mdDown ? 1 : 3}
-        >
-          <ListItemLink to="/adm-page/mais-populares" label="Mais populares" />
-          <ListItemLink to="/adm-page/gourmet" label="Gourmet" />
-          <ListItemLink to="/adm-page/standart" label="Standart" />
-          <ListItemLink to="/adm-page/especial" label="Especial" />
-          <ListItemLink to="/adm-page/picole" label="Picole" />
-          <ListItemLink to="/adm-page/linha-zero" label="Linha Zero" />
-          <ListItemLink to="/adm-page/acai" label="Açai" />
-          <ListItemLink to="/adm-page/copao" label="Copão" />
-        </Box>
+        <FerramentasDaLista
+          textoBusca={busca}
+          aoMudarTextoBusca={(texto) =>
+            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
+          }
+          mostarInputBusca
+          aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
+        />
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell width={100}>Ação</TableCell>
+              <TableCell>Ação</TableCell>
               <TableCell>Nome</TableCell>
+              <TableCell>Tipo de Sorvete</TableCell>
               <TableCell>Descrição</TableCell>
-              <TableCell>Imagem</TableCell>
+              {/* <TableCell>Imagem</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
-            {results.flat().map((result) => (
-              <TableRow key={result.id}>
-                <TableCell>
-                  <IconButton onClick={() => handleDelete(result.id)}>
-                    <Icon>delete</Icon>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell width={100}>
+                  <IconButton onClick={() => handleDelete(row.id)}>
+                    <Icon fontSize={'small'}>delete</Icon>
                   </IconButton>
-                  <IconButton>
-                    <Icon>edit</Icon>
+                  <IconButton
+                    onClick={() => navigate(`/adm-page/sorvetes/${row.id}`)}
+                  >
+                    <Icon fontSize={'small'}>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{result.nome}</TableCell>
-                <TableCell>{result.descricao}</TableCell>
-                <TableCell>{result.imagem}</TableCell>
+                <TableCell>{row.nome}</TableCell>
+                {row.sorveteId === 1 && <TableCell>gourmet</TableCell>}
+                {row.sorveteId === 2 && <TableCell>standart</TableCell>}
+                {row.sorveteId === 3 && <TableCell>especial</TableCell>}
+                {row.sorveteId === 4 && <TableCell>açaí</TableCell>}
+                {row.sorveteId === 5 && <TableCell>copão</TableCell>}
+                {row.sorveteId === 6 && <TableCell>picolé</TableCell>}
+                {row.sorveteId === 7 && <TableCell>linha-zero</TableCell>}
+                <TableCell>{row.descricao}</TableCell>
+                {/* <TableCell>{row.imagem}</TableCell> */}
               </TableRow>
             ))}
           </TableBody>

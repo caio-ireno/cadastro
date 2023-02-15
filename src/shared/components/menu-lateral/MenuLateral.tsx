@@ -9,6 +9,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDrawerContext } from '../../contexts';
+import { Footer } from '../footer/Footer';
 
 interface ListItemLinkProps {
   label: string;
@@ -112,6 +113,8 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
       </Drawer>
 
       <Box marginTop={smDown ? 0 : theme.spacing(12)}>{children}</Box>
+
+      <Footer />
     </>
   );
 };

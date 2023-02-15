@@ -18,17 +18,18 @@ import { FerramentasDaLista } from '../../shared/components';
 
 import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
+
 import {
-  LojasProps,
-  LojasServices,
-} from '../../shared/services/api/lojas/LojasService';
+  NoticiaProps,
+  NoticiaServices,
+} from '../../shared/services/api/noticias/NoticiasService';
 import { ListaAdm } from './ListaAdm';
 
-export const LojaAdm: React.FC = () => {
+export const NoticiaAdm: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
 
-  const [rows, setRows] = useState<LojasProps[]>([]);
+  const [rows, setRows] = useState<NoticiaProps[]>([]);
   const [totalCount, SetTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +44,7 @@ export const LojaAdm: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      LojasServices.getAll(pagina, busca).then((result) => {
+      NoticiaServices.getAll(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -60,7 +61,7 @@ export const LojaAdm: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      LojasServices.deleteById(id).then((result) => {
+      NoticiaServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
@@ -80,22 +81,13 @@ export const LojaAdm: React.FC = () => {
         variant="outlined"
         sx={{ m: 1, width: 'auto' }}
       >
-        <FerramentasDaLista
-          textoBusca={busca}
-          aoMudarTextoBusca={(texto) =>
-            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-          }
-          mostarInputBusca
-          textoBotaoNovo="nova"
-        />
+        <FerramentasDaLista textoBusca={busca} textoBotaoNovo="nova" />
         <Table>
           <TableHead>
             <TableRow>
               <TableCell width={100}>Ação</TableCell>
               <TableCell>Nome</TableCell>
-              <TableCell>Endereço</TableCell>
-              <TableCell>Telefone</TableCell>
-              <TableCell>Url image</TableCell>
+              <TableCell>Imagem</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -109,10 +101,8 @@ export const LojaAdm: React.FC = () => {
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{row.nomeLoja}</TableCell>
-                <TableCell>{row.endereço}</TableCell>
-                <TableCell>{row.telefone}</TableCell>
-                <TableCell>{row.imgLoja}</TableCell>
+                <TableCell>{row.nomeNoticia}</TableCell>
+                <TableCell>{row.imgNoticia}</TableCell>
               </TableRow>
             ))}
           </TableBody>

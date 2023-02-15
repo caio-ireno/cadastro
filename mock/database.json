@@ -144,13 +144,6 @@
   ],
   "sabores": [
     {
-      "id": 2,
-      "nome": "Frutas Vermelhas",
-      "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/273377337_2043422565815841_5236806115537407201_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeH1rxjblsJrAvB_rB_c_6QMAyeKqQa9h0MDJ4qpBr2HQ9rSuNE3a2LQ0kJimCmMjePQWRLNbJSrZhoK8FAIhuGS&_nc_ohc=WI5QdgPcHJwAX8bbMO8&_nc_oc=AQk1hwyzm1aA_T8nw_6CXL207AyUoQeN2cmOvgf0titXha4unjolnYiUDM6AM67e9ERn_5XjvUn-clEUROCbmx35&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBxKNRZhwz1QUplF0qHu1VBEK58_kHfhnxxdX6h1yJEFg&oe=63F08614",
-      "descricao": "Um sorvete feito com frutas vermelhas frescas e creme suave",
-      "sorveteId": 1
-    },
-    {
       "id": 3,
       "nome": "Baunilha",
       "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/203699969_1866803810144385_7737357976082027448_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFfxX8pdTn73kYm--ZTs-cD9orj0haX-FP2iuPSFpf4U_DSyQ1CNNqBG0KRzw2tVgoRo21MAQcEG5-JVH_v96MQ&_nc_ohc=xIW88pIuTh4AX8TihaS&_nc_ht=scontent.fsod2-1.fna&oh=00_AfAav_zdNS5Hu5kwCrDa6GdFRvibEPM7_fxAbZQUEXs-zQ&oe=641315BE",
@@ -163,13 +156,6 @@
       "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/242157137_1963429263815172_1248572893639632792_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeFGUd41BY0goYMO3ViaqN2tuWa8vbAMc9-5Zry9sAxz31N3YxsdGQAIe9c9ZbsIcVQrnClnc5HB2hQdN0jDjO9w&_nc_ohc=DCm_dUSODfwAX_GQ-Ij&_nc_ht=scontent.fsod2-1.fna&oh=00_AfBto0vssjrjz2biDZBa1ycN-puY_CrOj7W7EsG9xDkdVw&oe=63F00758",
       "descricao": "Um sorvete rico em cacau, perfeito para os amantes de chocolate",
       "sorveteId": 2
-    },
-    {
-      "id": 5,
-      "nome": "Romeu e Julieta",
-      "imagem": "https://scontent.fsod2-1.fna.fbcdn.net/v/t39.30808-6/290444884_2152200044938092_1570328251448798307_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeGf-b64ORraY31u_igq6lLfjecek1rt1IyN5x6TWu3UjPBYbogkvLeFeFFiz7ADEGYQey3TCawyKaSG_XHxuCzv&_nc_ohc=InrCbb87hoQAX_xTM1t&_nc_ht=scontent.fsod2-1.fna&oh=00_AfDrS_XtGAwgzcIs42lBUEVMhyZdmpoMAkSMWWSiB1UmEA&oe=63EFE7BA",
-      "descricao": "Um sorvete que mistura queijo e goiabada, uma combinação clássica e deliciosa",
-      "sorveteId": 3
     },
     {
       "id": 6,
