@@ -15,7 +15,6 @@ export interface SorveteProps{
 }
 
 export interface ListaSorveteProps{
-  
     id:number,
     nome:string,
     imagem: string,
@@ -99,9 +98,35 @@ const getById = async (id:number): Promise<ListaSorveteProps | Error> => {
   }
 };
 
+const create = async (dados:Omit<ListaSorveteProps, 'id'>): Promise<number | Error> => {
+  try{
+    const {data} = await Api.post<ListaSorveteProps>('/sabores', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+
+    if(data){
+      return data.id;
+    }
+
+    return new Error('Erro ao criar o Registro');
+  } catch (error){
+    console.error(error);
+    return new Error((error as {message:string}).message || 'Erro ao criar');
+  }
+};
+
+const updateById = async (id:number, dados:ListaSorveteProps): Promise<void | Error> => {
+  try{
+    await Api.put(`/sabores/${id}`, dados); 
+
+  } catch (error){
+    console.error(error);
+    return new Error((error as {message:string}).message || 'Erro ao atualizar');
+  }
+};
 export const AllTypes ={
   getAll,
   deleteById,
   getAllSabores,
   getById,
+  create,
+  updateById
 };
