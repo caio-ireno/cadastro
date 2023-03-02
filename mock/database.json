@@ -145,7 +145,7 @@
   "sabores": [
     {
       "id": 3,
-      "nome": "Baunilha 2",
+      "nome": "Baunilha",
       "descricao": "Um sorvete clássico de baunilha, cremoso e delicioso",
       "imagem": "ssd",
       "sorveteId": "2"
