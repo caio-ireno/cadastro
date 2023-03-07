@@ -1,101 +1,115 @@
 import { Environment } from '../../../environment';
 import { Api } from '../axios-config';
 
-export interface LojasProps{
+export interface LojasProps {
   id: number;
-  telefone:string;
+  telefone: number;
   nomeLoja: string;
   endereço: string;
-  imgLoja:string;
-  rota:string;
+  imgLoja: string;
+  rota: string;
 }
 
-export interface ListaLojasProps{
+export interface ListaLojasProps {
   id: number;
-  telefone:string;
+  telefone: number;
   nomeLoja: string;
   endereço: string;
-  imgLoja:string;
-  rota:string;
+  imgLoja: string;
+  rota: string;
 }
 
 type LojasComTotalCount = {
   data: LojasProps[];
   totalCount: number;
-}
+};
 
-const getAll = async (page=1, filter=''): Promise<LojasComTotalCount | Error> => {
-  try{
-    const urlRelativa=`/lojas?&_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nomeLoja_like=${filter}`;
-    const {data, headers} = await Api.get(urlRelativa);
+const getAll = async (
+  page = 1,
+  filter = '',
+): Promise<LojasComTotalCount | Error> => {
+  try {
+    const urlRelativa = `/lojas?&_page=${page}&nomeLoja_like=${filter}`;
+    const { data, headers } = await Api.get(urlRelativa);
 
-    if(data){
+    if (data) {
       return {
         data,
-        totalCount:Number(headers['x-total-count'] || Environment.LIMITE_LINHAS),
+        totalCount: Number(
+          headers['x-total-count'] || Environment.LIMITE_LINHAS,
+        ),
       };
     }
 
     return new Error('Erro ao listar os Registros');
-  } catch (error){
+  } catch (error) {
     console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao Carregar');
+    return new Error(
+      (error as { message: string }).message || 'Erro ao Carregar',
+    );
   }
 };
 
-const deleteById = async (id:number): Promise<void | Error> => {
-  try{
-    await Api.delete<ListaLojasProps>(`/lojas/${id}`); 
-
-  } catch (error){
+const deleteById = async (id: number): Promise<void | Error> => {
+  try {
+    await Api.delete<ListaLojasProps>(`/lojas/${id}`);
+  } catch (error) {
     console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao apagar');
+    return new Error(
+      (error as { message: string }).message || 'Erro ao apagar',
+    );
   }
 };
 
-const getById = async (id:number): Promise<ListaLojasProps | Error> => {
-  try{
-    const {data} = await Api.get(`/lojas/${id}`);
+const getById = async (id: number): Promise<ListaLojasProps | Error> => {
+  try {
+    const { data } = await Api.get(`/lojas/${id}`);
 
-    if(data){
+    if (data) {
       return data;
     }
 
     return new Error('Erro ao consultar o Registro');
-  } catch (error){
+  } catch (error) {
     console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao consultar');
+    return new Error(
+      (error as { message: string }).message || 'Erro ao consultar',
+    );
   }
 };
 
-const create = async (dados:Omit<ListaLojasProps, 'id'>): Promise<number | Error> => {
-  try{
-    const {data} = await Api.post<ListaLojasProps>('/lojas', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+const create = async (
+  dados: Omit<ListaLojasProps, 'id'>,
+): Promise<number | Error> => {
+  try {
+    const { data } = await Api.post<ListaLojasProps>('/lojas', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
 
-    if(data){
+    if (data) {
       return data.id;
     }
 
     return new Error('Erro ao criar o Registro');
-  } catch (error){
+  } catch (error) {
     console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao criar');
+    return new Error((error as { message: string }).message || 'Erro ao criar');
   }
 };
 
-const updateById = async (id:number, dados:ListaLojasProps): Promise<void | Error> => {
-  try{
-    await Api.put(`/lojas/${id}`, dados); 
-
-  } catch (error){
+const updateById = async (
+  id: number,
+  dados: ListaLojasProps,
+): Promise<void | Error> => {
+  try {
+    await Api.put(`/lojas/${id}`, dados);
+  } catch (error) {
     console.error(error);
-    return new Error((error as {message:string}).message || 'Erro ao atualizar');
+    return new Error(
+      (error as { message: string }).message || 'Erro ao atualizar',
+    );
   }
 };
 
-
-
-export const LojasServices ={
+export const LojasServices = {
   getAll,
   getById,
   create,

@@ -9,7 +9,7 @@ type VTextFieldProps = TextFieldProps & {
 export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, defaultValue, error, clearError } =
     useField(name);
-  const [value, setValue] = useState(defaultValue || '');
+  const [value, setValue] = useState<string | number>(defaultValue || '');
 
   useEffect(() => {
     registerField({
@@ -17,17 +17,23 @@ export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
       getValue: () => value,
       setValue: (_, NewValue) => setValue(NewValue),
     });
+    console.log(typeof value);
   }, [registerField, fieldName, value]);
 
   return (
     <TextField
+      color="primary"
       {...rest}
       error={!!error}
       helperText={error}
       defaultValue={defaultValue}
       onKeyDown={() => (error ? clearError() : undefined)}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => {
+        const newValue = e.target.value;
+        const isNumber = !isNaN(parseInt(newValue));
+        setValue(isNumber ? parseFloat(newValue) : newValue);
+      }}
     />
   );
 };

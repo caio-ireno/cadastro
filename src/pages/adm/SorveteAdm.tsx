@@ -1,17 +1,13 @@
+/* eslint-disable indent */
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableFooter,
+  useTheme,
+  useMediaQuery,
+  Grid,
+  Box,
   LinearProgress,
   Pagination,
   IconButton,
   Icon,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -81,81 +77,111 @@ export const SorveteAdm: React.FC = () => {
 
   return (
     <ListaAdm>
-      <TableContainer>
-        <FerramentasDaLista
-          textoBusca={busca}
-          aoMudarTextoBusca={(texto) =>
-            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-          }
-          mostarInputBusca
-          aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-        />
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Ação</TableCell>
-              <TableCell>Nome</TableCell>
-              <TableCell>Tipo de Sorvete</TableCell>
-              <TableCell>Descrição</TableCell>
-              {/* <TableCell>Imagem</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell width={100}>
-                  <IconButton onClick={() => handleDelete(row.id)}>
-                    <Icon fontSize={'small'}>delete</Icon>
-                  </IconButton>
-                  <IconButton
-                    onClick={() => navigate(`/adm-page/sorvetes/${row.id}`)}
-                  >
-                    <Icon fontSize={'small'}>edit</Icon>
-                  </IconButton>
-                </TableCell>
-                <TableCell>{row.nome}</TableCell>
-                {row.sorveteId === 1 && <TableCell>gourmet</TableCell>}
-                {row.sorveteId === 2 && <TableCell>standart</TableCell>}
-                {row.sorveteId === 3 && <TableCell>especial</TableCell>}
-                {row.sorveteId === 4 && <TableCell>açaí</TableCell>}
-                {row.sorveteId === 5 && <TableCell>copão</TableCell>}
-                {row.sorveteId === 6 && <TableCell>picolé</TableCell>}
-                {row.sorveteId === 7 && <TableCell>linha-zero</TableCell>}
-                <TableCell>{row.descricao}</TableCell>
-                {/* <TableCell>{row.imagem}</TableCell> */}
-              </TableRow>
-            ))}
-          </TableBody>
-          {totalCount === 0 && !isLoading && (
-            <caption>{Environment.LISTAGEM_VAZIA}</caption>
-          )}
-          <TableFooter>
-            {isLoading && (
-              <TableRow>
-                <TableCell colSpan={3}>
-                  <LinearProgress variant="indeterminate"></LinearProgress>
-                </TableCell>
-              </TableRow>
-            )}
-            {totalCount > 0 && totalCount > Environment.LIMITE_LINHAS && (
-              <TableRow>
-                <TableCell colSpan={3}>
-                  <Pagination
-                    count={Math.ceil(totalCount / Environment.LIMITE_LINHAS)}
-                    page={pagina}
-                    onChange={(_, newPage) =>
-                      setSearchParams(
-                        { busca, pagina: newPage.toString() },
-                        { replace: true },
-                      )
-                    }
-                  />
-                </TableCell>
-              </TableRow>
-            )}
-          </TableFooter>
-        </Table>
-      </TableContainer>
+      <FerramentasDaLista
+        textoBusca={busca}
+        aoMudarTextoBusca={(texto) =>
+          setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
+        }
+        mostarInputBusca
+        aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
+      />
+
+      <Box p={1}>
+        <Grid
+          display="flex"
+          justifyContent={'center'}
+          fontWeight={'bold'}
+          container
+          textAlign="center"
+          fontSize={15}
+          m="auto"
+        >
+          <Grid item xs={smDown ? 3 : 1}>
+            Ação
+          </Grid>
+          <Grid item xs={smDown ? 3 : 2}>
+            Nome
+          </Grid>
+          <Grid item xs={smDown ? 3 : 2}>
+            Tipo
+          </Grid>
+          <Grid item xs={smDown ? 3 : 2}>
+            Descrição
+          </Grid>
+        </Grid>
+
+        {rows.map((row) => (
+          <Grid
+            display="flex"
+            justifyContent={'center'}
+            container
+            textAlign={'center'}
+            mt={4}
+            key={row.id}
+            fontSize={15}
+          >
+            <Grid item xs={smDown ? 3 : 1}>
+              <IconButton onClick={() => handleDelete(row.id)}>
+                <Icon fontSize={'small'}>delete</Icon>
+              </IconButton>
+              <IconButton
+                onClick={() => navigate(`/adm-page/sorvetes/${row.id}`)}
+              >
+                <Icon fontSize={'small'}>edit</Icon>
+              </IconButton>
+            </Grid>
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.nome}
+            </Grid>
+
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.sorveteId === 1
+                ? 'Gourmet'
+                : row.sorveteId === 2
+                ? 'Standart'
+                : row.sorveteId === 3
+                ? 'Especial'
+                : row.sorveteId === 4
+                ? 'Açaí'
+                : row.sorveteId === 5
+                ? 'Copão'
+                : row.sorveteId === 6
+                ? 'Picolé'
+                : row.sorveteId === 7
+                ? 'Linha Zero'
+                : 'Mais Populares'}
+            </Grid>
+
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.descricao}
+            </Grid>
+          </Grid>
+        ))}
+      </Box>
+      {totalCount === 0 && !isLoading && (
+        <caption>{Environment.LISTAGEM_VAZIA}</caption>
+      )}
+
+      {isLoading && (
+        <Box my={4}>
+          <LinearProgress variant="indeterminate"></LinearProgress>
+        </Box>
+      )}
+
+      {totalCount > 0 && totalCount > Environment.LIMITE_LINHAS && (
+        <Box my={4}>
+          <Pagination
+            count={Math.ceil(totalCount / Environment.LIMITE_LINHAS)}
+            page={pagina}
+            onChange={(_, newPage) =>
+              setSearchParams(
+                { busca, pagina: newPage.toString() },
+                { replace: true },
+              )
+            }
+          />
+        </Box>
+      )}
     </ListaAdm>
   );
 };

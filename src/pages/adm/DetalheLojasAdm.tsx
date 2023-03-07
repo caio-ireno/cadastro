@@ -8,16 +8,18 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
 import { VTextField } from '../../shared/components/form/VTextField';
 import { LayoutBaseDePagina } from '../../shared/layouts';
+import { LojasServices } from '../../shared/services/api/lojas/LojasService';
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
 
 interface FormDataProps {
-  nome: string;
-  descricao: string;
-  imagem: string;
-  sorveteId: number;
+  telefone: number;
+  nomeLoja: string;
+  endereço: string;
+  imgLoja: string;
+  rota: string;
 }
 
-export const DetalheSorveteAdm: React.FC = () => {
+export const DetalheLojasAdm: React.FC = () => {
   const navigate = useNavigate();
   const { id = 'nova' } = useParams<'id'>();
   const [isLoading, setIsLoading] = useState(false);
@@ -27,17 +29,17 @@ export const DetalheSorveteAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     setIsLoading(true);
     if (id === 'nova') {
-      AllTypes.create(dados).then((result) => {
+      LojasServices.create(dados).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          navigate(`/adm-page/sorvetes/${result}`);
+          navigate(`/adm-page/lojas/${result}`);
         }
       });
     } else {
-      AllTypes.updateById(Number(id), { id: Number(id), ...dados }).then(
+      LojasServices.updateById(Number(id), { id: Number(id), ...dados }).then(
         (result) => {
           setIsLoading(false);
           if (result instanceof Error) {
@@ -50,12 +52,12 @@ export const DetalheSorveteAdm: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      AllTypes.deleteById(id).then((result) => {
+      LojasServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
           alert('Registro Apagado com sucesso');
-          navigate('/adm-page/sorvetes');
+          navigate('/adm-page/lojas');
         }
       });
     }
@@ -64,13 +66,13 @@ export const DetalheSorveteAdm: React.FC = () => {
   useEffect(() => {
     if (id !== 'nova') {
       setIsLoading(true);
-      AllTypes.getById(Number(id)).then((result) => {
+      LojasServices.getById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/adm-page/sorvetes');
+          navigate('/adm-page/lojas');
         } else {
-          setNome(result.nome);
+          setNome(result.nomeLoja);
           formRef.current?.setData(result);
         }
       });
@@ -86,8 +88,8 @@ export const DetalheSorveteAdm: React.FC = () => {
           mostarBotaoNovo={id !== 'nova'}
           TextoBotaoNovo="Novo"
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
+          aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
+          aoClicarEmVoltar={() => navigate('/adm-page/lojas')}
           aoClicarEmSalvar={() => formRef.current?.submitForm()}
           aoClicarEmSalvrEFechar={() => formRef.current?.submitForm()}
         />
@@ -96,94 +98,7 @@ export const DetalheSorveteAdm: React.FC = () => {
       <Box py={2} sx={{ backgroundColor: '#EAEDED' }}>
         <Box textAlign={'center'}>
           <Typography fontSize={30} fontWeight="bold">
-            {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
-          </Typography>
-        </Box>
-
-        <Box
-          mt={4}
-          display={'flex'}
-          flexDirection="row"
-          alignItems="center"
-          justifyContent={'center'}
-          gap={4}
-        >
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Gournet = 1
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Standart = 2
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Especial = 3
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Açai = 4
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Copão = 5
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Picolé = 6
-          </Typography>
-          <Typography
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Linha Zero = 7
+            {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
           </Typography>
         </Box>
 
@@ -201,15 +116,23 @@ export const DetalheSorveteAdm: React.FC = () => {
               <VTextField
                 sx={{ backgroundColor: '#fff', borderRadius: 2 }}
                 placeholder="Nome"
-                name="nome"
+                name="nomeLoja"
               />
             </Box>
             <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Descrição</Typography>
+              <Typography fontWeight={'bold'}>endereço</Typography>
               <VTextField
                 sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Descrição"
-                name="descricao"
+                placeholder="endereço"
+                name="endereço"
+              />
+            </Box>
+            <Box width={'100%'} display={'flex'} flexDirection="column">
+              <Typography fontWeight={'bold'}>telefone</Typography>
+              <VTextField
+                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                placeholder="telefone"
+                name="telefone"
               />
             </Box>
             <Box width={'100%'} display={'flex'} flexDirection="column">
@@ -217,15 +140,16 @@ export const DetalheSorveteAdm: React.FC = () => {
               <VTextField
                 sx={{ backgroundColor: '#fff', borderRadius: 2 }}
                 placeholder="Imagem"
-                name="imagem"
+                name="imgLoja"
               />
             </Box>
+
             <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Sorvete ID</Typography>
+              <Typography fontWeight={'bold'}>rota</Typography>
               <VTextField
                 sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Tipo do Sorvete"
-                name="sorveteId"
+                placeholder="rota"
+                name="rota"
               />
             </Box>
           </Box>
