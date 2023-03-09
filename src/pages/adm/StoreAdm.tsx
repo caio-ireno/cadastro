@@ -1,42 +1,40 @@
+/* eslint-disable indent */
 import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableFooter,
+  useTheme,
+  useMediaQuery,
+  Grid,
+  Box,
   LinearProgress,
   Pagination,
   IconButton,
   Icon,
-  Grid,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material';
-import { Box } from '@mui/system';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FerramentasDaLista } from '../../shared/components';
 
 import { Environment } from '../../shared/environment';
 import { useDebounce } from '../../shared/hooks';
+
 import {
-  LojasProps,
-  LojasServices,
-} from '../../shared/services/api/lojas/LojasService';
+  AllTypes,
+  ListaSorveteProps,
+} from '../../shared/services/api/sorvete/AllTypes';
 import { ListaAdm } from './ListaAdm';
 
-export const LojaAdm: React.FC = () => {
+export const StoreAdm: React.FC = () => {
   const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const [rows, setRows] = useState<LojasProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [totalCount, SetTotalCount] = useState(0);
   const { debounce } = useDebounce();
+
   const navigate = useNavigate();
+
+  const [rows, setRows] = useState<ListaSorveteProps[]>([]);
+  const [totalCount, SetTotalCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
@@ -49,7 +47,7 @@ export const LojaAdm: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      LojasServices.getAll(pagina, busca).then((result) => {
+      AllTypes.getAllSabores(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -64,7 +62,7 @@ export const LojaAdm: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      LojasServices.deleteById(id).then((result) => {
+      AllTypes.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
@@ -85,63 +83,81 @@ export const LojaAdm: React.FC = () => {
           setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
         }
         mostarInputBusca
-        textoBotaoNovo="nova"
-        aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
+        aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
       />
 
-      <Grid
-        display="flex"
-        justifyContent={'center'}
-        fontWeight={'bold'}
-        container
-        textAlign="center"
-        fontSize={15}
-        m="auto"
-      >
-        <Grid item xs={smDown ? 3 : 1}>
-          Ação
-        </Grid>
-        <Grid item xs={smDown ? 3 : 2}>
-          Nome
-        </Grid>
-        <Grid item xs={smDown ? 3 : 2}>
-          Endereço
-        </Grid>
-        <Grid item xs={smDown ? 3 : 2}>
-          Telefone
-        </Grid>
-      </Grid>
-
-      {rows.map((row) => (
+      <Box p={1}>
         <Grid
           display="flex"
           justifyContent={'center'}
+          fontWeight={'bold'}
           container
-          textAlign={'center'}
-          mt={4}
-          key={row.id}
+          textAlign="center"
           fontSize={15}
+          m="auto"
         >
           <Grid item xs={smDown ? 3 : 1}>
-            <IconButton onClick={() => handleDelete(row.id)}>
-              <Icon fontSize={'small'}>delete</Icon>
-            </IconButton>
-            <IconButton onClick={() => navigate(`/adm-page/lojas/${row.id}`)}>
-              <Icon fontSize={'small'}>edit</Icon>
-            </IconButton>
+            Ação
           </Grid>
           <Grid item xs={smDown ? 3 : 2}>
-            {row.nomeLoja}
+            Nome
           </Grid>
           <Grid item xs={smDown ? 3 : 2}>
-            {row.endereço}
+            Tipo
           </Grid>
           <Grid item xs={smDown ? 3 : 2}>
-            {row.telefone}
+            Descrição
           </Grid>
         </Grid>
-      ))}
 
+        {rows.map((row) => (
+          <Grid
+            display="flex"
+            justifyContent={'center'}
+            container
+            textAlign={'center'}
+            mt={4}
+            key={row.id}
+            fontSize={15}
+          >
+            <Grid item xs={smDown ? 3 : 1}>
+              <IconButton onClick={() => handleDelete(row.id)}>
+                <Icon fontSize={'small'}>delete</Icon>
+              </IconButton>
+              <IconButton
+                onClick={() => navigate(`/adm-page/sorvetes/${row.id}`)}
+              >
+                <Icon fontSize={'small'}>edit</Icon>
+              </IconButton>
+            </Grid>
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.nome}
+            </Grid>
+
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.sorveteId === 1
+                ? 'Gourmet'
+                : row.sorveteId === 2
+                ? 'Standart'
+                : row.sorveteId === 3
+                ? 'Especial'
+                : row.sorveteId === 4
+                ? 'Açaí'
+                : row.sorveteId === 5
+                ? 'Copão'
+                : row.sorveteId === 6
+                ? 'Picolé'
+                : row.sorveteId === 7
+                ? 'Linha Zero'
+                : 'Mais Populares'}
+            </Grid>
+
+            <Grid item xs={smDown ? 3 : 2}>
+              {row.descricao}
+            </Grid>
+          </Grid>
+        ))}
+      </Box>
       {totalCount === 0 && !isLoading && (
         <caption>{Environment.LISTAGEM_VAZIA}</caption>
       )}

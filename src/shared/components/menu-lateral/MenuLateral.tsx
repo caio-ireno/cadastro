@@ -79,7 +79,6 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
           alignItems={'center'}
           justifyContent="center"
           flexDirection={smDown ? 'column' : 'row'}
-          height="auto"
           gap={mdDown ? '10px' : '50px'}
         >
           <Box display="flex" alignItems={'center'} justifyContent="center">

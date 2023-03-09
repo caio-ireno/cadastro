@@ -1,50 +1,78 @@
 /* eslint-disable no-constant-condition */
+import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
+import { NoticiaServices } from '../../shared/services/api/noticias/NoticiasService';
+import { VTextField } from '../../shared/components/form/VTextField';
+import { useVForm } from '../../shared/components/form/useVForm';
+import { VForm } from '../../shared/components/form/VForm';
+import { LayoutBaseDePagina } from '../../shared/layouts';
+import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
-import { VTextField } from '../../shared/components/form/VTextField';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import { NoticiaServices } from '../../shared/services/api/noticias/NoticiasService';
-import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
+import * as yup from 'yup';
 
 interface FormDataProps {
   nomeNoticia: string;
   imgNoticia: string;
 }
 
+const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
+  nomeNoticia: yup.string().required().min(3),
+  imgNoticia: yup.string().required(),
+});
+
 export const DetalheNoticiasAdm: React.FC = () => {
   const navigate = useNavigate();
   const { id = 'nova' } = useParams<'id'>();
   const [isLoading, setIsLoading] = useState(false);
-  const formRef = useRef<FormHandles>(null);
+  const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [nome, setNome] = useState('');
 
   const handleSave = (dados: FormDataProps) => {
-    setIsLoading(true);
-    if (id === 'nova') {
-      NoticiaServices.create(dados).then((result) => {
-        setIsLoading(false);
+    FormValidationSchema.validate(dados, { abortEarly: false })
+      .then((dadosValidados) => {
+        console.log('save apos then');
+        setIsLoading(true);
+        if (id === 'nova') {
+          NoticiaServices.create(dadosValidados).then((result) => {
+            setIsLoading(false);
 
-        if (result instanceof Error) {
-          alert(result.message);
+            if (result instanceof Error) {
+              alert(result.message);
+            } else {
+              if (IsSaveAndClose()) {
+                navigate('/adm-page/noticias/');
+              } else {
+                navigate(`/adm-page/noticias/${result}`);
+              }
+            }
+          });
         } else {
-          navigate(`/adm-page/noticias/${result}`);
+          NoticiaServices.updateById(Number(id), {
+            id: Number(id),
+            ...dadosValidados,
+          }).then((result) => {
+            setIsLoading(false);
+            if (result instanceof Error) {
+              alert(result.message);
+            } else {
+              if (IsSaveAndClose()) {
+                navigate('/adm-page/noticias/');
+              }
+            }
+          });
         }
+      })
+      .catch((errors: yup.ValidationError) => {
+        const ValidationErrors: { [key: string]: string } = {};
+        errors.inner.forEach((error) => {
+          if (!error.path) return;
+
+          ValidationErrors[error.path] = error.message;
+        });
+
+        formRef.current?.setErrors(ValidationErrors);
       });
-    } else {
-      NoticiaServices.updateById(Number(id), { id: Number(id), ...dados }).then(
-        (result) => {
-          setIsLoading(false);
-          if (result instanceof Error) {
-            alert(result.message);
-          }
-        },
-      );
-    }
   };
 
   const handleDelete = (id: number) => {
@@ -73,6 +101,11 @@ export const DetalheNoticiasAdm: React.FC = () => {
           formRef.current?.setData(result);
         }
       });
+    } else {
+      formRef.current?.setData({
+        nomeNoticia: '',
+        imgNoticia: '',
+      });
     }
   }, [id]);
 
@@ -87,8 +120,8 @@ export const DetalheNoticiasAdm: React.FC = () => {
           aoClicarEmApagar={() => handleDelete(Number(id))}
           aoClicarEmNovo={() => navigate('/adm-page/noticias/nova')}
           aoClicarEmVoltar={() => navigate('/adm-page/noticias')}
-          aoClicarEmSalvar={() => formRef.current?.submitForm()}
-          aoClicarEmSalvrEFechar={() => formRef.current?.submitForm()}
+          aoClicarEmSalvar={save}
+          aoClicarEmSalvrEFechar={saveAndClose}
         />
       }
     >
@@ -99,7 +132,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
           </Typography>
         </Box>
 
-        <Form ref={formRef} onSubmit={handleSave}>
+        <VForm ref={formRef} onSubmit={handleSave}>
           <Box
             display={'flex'}
             flexDirection="column"
@@ -108,25 +141,20 @@ export const DetalheNoticiasAdm: React.FC = () => {
             gap={3}
             p={5}
           >
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Nome</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Nome"
-                name="nomeNoticia"
-              />
-            </Box>
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="Nome"
+              name="nomeNoticia"
+              onChange={(e) => setNome(e.target.value)}
+            />
 
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Imagem</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Imagem"
-                name="imgNoticia"
-              />
-            </Box>
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="Imagem"
+              name="imgNoticia"
+            />
           </Box>
-        </Form>
+        </VForm>
       </Box>
     </LayoutBaseDePagina>
   );

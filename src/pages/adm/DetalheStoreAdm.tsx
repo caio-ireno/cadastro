@@ -25,7 +25,7 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   sorveteId: yup.number().required().positive().integer().max(7),
 });
 
-export const DetalheSorveteAdm: React.FC = () => {
+export const DetalheStoreAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
   const { id = 'nova' } = useParams<'id'>();

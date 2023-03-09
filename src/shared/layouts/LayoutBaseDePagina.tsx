@@ -1,3 +1,4 @@
+import { Calculate } from '@mui/icons-material';
 import {
   Icon,
   IconButton,
@@ -24,7 +25,7 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const { toggleDrawerOpen } = useDrawerContext();
   return (
-    <Box width={'100%'} height="100%" display="flex" flexDirection={'column'}>
+    <Box width={'100%'} display="flex" flexDirection={'column'}>
       <Box display="flex">
         {smDown && (
           <Box

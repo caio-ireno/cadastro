@@ -17,7 +17,6 @@ export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
       getValue: () => value,
       setValue: (_, NewValue) => setValue(NewValue),
     });
-    console.log(typeof value);
   }, [registerField, fieldName, value]);
 
   return (
@@ -27,12 +26,16 @@ export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
       error={!!error}
       helperText={error}
       defaultValue={defaultValue}
-      onKeyDown={() => (error ? clearError() : undefined)}
+      onKeyDown={(e) => {
+        error && clearError();
+        rest.onKeyDown?.(e);
+      }}
       value={value}
       onChange={(e) => {
         const newValue = e.target.value;
         const isNumber = !isNaN(parseInt(newValue));
         setValue(isNumber ? parseFloat(newValue) : newValue);
+        rest.onChange?.(e);
       }}
     />
   );

@@ -31,16 +31,13 @@ import { ListaAdm } from './ListaAdm';
 
 export const NoticiaAdm: React.FC = () => {
   const theme = useTheme();
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-
   const [searchParams, setSearchParams] = useSearchParams();
+  const [rows, setRows] = useState<NoticiaProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [totalCount, SetTotalCount] = useState(0);
   const { debounce } = useDebounce();
   const navigate = useNavigate();
-
-  const [rows, setRows] = useState<NoticiaProps[]>([]);
-  const [totalCount, SetTotalCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
@@ -59,8 +56,6 @@ export const NoticiaAdm: React.FC = () => {
           alert(result.message);
           return;
         } else {
-          console.log(result);
-
           setRows(result.data);
           SetTotalCount(result.totalCount);
         }

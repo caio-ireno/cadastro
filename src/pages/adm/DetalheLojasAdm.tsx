@@ -1,15 +1,15 @@
 /* eslint-disable no-constant-condition */
+import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
+import { LojasServices } from '../../shared/services/api/lojas/LojasService';
+import { VTextField } from '../../shared/components/form/VTextField';
+import { useVForm } from '../../shared/components/form/useVForm';
+import { useNavigate, useParams } from 'react-router-dom';
+import { VForm } from '../../shared/components/form/VForm';
+import { LayoutBaseDePagina } from '../../shared/layouts';
+import React, { useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
-import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
-import { VTextField } from '../../shared/components/form/VTextField';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import { LojasServices } from '../../shared/services/api/lojas/LojasService';
-import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
+import * as yup from 'yup';
 
 interface FormDataProps {
   telefone: number;
@@ -19,35 +19,66 @@ interface FormDataProps {
   rota: string;
 }
 
+const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
+  telefone: yup.number().required(),
+  nomeLoja: yup.string().required().min(3),
+  endereço: yup.string().required().min(5),
+  imgLoja: yup.string().required(),
+  rota: yup.string().required(),
+});
+
 export const DetalheLojasAdm: React.FC = () => {
-  const navigate = useNavigate();
-  const { id = 'nova' } = useParams<'id'>();
+  const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
-  const formRef = useRef<FormHandles>(null);
+  const { id = 'nova' } = useParams<'id'>();
   const [nome, setNome] = useState('');
+  const navigate = useNavigate();
 
   const handleSave = (dados: FormDataProps) => {
-    setIsLoading(true);
-    if (id === 'nova') {
-      LojasServices.create(dados).then((result) => {
-        setIsLoading(false);
+    FormValidationSchema.validate(dados, { abortEarly: false })
+      .then((dadosValidados) => {
+        console.log('save apos then');
+        setIsLoading(true);
+        if (id === 'nova') {
+          LojasServices.create(dadosValidados).then((result) => {
+            setIsLoading(false);
 
-        if (result instanceof Error) {
-          alert(result.message);
+            if (result instanceof Error) {
+              alert(result.message);
+            } else {
+              if (IsSaveAndClose()) {
+                navigate('/adm-page/lojas/');
+              } else {
+                navigate(`/adm-page/lojas/${result}`);
+              }
+            }
+          });
         } else {
-          navigate(`/adm-page/lojas/${result}`);
+          LojasServices.updateById(Number(id), {
+            id: Number(id),
+            ...dadosValidados,
+          }).then((result) => {
+            setIsLoading(false);
+            if (result instanceof Error) {
+              alert(result.message);
+            } else {
+              if (IsSaveAndClose()) {
+                navigate('/adm-page/lojas/');
+              }
+            }
+          });
         }
+      })
+      .catch((errors: yup.ValidationError) => {
+        const ValidationErrors: { [key: string]: string } = {};
+        errors.inner.forEach((error) => {
+          if (!error.path) return;
+
+          ValidationErrors[error.path] = error.message;
+        });
+
+        formRef.current?.setErrors(ValidationErrors);
       });
-    } else {
-      LojasServices.updateById(Number(id), { id: Number(id), ...dados }).then(
-        (result) => {
-          setIsLoading(false);
-          if (result instanceof Error) {
-            alert(result.message);
-          }
-        },
-      );
-    }
   };
 
   const handleDelete = (id: number) => {
@@ -76,6 +107,14 @@ export const DetalheLojasAdm: React.FC = () => {
           formRef.current?.setData(result);
         }
       });
+    } else {
+      formRef.current?.setData({
+        telefone: '',
+        nomeLoja: '',
+        endereço: '',
+        imgLoja: '',
+        rota: '',
+      });
     }
   }, [id]);
 
@@ -90,8 +129,8 @@ export const DetalheLojasAdm: React.FC = () => {
           aoClicarEmApagar={() => handleDelete(Number(id))}
           aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
           aoClicarEmVoltar={() => navigate('/adm-page/lojas')}
-          aoClicarEmSalvar={() => formRef.current?.submitForm()}
-          aoClicarEmSalvrEFechar={() => formRef.current?.submitForm()}
+          aoClicarEmSalvar={save}
+          aoClicarEmSalvrEFechar={saveAndClose}
         />
       }
     >
@@ -102,7 +141,7 @@ export const DetalheLojasAdm: React.FC = () => {
           </Typography>
         </Box>
 
-        <Form ref={formRef} onSubmit={handleSave}>
+        <VForm ref={formRef} onSubmit={handleSave}>
           <Box
             display={'flex'}
             flexDirection="column"
@@ -111,49 +150,37 @@ export const DetalheLojasAdm: React.FC = () => {
             gap={3}
             p={5}
           >
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Nome</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Nome"
-                name="nomeLoja"
-              />
-            </Box>
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>endereço</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="endereço"
-                name="endereço"
-              />
-            </Box>
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>telefone</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="telefone"
-                name="telefone"
-              />
-            </Box>
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>Imagem</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="Imagem"
-                name="imgLoja"
-              />
-            </Box>
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="Nome"
+              name="nomeLoja"
+              onChange={(e) => setNome(e.target.value)}
+            />
 
-            <Box width={'100%'} display={'flex'} flexDirection="column">
-              <Typography fontWeight={'bold'}>rota</Typography>
-              <VTextField
-                sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-                placeholder="rota"
-                name="rota"
-              />
-            </Box>
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="endereço"
+              name="endereço"
+            />
+
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="telefone"
+              name="telefone"
+            />
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="Imagem"
+              name="imgLoja"
+            />
+
+            <VTextField
+              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+              label="rota"
+              name="rota"
+            />
           </Box>
-        </Form>
+        </VForm>
       </Box>
     </LayoutBaseDePagina>
   );
