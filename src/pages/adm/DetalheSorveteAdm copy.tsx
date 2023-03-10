@@ -10,6 +10,7 @@ import { VTextField } from '../../shared/components/form/VTextField';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
 import * as yup from 'yup';
+import { AutoComplet } from './components/AutoComplet';
 
 interface FormDataProps {
   nome: string;
@@ -25,7 +26,7 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   sorveteId: yup.number().required().positive().integer().max(7),
 });
 
-export const DetalheStoreAdm: React.FC = () => {
+export const DetalheSorveteAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
   const { id = 'nova' } = useParams<'id'>();
@@ -256,11 +257,7 @@ export const DetalheStoreAdm: React.FC = () => {
               label="Imagem"
               name="imagem"
             />
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Tipo do Sorvete"
-              name="sorveteId"
-            />
+            <AutoComplet />
           </Box>
         </VForm>
       </Box>

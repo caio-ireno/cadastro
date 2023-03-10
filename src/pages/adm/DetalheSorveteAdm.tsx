@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { Typography } from '@mui/material';
+import { Grid, LinearProgress, Paper, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { VTextField } from '../../shared/components/form/VTextField';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
 import * as yup from 'yup';
+import { AutoComplet } from './components/AutoComplet';
 
 interface FormDataProps {
   nome: string;
@@ -33,6 +34,7 @@ export const DetalheSorveteAdm: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSave = (dados: FormDataProps) => {
+    console.log(dados);
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
         setIsLoading(true);
@@ -72,7 +74,6 @@ export const DetalheSorveteAdm: React.FC = () => {
 
           ValidationErrors[error.path] = error.message;
         });
-
         formRef.current?.setErrors(ValidationErrors);
       });
   };
@@ -114,156 +115,76 @@ export const DetalheSorveteAdm: React.FC = () => {
   }, [id]);
 
   return (
-    <LayoutBaseDePagina
-      barraDeFerramentas={
-        <FerramentasDeDetalhe
-          mostarBotaoSalvarEFechar
-          mostarBotaoApagar={id !== 'nova'}
-          mostarBotaoNovo={id !== 'nova'}
-          TextoBotaoNovo="Novo"
-          aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
-          aoClicarEmSalvar={save}
-          aoClicarEmSalvrEFechar={saveAndClose}
-        />
-      }
-    >
-      <Box py={2} sx={{ backgroundColor: '#EAEDED' }}>
-        <Box textAlign={'center'}>
-          <Typography fontSize={30} fontWeight="bold">
-            {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
-          </Typography>
-        </Box>
-
-        <Box
-          mt={4}
-          display={'flex'}
-          flexDirection="row"
-          alignItems="center"
-          justifyContent={'center'}
-          gap={4}
-        >
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Gourmet = 1
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Standart = 2
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Especial = 3
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Açai = 4
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Copão = 5
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Picolé = 6
-          </Typography>
-          <Typography
-            fontSize={15}
-            sx={{
-              backgroundColor: '#fff',
-              py: 1,
-              px: 2,
-              border: '1px solid #1e88e5 ',
-              borderRadius: 2,
-            }}
-          >
-            Linha Zero = 7
-          </Typography>
-        </Box>
-
-        <VForm ref={formRef} onSubmit={handleSave}>
-          <Box
-            width={'auto'}
-            display={'flex'}
-            flexDirection="column"
-            alignItems="center"
-            justifyContent={'center'}
-            gap={3}
-            p={5}
-          >
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Nome"
-              name="nome"
-              onChange={(e) => setNome(e.target.value)}
-            />
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Descrição"
-              name="descricao"
-            />
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Imagem"
-              name="imagem"
-            />
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Tipo do Sorvete"
-              name="sorveteId"
-            />
+    <Box sx={{ backgroundColor: '#D6EAF8 ' }}>
+      <LayoutBaseDePagina
+        barraDeFerramentas={
+          <FerramentasDeDetalhe
+            mostarBotaoSalvarEFechar
+            mostarBotaoApagar={id !== 'nova'}
+            mostarBotaoNovo={id !== 'nova'}
+            TextoBotaoNovo="Novo"
+            aoClicarEmApagar={() => handleDelete(Number(id))}
+            aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
+            aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
+            aoClicarEmSalvar={save}
+            aoClicarEmSalvrEFechar={saveAndClose}
+          />
+        }
+      >
+        <Box py={2}>
+          <Box textAlign={'center'}>
+            <Typography fontSize={30} fontWeight="bold">
+              {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
+            </Typography>
           </Box>
-        </VForm>
-      </Box>
-    </LayoutBaseDePagina>
+
+          <VForm ref={formRef} onSubmit={handleSave}>
+            <Grid container direction="column" padding={2} spacing={2}>
+              {isLoading && (
+                <Grid item>
+                  <LinearProgress variant="indeterminate" />
+                </Grid>
+              )}
+
+              <Grid container item direction="row" spacing={2}>
+                <Grid item>
+                  <VTextField
+                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    label="Nome"
+                    name="nome"
+                    onChange={(e) => setNome(e.target.value)}
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container item direction="row" spacing={2}>
+                <Grid item xs={12} sm={12} md={6} lg={12} xl={12}>
+                  <VTextField
+                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    label="Descrição"
+                    name="descricao"
+                  />
+                </Grid>
+              </Grid>
+
+              <Grid container item direction="row" spacing={2}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                  <VTextField
+                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    label="Imagem"
+                    name="imagem"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container item direction="row" spacing={2}>
+                <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                  <AutoComplet />
+                </Grid>
+              </Grid>
+            </Grid>
+          </VForm>
+        </Box>
+      </LayoutBaseDePagina>
+    </Box>
   );
 };

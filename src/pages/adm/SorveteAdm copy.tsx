@@ -22,7 +22,7 @@ import {
 } from '../../shared/services/api/sorvete/AllTypes';
 import { ListaAdm } from './ListaAdm';
 
-export const StoreAdm: React.FC = () => {
+export const SorveteAdm: React.FC = () => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));

@@ -55,6 +55,7 @@ export const Footer: React.FC = () => {
       justifyContent="space-between"
       mx={mdDown ? 2 : 5}
       my={2}
+      mb={2}
     >
       {!smDown && (
         <Box display="flex" alignItems={'center'} justifyContent="center">

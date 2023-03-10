@@ -4,11 +4,9 @@ import { Dashboard, ListaAdm, ListaSorvetes } from '../pages';
 import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm';
 import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm';
 import { DetalheSorveteAdm } from '../pages/adm/DetalheSorveteAdm';
-import { DetalheStoreAdm } from '../pages/adm/DetalheStoreAdm';
 import { LojaAdm } from '../pages/adm/LojaAdm';
 import { NoticiaAdm } from '../pages/adm/NoticiaAdm';
 import { SorveteAdm } from '../pages/adm/SorveteAdm';
-import { StoreAdm } from '../pages/adm/StoreAdm';
 import { Historia } from '../pages/historia/Historia';
 import { ListaLojas } from '../pages/lojas/ListaLojas';
 
@@ -58,9 +56,6 @@ export const AppRoutes = () => {
 
       <Route path="/adm-page/lojas" element={<LojaAdm />} />
       <Route path="/adm-page/lojas/:id" element={<DetalheLojasAdm />} />
-
-      <Route path="/adm-page/store" element={<StoreAdm />} />
-      <Route path="/adm-page/store/:id" element={<DetalheStoreAdm />} />
 
       <Route path="/sorvetes" element={<ListaSorvetes />} />
       <Route path="/sorvetes/especial" element={<ListaSorvetes />} />

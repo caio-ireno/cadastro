@@ -65,41 +65,7 @@
       "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
     }
   ],
-  "imgHomePag": [
-    {
-      "id": 1,
-      "nomeNoticia": "Promoção de verão",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/37308177_1003979983093443_8630238315997560832_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=NpYa521T4SwAX_xn0qA&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArhqItbLNV4lpHHdh-IfTS_lexylfIoHT4TV_HKp80Ig&oe=640893F3"
-    },
-    {
-      "id": 2,
-      "nomeNoticia": "Sorvete Solidário",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/43087084_1067798720044902_186964985866354688_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=9JVYcnJz3YoAX8gGcj2&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC15PESmj2b_3X0L5W-B7cc2kRmedf_Jn4syZlexFtvDA&oe=6408918D"
-    },
-    {
-      "id": 3,
-      "nomeNoticia": "Inauguração Loja",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
-    }
-  ],
-  "image-base": [
-    {
-      "id": 1,
-      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
-    },
-    {
-      "id": 2,
-      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
-    },
-    {
-      "id": 3,
-      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
-    },
-    {
-      "id": 4,
-      "imgbase": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/44027534_1072788936212547_7992956832463192064_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=ADG3uuy5W5MAX9OwK_f&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD-VFn1IPmT0GV9vGYZV6TfIG_aWp-WYraxE9To7P3vaA&oe=640C90A9"
-    }
-  ],
+
   "sorvetes": [
     {
       "id": 1,
@@ -115,15 +81,15 @@
     },
     {
       "id": 4,
-      "tipo": "acai"
+      "tipo": "açaí"
     },
     {
       "id": 5,
-      "tipo": "copao"
+      "tipo": "copão"
     },
     {
       "id": 6,
-      "tipo": "picole"
+      "tipo": "picolé"
     },
     {
       "id": 7,
@@ -136,20 +102,6 @@
   ],
   "sabores": [
     {
-      "id": 6,
-      "nome": "Tapioca",
-      "descricao": "Um sorvete de tapioca com leite condensado, ideal para quem gosta de sobremesas nordestinas",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "sorveteId": 3
-    },
-    {
-      "id": 7,
-      "nome": "Tradicional",
-      "descricao": "Um sorvete de açaí com banana, granola e mel",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "sorveteId": 1
-    },
-    {
       "id": 8,
       "nome": "Com Leite Condensado",
       "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
@@ -159,9 +111,9 @@
     {
       "id": 10,
       "nome": "Crocante",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
       "descricao": "Um copão de sorvete crocante com calda de chocolate",
-      "sorveteId": 5
+      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
+      "sorveteId": 2
     },
     {
       "id": 11,
@@ -267,6 +219,23 @@
       "descricao": 2,
       "imagem": 2,
       "sorveteId": 1
+    },
+    {
+      "nome": "porra",
+      "descricao": "asdasdasdasd",
+      "imagem": "asd",
+      "sorveteId": 3,
+      "id": 26
+    },
+    {
+      "nome": "menta",
+      "descricao": "asdasdasdasdsad",
+      "imagem": "asdassdasd",
+      "sorveteId": 7,
+      "id": 27
     }
-  ]
+  ],
+  "auth": {
+    "accessToken": "aaaaaaa.bbbbbbb.cccccc"
+  }
 }
