@@ -12,7 +12,7 @@ export const Historia: React.FC = () => {
             objectFit: 'cover',
           }}
           component="img"
-          src="https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/19956951_795657103925733_8372376656500984706_o.jpg?_nc_cat=110&ccb=1-7&_nc_sid=e3f864&_nc_ohc=wjFxXYh-lWkAX-hEcBP&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfDYyoXVRBZB7lnwPN1JhizZOpV-TrpqIIp80JReddnZ1g&oe=640A25E0"
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
         />
       </Box>
 

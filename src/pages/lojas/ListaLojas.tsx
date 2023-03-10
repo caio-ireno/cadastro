@@ -45,12 +45,12 @@ export const ListaLojas: React.FC = () => {
       <Box>
         <Box
           width={'100%'}
-          height="250px"
+          height="300px"
           sx={{
             objectFit: 'cover',
           }}
           component="img"
-          src="https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/70601285_1302177559940349_1605564603238973440_n.png?_nc_cat=100&ccb=1-7&_nc_sid=730e14&_nc_ohc=pSBmWTzWjrUAX-X1VeZ&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA0K737DyHPLd_uG5-ijo3bwDrISpsQC7UU6CKHd3Xn_w&oe=640DD39F"
+          src="https://images.unsplash.com/photo-1542012618332-b93d90d6fed7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80"
         />
       </Box>
 

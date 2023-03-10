@@ -1,5 +1,12 @@
 /* eslint-disable no-constant-condition */
-import { Grid, LinearProgress, Paper, Typography } from '@mui/material';
+import {
+  Grid,
+  LinearProgress,
+  Paper,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,7 +15,10 @@ import { useVForm } from '../../shared/components/form/useVForm';
 import { VForm } from '../../shared/components/form/VForm';
 import { VTextField } from '../../shared/components/form/VTextField';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
+import {
+  AllTypes,
+  ListaSorveteProps,
+} from '../../shared/services/api/sorvete/AllTypes';
 import * as yup from 'yup';
 import { AutoComplet } from './components/AutoComplet';
 
@@ -27,10 +37,14 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 });
 
 export const DetalheSorveteAdm: React.FC = () => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
   const { id = 'nova' } = useParams<'id'>();
   const [nome, setNome] = useState('');
+  const [dados, setDados] = useState<ListaSorveteProps>();
   const navigate = useNavigate();
 
   const handleSave = (dados: FormDataProps) => {
@@ -100,6 +114,7 @@ export const DetalheSorveteAdm: React.FC = () => {
           alert(result.message);
           navigate('/adm-page/sorvetes');
         } else {
+          setDados(result);
           setNome(result.nome);
           formRef.current?.setData(result);
         }
@@ -115,7 +130,7 @@ export const DetalheSorveteAdm: React.FC = () => {
   }, [id]);
 
   return (
-    <Box sx={{ backgroundColor: '#D6EAF8 ' }}>
+    <Box>
       <LayoutBaseDePagina
         barraDeFerramentas={
           <FerramentasDeDetalhe
@@ -131,57 +146,64 @@ export const DetalheSorveteAdm: React.FC = () => {
           />
         }
       >
-        <Box py={2}>
-          <Box textAlign={'center'}>
-            <Typography fontSize={30} fontWeight="bold">
-              {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
-            </Typography>
-          </Box>
-
-          <VForm ref={formRef} onSubmit={handleSave}>
-            <Grid container direction="column" padding={2} spacing={2}>
-              {isLoading && (
-                <Grid item>
-                  <LinearProgress variant="indeterminate" />
-                </Grid>
-              )}
-
-              <Grid container item direction="row" spacing={2}>
-                <Grid item>
+        <Box
+          py={3}
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems="center"
+          flexDirection={'column'}
+          sx={{ backgroundColor: ' #EBF5FB  ' }}
+        >
+          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+            <Box margin={1} display="flex" flexDirection="column">
+              <Box textAlign={'center'}>
+                <Typography fontSize={30} fontWeight="bold">
+                  {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
+                </Typography>
+              </Box>
+              <Grid container direction="column" padding={2} spacing={5}>
+                <Grid item xs={12}>
                   <VTextField
-                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
                     label="Nome"
                     name="nome"
                     onChange={(e) => setNome(e.target.value)}
                   />
                 </Grid>
-              </Grid>
 
-              <Grid container item direction="row" spacing={2}>
-                <Grid item xs={12} sm={12} md={6} lg={12} xl={12}>
+                <Grid item xs={12}>
                   <VTextField
-                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
                     label="Descrição"
                     name="descricao"
                   />
                 </Grid>
-              </Grid>
 
-              <Grid container item direction="row" spacing={2}>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                <Grid item xs={12}>
                   <VTextField
-                    sx={{ backgroundColor: '#fff', borderRadius: 2 }}
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
                     label="Imagem"
                     name="imagem"
                   />
                 </Grid>
-              </Grid>
-              <Grid container item direction="row" spacing={2}>
-                <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
+                <Grid item xs={12}>
                   <AutoComplet />
                 </Grid>
               </Grid>
-            </Grid>
+            </Box>
           </VForm>
         </Box>
       </LayoutBaseDePagina>

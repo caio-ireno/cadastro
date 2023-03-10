@@ -1,5 +1,6 @@
 import { Facebook, Instagram } from '@mui/icons-material';
 import {
+  Grid,
   Icon,
   ListItemButton,
   Typography,
@@ -55,7 +56,7 @@ export const Footer: React.FC = () => {
       justifyContent="space-between"
       mx={mdDown ? 2 : 5}
       my={2}
-      mb={2}
+      p={3}
     >
       {!smDown && (
         <Box display="flex" alignItems={'center'} justifyContent="center">
@@ -71,17 +72,37 @@ export const Footer: React.FC = () => {
       )}
 
       {!smDown && (
-        <Box
-          display={'flex'}
+        <Grid
           flexDirection={mdDown ? 'column' : 'row'}
-          alignItems={'center'}
-          justifyContent="center"
+          display={'flex'}
+          alignItems="center"
+          justifyContent={'center'}
+          width={'300px'}
+          container
         >
-          <ListItemLink to="/pagna-inicial" label="Pagina inicial" />
-          <ListItemLink to="/sorvetes" label="Sorvetes" />
-          <ListItemLink to="/lojas" label="Lojas" />
-          <ListItemLink to="/historia" label="Historia" />
-        </Box>
+          <Grid
+            display={'flex'}
+            alignItems="center"
+            justifyContent={'center'}
+            flexDirection={'column'}
+            item
+            xs={6}
+          >
+            <ListItemLink to="/pagna-inicial" label="Pagina inicial" />
+            <ListItemLink to="/sorvetes" label="Sorvetes" />
+          </Grid>
+          <Grid
+            display={'flex'}
+            flexDirection={'column'}
+            alignItems="center"
+            justifyContent={'center'}
+            item
+            xs={6}
+          >
+            <ListItemLink to="/lojas" label="Lojas" />
+            <ListItemLink to="/historia" label="Historia" />
+          </Grid>
+        </Grid>
       )}
 
       <Box display="flex" flexDirection="column">

@@ -5,45 +5,46 @@
       "nomeLoja": "Urla Itavuvu",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
       "telefone": 15996641722,
-      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "imgLoja": "https://images.unsplash.com/photo-1571974448718-ac26a9af7d8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
       "id": 5,
-      "telefone": 15996641722,
       "nomeLoja": "Urla JJ lacerda",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/12028775_492467377578042_2632125282552569981_o.jpg?_nc_cat=104&ccb=1-7&_nc_sid=19026a&_nc_ohc=EUFnGWqn2DsAX_zaX-t&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfB_NyNWF3-nQcrJ1kk8TEW3IAfD_e8UokDZABNzZnRtuQ&oe=640A066E",
+      "telefone": 15996641722,
+      "imgLoja": "https://images.unsplash.com/photo-1530519507795-42213b27dabf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
       "id": 6,
-      "telefone": 15996641722,
       "nomeLoja": "Urla Aeroporto",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6"
+      "telefone": 15996641722,
+      "imgLoja": "https://images.unsplash.com/photo-1516484411845-e74b77f26b83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
+      "rota": "https://images.unsplash.com/photo-1516484411845-e74b77f26b83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
     },
     {
       "id": 7,
-      "telefone": 15996641722,
-      "nomeLoja": "Urla Itavuvu",
+      "nomeLoja": "Urla Éden",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "telefone": 15996641722,
+      "imgLoja": "https://images.unsplash.com/photo-1542581482-851c38ee4b94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
       "id": 8,
-      "telefone": 15996641722,
-      "nomeLoja": "Urla Itavuvu",
+      "nomeLoja": "Urla Salto",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
-      "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
+      "telefone": 15996641722,
+      "imgLoja": "https://images.unsplash.com/photo-1505151265254-87a15834d4ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     },
     {
       "id": 9,
-      "telefone": 15996641722,
-      "nomeLoja": "Urla Itavuvu",
+      "nomeLoja": "Urla 31 de Março",
       "endereço": "Avenida Santos Dumont, 200, Vila Angelica, Sorocaba",
+      "telefone": 15996641722,
       "imgLoja": "https://scontent.fsod2-1.fna.fbcdn.net/v/t31.18172-8/14380064_640485926109519_3799666059222793021_o.jpg?_nc_cat=109&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=FEQIQTGPDN4AX-6lZ3o&_nc_ht=scontent.fsod2-1.fna&oh=00_AfA1gH10fozom5tvz537WxLOixMPQlUUu9-kIaebebIhNQ&oe=640A06B6",
       "rota": "https://goo.gl/maps/65yJBdzwJdu1iMgf7"
     }
@@ -52,20 +53,19 @@
     {
       "id": 1,
       "nomeNoticia": "Promoção de outono",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/37308177_1003979983093443_8630238315997560832_n.png?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=NpYa521T4SwAX_xn0qA&_nc_ht=scontent.fsod2-1.fna&oh=00_AfArhqItbLNV4lpHHdh-IfTS_lexylfIoHT4TV_HKp80Ig&oe=640893F3"
+      "imgNoticia": "https://images.unsplash.com/photo-1551290464-66719418ca54?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
     },
     {
       "id": 2,
       "nomeNoticia": "Sorvete Solidário",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/43087084_1067798720044902_186964985866354688_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=9JVYcnJz3YoAX8gGcj2&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfC15PESmj2b_3X0L5W-B7cc2kRmedf_Jn4syZlexFtvDA&oe=6408918D"
+      "imgNoticia": "https://images.unsplash.com/photo-1602492383546-6f5a348c2a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
     },
     {
       "id": 3,
       "nomeNoticia": "Inauguração Loja",
-      "imgNoticia": "https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/120260433_1655952547896180_7962418159308961787_n.png?_nc_cat=104&ccb=1-7&_nc_sid=e3f864&_nc_ohc=HgLye5pgISIAX8qXOHY&_nc_ht=scontent.fsod2-1.fna&oh=00_AfD92i2LGqoi5kbqbfVuPY716zrU6BtpUT3lwxBIe4ix-g&oe=6408597F"
+      "imgNoticia": "https://images.unsplash.com/photo-1602296751209-c52fe103377d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     }
   ],
-
   "sorvetes": [
     {
       "id": 1,
@@ -81,158 +81,84 @@
     },
     {
       "id": 4,
-      "tipo": "açaí"
+      "tipo": "acaí"
     },
     {
       "id": 5,
-      "tipo": "copão"
+      "tipo": "copao"
     },
     {
       "id": 6,
-      "tipo": "picolé"
+      "tipo": "picole"
     },
     {
       "id": 7,
       "tipo": "linha-zero"
-    },
-    {
-      "id": 8,
-      "tipo": "mais-populares"
     }
   ],
   "sabores": [
     {
       "id": 8,
-      "nome": "Com Leite Condensado",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "descricao": "Um sorvete de açaí com leite condensado e farofa crocante",
-      "sorveteId": 4
+      "nome": "Chocolate",
+      "descricao": "Delicioso sorvete de chocolate com cauda de cacau",
+      "imagem": "https://images.unsplash.com/photo-1562790879-dfde82829db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+      "sorveteId": 2
     },
     {
       "id": 10,
       "nome": "Crocante",
       "descricao": "Um copão de sorvete crocante com calda de chocolate",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
+      "imagem": "https://images.unsplash.com/photo-1549395156-e0c1fe6fc7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       "sorveteId": 2
     },
     {
       "id": 11,
-      "nome": "Limão",
-      "descricao": "Um picolé refrescante de limão, perfeito para o verão",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
+      "nome": "Morango",
+      "descricao": "Um picolé refrescante de morango, perfeito para o verão",
+      "imagem": "https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80",
       "sorveteId": 6
     },
     {
       "id": 12,
-      "nome": "Abacaxi",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "descricao": "Um picolé de abacaxi com pedaços da fruta, ideal para quem gosta de sabores tropicais",
+      "nome": "Frutas tropicais",
+      "descricao": "Um picolé de pêssego com pedaços da morango, ideal para quem gosta de sabores tropicais",
+      "imagem": "https://images.unsplash.com/photo-1633933037611-f26e54366832?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
       "sorveteId": 6
     },
     {
       "id": 13,
-      "nome": "Chocolate",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "descricao": "Um sorvete de chocolate sem açúcar, perfeito para quem tem restrições alimentares",
+      "nome": "Morango",
+      "descricao": "Um sorvete de morango sem açúcar, perfeito para quem tem restrições alimentares",
+      "imagem": "https://images.unsplash.com/photo-1532678465554-94846274c297?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       "sorveteId": 7
     },
     {
       "id": 14,
       "nome": "Frutas Vermelhas",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
       "descricao": "Um sorvete sem açúcar feito com frutas vermelhas frescas e creme suave",
+      "imagem": "https://images.unsplash.com/photo-1570557237290-0f3a3dfd917c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
       "sorveteId": 7
     },
     {
       "id": 15,
-      "nome": "Chocolate",
-      "descricao": "Um sorvete de chocolate sem açúcar, perfeito para quem tem restrições alimentares",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
+      "nome": "Ferrero Roche",
+      "descricao": "Um sorvete de ferrero roche com pedaços de bombom",
+      "imagem": "https://images.unsplash.com/photo-1625234969503-49c7f28bc6ec?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80",
       "sorveteId": 1
     },
     {
       "id": 16,
       "nome": "Frutas Vermelhas",
       "descricao": "Um sorvete sem açúcar feito com frutas vermelhas frescas e creme suave",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
+      "imagem": "https://images.unsplash.com/photo-1558855410-3112e253d755?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
       "sorveteId": 2
     },
     {
-      "id": 17,
-      "nome": "frutas",
-      "descricao": "Um sorvete sem açúcar feito com frutas vermelhas frescas e creme suave",
-      "imagem": "https://cdnv2.moovin.com.br/armazemdomercado/imagens/produtos/original/po-para-sorvete-leite-condensado-du-porto-1kg-2e355a8786f08345b998fca414026d86.png",
-      "sorveteId": 1
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 18
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 19
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 20
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 21
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 22
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 23
-    },
-    {
-      "nome": "asd",
-      "descricao": "asd",
-      "imagem": "asd",
-      "sorveteId": 1,
-      "id": 24
-    },
-    {
-      "id": 25,
-      "nome": 2,
-      "descricao": 2,
-      "imagem": 2,
-      "sorveteId": 1
-    },
-    {
-      "nome": "porra",
-      "descricao": "asdasdasdasd",
-      "imagem": "asd",
-      "sorveteId": 3,
-      "id": 26
-    },
-    {
-      "nome": "menta",
-      "descricao": "asdasdasdasdsad",
-      "imagem": "asdassdasd",
-      "sorveteId": 7,
-      "id": 27
+      "id": 27,
+      "nome": "Chocomenta",
+      "descricao": "Sorvete a base de menta com pedaços de chocolate",
+      "imagem": "https://images.unsplash.com/photo-1534706936160-d5ee67737249?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+      "sorveteId": 3
     }
   ],
   "auth": {

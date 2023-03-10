@@ -25,6 +25,8 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
 
   const handleClick = () => {
     navigate(to);
+    window.scroll(0, 0);
+
     onClick?.();
   };
   return (

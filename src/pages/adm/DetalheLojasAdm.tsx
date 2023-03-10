@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { VForm } from '../../shared/components/form/VForm';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import React, { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as yup from 'yup';
 
@@ -134,51 +134,82 @@ export const DetalheLojasAdm: React.FC = () => {
         />
       }
     >
-      <Box py={2} sx={{ backgroundColor: '#EAEDED' }}>
-        <Box textAlign={'center'}>
-          <Typography fontSize={30} fontWeight="bold">
-            {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
-          </Typography>
-        </Box>
+      <Box
+        py={3}
+        width={'100%'}
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems="center"
+        flexDirection={'column'}
+        sx={{ backgroundColor: ' #EBF5FB  ' }}
+      >
+        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+          <Box margin={1} display="flex" flexDirection="column">
+            <Box textAlign={'center'}>
+              <Typography fontSize={30} fontWeight="bold">
+                {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
+              </Typography>
+            </Box>
+            <Grid container direction="column" padding={2} spacing={5}>
+              <Grid item xs={12}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="Nome"
+                  name="nomeLoja"
+                  onChange={(e) => setNome(e.target.value)}
+                />
+              </Grid>
 
-        <VForm ref={formRef} onSubmit={handleSave}>
-          <Box
-            display={'flex'}
-            flexDirection="column"
-            alignItems="center"
-            justifyContent={'center'}
-            gap={3}
-            p={5}
-          >
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Nome"
-              name="nomeLoja"
-              onChange={(e) => setNome(e.target.value)}
-            />
+              <Grid item xs={12}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="endereço"
+                  name="endereço"
+                />
+              </Grid>
 
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="endereço"
-              name="endereço"
-            />
-
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="telefone"
-              name="telefone"
-            />
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="Imagem"
-              name="imgLoja"
-            />
-
-            <VTextField
-              sx={{ backgroundColor: '#fff', borderRadius: 2 }}
-              label="rota"
-              name="rota"
-            />
+              <Grid item xs={12}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="telefone"
+                  name="telefone"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="Imagem"
+                  name="imgLoja"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="rota"
+                  name="rota"
+                />
+              </Grid>
+            </Grid>
           </Box>
         </VForm>
       </Box>

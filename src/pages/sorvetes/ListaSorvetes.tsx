@@ -104,7 +104,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
             objectFit: 'cover',
           }}
           component="img"
-          src="https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/66519501_1254182294739876_5684698909167845376_n.png?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_ohc=Lp9HcMhNDQkAX_wEcoE&tn=O3EcyzBfwA2FUv1M&_nc_ht=scontent.fsod2-1.fna&oh=00_AfDmDg7ile9A5fifYYhYM3LjWD09SJiF1qWDTXm9fpGJug&oe=6409A5F2"
+          src="https://images.unsplash.com/photo-1629385744299-74b9cf013f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
         />
       </Box>
 
@@ -119,13 +119,12 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
         mt={mdDown ? 5 : 10}
         gap={mdDown ? 1 : 3}
       >
-        <ListItemLink to="/sorvetes/mais-populares" label="Mais populares" />
         <ListItemLink to="/sorvetes/gourmet" label="Gourmet" />
         <ListItemLink to="/sorvetes/standart" label="Standart" />
         <ListItemLink to="/sorvetes/especial" label="Especial" />
-        <ListItemLink to="/sorvetes/picole" label="Picole" />
+        <ListItemLink to="/sorvetes/picole" label="Picolé" />
         <ListItemLink to="/sorvetes/linha-zero" label="Linha Zero" />
-        <ListItemLink to="/sorvetes/acai" label="Açai" />
+        <ListItemLink to="/sorvetes/acai" label="Açaí" />
         <ListItemLink to="/sorvetes/copao" label="Copão" />
       </Box>
       {isLoading && (

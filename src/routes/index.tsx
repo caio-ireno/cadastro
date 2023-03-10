@@ -23,7 +23,7 @@ export const AppRoutes = () => {
       },
       {
         label: 'Sorvetes',
-        path: '/sorvetes/mais-populares',
+        path: '/sorvetes/gourmet',
       },
 
       {
@@ -65,14 +65,10 @@ export const AppRoutes = () => {
       <Route path="/sorvetes/acai" element={<ListaSorvetes />} />
       <Route path="/sorvetes/copao" element={<ListaSorvetes />} />
       <Route path="/sorvetes/linha-zero" element={<ListaSorvetes />} />
-      <Route path="/sorvetes/mais-populares" element={<ListaSorvetes />} />
 
       <Route path="*" element={<Navigate to="/pagina-inicial" />} />
 
-      <Route
-        path="/sorvetes"
-        element={<Navigate to="/sorvetes/mais-populares" />}
-      />
+      <Route path="/sorvetes" element={<Navigate to="/sorvetes/gourmet" />} />
     </Routes>
   );
 };

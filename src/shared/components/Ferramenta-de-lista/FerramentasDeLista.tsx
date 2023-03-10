@@ -32,6 +32,7 @@ export const FerramentasDaLista: React.FC<FerramentasDaListaProps> = ({
     >
       {mostarInputBusca && (
         <TextField
+          sx={{ width: '100%', mr: 4 }}
           value={textoBusca}
           onChange={(e) => aoMudarTextoBusca?.(e.target.value)}
           size="small"

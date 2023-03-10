@@ -56,28 +56,30 @@ export const AutoComplet: React.FC = () => {
   }, [selectedId, opcoes]);
 
   return (
-    <Autocomplete
-      openText="Abrir"
-      closeText="Fechar"
-      noOptionsText="Sem Opção"
-      loadingText="Carregando..."
-      disablePortal
-      value={autoCompletSelectedOption}
-      popupIcon={isLoading ? <CircularProgress size={28} /> : undefined}
-      loading={isLoading}
-      options={opcoes}
-      onChange={(_, newValue) => {
-        setSelectedId(newValue?.id);
-        clearError();
-      }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          error={!!error}
-          helperText={error}
-          label="Tipo de sorvete"
-        />
-      )}
-    />
+    <Box width={'100%'} sx={{ backgroundColor: ' #fff ', borderRadius: 2 }}>
+      <Autocomplete
+        openText="Abrir"
+        closeText="Fechar"
+        noOptionsText="Sem Opção"
+        loadingText="Carregando..."
+        disablePortal
+        value={autoCompletSelectedOption}
+        popupIcon={isLoading ? <CircularProgress size={28} /> : undefined}
+        loading={isLoading}
+        options={opcoes}
+        onChange={(_, newValue) => {
+          setSelectedId(newValue?.id);
+          clearError();
+        }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            error={!!error}
+            helperText={error}
+            label="Tipo de sorvete"
+          />
+        )}
+      />
+    </Box>
   );
 };

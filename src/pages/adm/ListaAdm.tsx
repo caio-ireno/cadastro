@@ -4,6 +4,7 @@ import {
   useMediaQuery,
   useTheme,
   ListItemButton,
+  Paper,
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
@@ -52,7 +53,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
     <LayoutBaseDePagina>
       <Box
         sx={{
-          backgroundColor: '#F2F4F4 ',
+          backgroundColor: '#EBF5FB ',
         }}
         border={'1px solid'}
         width={'100%'}
@@ -80,7 +81,16 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
         </Box>
       </Box>
 
-      <Box sx={{ width: '100%' }}>{children}</Box>
+      <Box
+        component={Paper}
+        variant="outlined"
+        sx={{ width: '100%' }}
+        py={1}
+        mt={1}
+        pb={4}
+      >
+        {children}
+      </Box>
     </LayoutBaseDePagina>
   );
 };

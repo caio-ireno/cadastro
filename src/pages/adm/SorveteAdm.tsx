@@ -171,6 +171,7 @@ export const SorveteAdm: React.FC = () => {
       {totalCount > 0 && totalCount > Environment.LIMITE_LINHAS && (
         <Box my={4}>
           <Pagination
+            size="large"
             count={Math.ceil(totalCount / Environment.LIMITE_LINHAS)}
             page={pagina}
             onChange={(_, newPage) =>
