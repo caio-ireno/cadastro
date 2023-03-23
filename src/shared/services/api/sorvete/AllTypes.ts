@@ -9,7 +9,7 @@ export interface SorveteProps {
     nome: string;
     imagem: string;
     descricao: string;
-    sorveteId: number;
+    sorvete_id: number;
   };
 }
 
@@ -18,7 +18,7 @@ export interface ListaSorveteProps {
   nome: string;
   imagem: string;
   descricao: string;
-  sorveteId: number;
+  sorvete_id: number;
 }
 
 type SorveteComTotalCount = {
@@ -27,8 +27,9 @@ type SorveteComTotalCount = {
 };
 
 type SaboresComTotalCount = {
-  data: ListaSorveteProps[];
-  totalCount: number;
+  data: {
+    data: ListaSorveteProps[];
+  };
 };
 
 const getAll = async (page = 1): Promise<SorveteComTotalCount | Error> => {
@@ -56,18 +57,14 @@ const getAll = async (page = 1): Promise<SorveteComTotalCount | Error> => {
 
 const getAllSabores = async (
   page = 1,
-  filter = '',
 ): Promise<SaboresComTotalCount | Error> => {
   try {
-    const urlRelativa = `/sabores?&_page=${page}&_limit=${Environment.LIMITE_LINHAS}&nome_like=${filter}`;
-    const { data, headers } = await Api.get(urlRelativa);
+    const urlRelativa = `/sabores?page=${page}`;
+    const { data } = await Api.get(urlRelativa);
 
     if (data) {
       return {
         data,
-        totalCount: Number(
-          headers['x-total-count'] || Environment.LIMITE_LINHAS,
-        ),
       };
     }
 

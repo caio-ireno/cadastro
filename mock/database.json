@@ -81,7 +81,7 @@
     },
     {
       "id": 4,
-      "tipo": "acaí"
+      "tipo": "acai"
     },
     {
       "id": 5,
@@ -99,10 +99,10 @@
   "sabores": [
     {
       "id": 8,
-      "nome": "Chocolate",
+      "nome": "chocolate",
       "descricao": "Delicioso sorvete de chocolate com cauda de cacau",
       "imagem": "https://images.unsplash.com/photo-1562790879-dfde82829db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-      "sorveteId": 2
+      "sorveteId": 6
     },
     {
       "id": 10,

@@ -74,6 +74,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
     setIsLoading(true);
     debounce(() => {
       AllTypes.getAll().then((result) => {
+        console.log(result);
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -84,9 +85,10 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
       });
     });
   }, []);
+
+  console.log(rows);
   const results = [];
   const pathName = window.location.pathname.replace('/sorvetes/', '');
-  console.log(pathName);
   for (let i = 0; i < rows.length; i++) {
     if (pathName === rows[i].tipo) {
       results.push(rows[i].sabores);

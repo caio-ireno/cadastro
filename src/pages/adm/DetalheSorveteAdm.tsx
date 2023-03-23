@@ -1,12 +1,5 @@
 /* eslint-disable no-constant-condition */
-import {
-  Grid,
-  LinearProgress,
-  Paper,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,10 +8,7 @@ import { useVForm } from '../../shared/components/form/useVForm';
 import { VForm } from '../../shared/components/form/VForm';
 import { VTextField } from '../../shared/components/form/VTextField';
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import {
-  AllTypes,
-  ListaSorveteProps,
-} from '../../shared/services/api/sorvete/AllTypes';
+import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
 import * as yup from 'yup';
 import { AutoComplet } from './components/AutoComplet';
 
@@ -26,29 +16,25 @@ interface FormDataProps {
   nome: string;
   descricao: string;
   imagem: string;
-  sorveteId: number;
+  sorvete_id: number;
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nome: yup.string().required().min(3),
   descricao: yup.string().required().min(10),
   imagem: yup.string().required(),
-  sorveteId: yup.number().required().positive().integer().max(7),
+  sorvete_id: yup.number().required().positive().integer().max(7),
 });
 
 export const DetalheSorveteAdm: React.FC = () => {
-  const theme = useTheme();
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
   const { id = 'nova' } = useParams<'id'>();
   const [nome, setNome] = useState('');
-  const [dados, setDados] = useState<ListaSorveteProps>();
+  //const [dados, setDados] = useState<ListaSorveteProps>();
   const navigate = useNavigate();
 
   const handleSave = (dados: FormDataProps) => {
-    console.log(dados);
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
         setIsLoading(true);
@@ -114,7 +100,7 @@ export const DetalheSorveteAdm: React.FC = () => {
           alert(result.message);
           navigate('/adm-page/sorvetes');
         } else {
-          setDados(result);
+          //setDados(result);
           setNome(result.nome);
           formRef.current?.setData(result);
         }
@@ -124,7 +110,7 @@ export const DetalheSorveteAdm: React.FC = () => {
         nome: '',
         descricao: '',
         imagem: '',
-        sorveteId: '',
+        sorvete_id: '',
       });
     }
   }, [id]);

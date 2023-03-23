@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Dashboard, ListaAdm, ListaSorvetes } from '../pages';
+import { Dashboard, ListaSorvetes } from '../pages';
 import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm';
 import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm';
 import { DetalheSorveteAdm } from '../pages/adm/DetalheSorveteAdm';

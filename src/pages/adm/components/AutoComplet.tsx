@@ -10,8 +10,9 @@ type AutoCompleteOption = {
 };
 
 export const AutoComplet: React.FC = () => {
-  const { fieldName, registerField, defaultValue, error, clearError } =
-    useField('sorveteId');
+  const { fieldName, registerField, error, clearError } =
+    useField('sorvete_id');
+
   const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +47,8 @@ export const AutoComplet: React.FC = () => {
       });
     });
   }, []);
+
+  console.log(opcoes);
 
   const autoCompletSelectedOption = useMemo(() => {
     if (!selectedId) return null;

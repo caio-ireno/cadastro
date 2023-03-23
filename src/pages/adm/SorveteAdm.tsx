@@ -40,25 +40,26 @@ export const SorveteAdm: React.FC = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
-  const pagina = useMemo(() => {
-    return Number(searchParams.get('pagina') || '1');
+  const page = useMemo(() => {
+    return Number(searchParams.get('page') || '1');
   }, [searchParams]);
 
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      AllTypes.getAllSabores(pagina, busca).then((result) => {
+      AllTypes.getAllSabores(page).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
           return;
         } else {
-          setRows(result.data);
-          SetTotalCount(result.totalCount);
+          setRows(result.data.data);
+          console.log(result.data);
+          SetTotalCount(100);
         }
       });
     });
-  }, [busca, pagina]);
+  }, [page]);
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
@@ -75,17 +76,22 @@ export const SorveteAdm: React.FC = () => {
     }
   };
 
+  const ITEMS_PER_PAGE = 10; // or any other value you want
+
+  const totalPages = useMemo(() => {
+    return Math.ceil(totalCount / ITEMS_PER_PAGE);
+  }, [totalCount]);
+
   return (
     <ListaAdm>
       <FerramentasDaLista
         textoBusca={busca}
         aoMudarTextoBusca={(texto) =>
-          setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
+          setSearchParams({ busca: texto, page: '1' }, { replace: true })
         }
         mostarInputBusca
         aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
       />
-
       <Box p={1}>
         <Grid
           display="flex"
@@ -135,19 +141,19 @@ export const SorveteAdm: React.FC = () => {
             </Grid>
 
             <Grid item xs={smDown ? 3 : 2}>
-              {row.sorveteId === 1
+              {row.sorvete_id === 1
                 ? 'Gourmet'
-                : row.sorveteId === 2
+                : row.sorvete_id === 2
                 ? 'Standart'
-                : row.sorveteId === 3
+                : row.sorvete_id === 3
                 ? 'Especial'
-                : row.sorveteId === 4
+                : row.sorvete_id === 4
                 ? 'Açaí'
-                : row.sorveteId === 5
+                : row.sorvete_id === 5
                 ? 'Copão'
-                : row.sorveteId === 6
+                : row.sorvete_id === 6
                 ? 'Picolé'
-                : row.sorveteId === 7
+                : row.sorvete_id === 7
                 ? 'Linha Zero'
                 : 'Mais Populares'}
             </Grid>
@@ -161,24 +167,20 @@ export const SorveteAdm: React.FC = () => {
       {totalCount === 0 && !isLoading && (
         <caption>{Environment.LISTAGEM_VAZIA}</caption>
       )}
-
       {isLoading && (
         <Box my={4}>
           <LinearProgress variant="indeterminate"></LinearProgress>
         </Box>
       )}
 
-      {totalCount > 0 && totalCount > Environment.LIMITE_LINHAS && (
+      {totalCount > 0 && (
         <Box my={4}>
           <Pagination
             size="large"
-            count={Math.ceil(totalCount / Environment.LIMITE_LINHAS)}
-            page={pagina}
+            count={totalPages}
+            page={page}
             onChange={(_, newPage) =>
-              setSearchParams(
-                { busca, pagina: newPage.toString() },
-                { replace: true },
-              )
+              setSearchParams({ page: newPage.toString() }, { replace: true })
             }
           />
         </Box>

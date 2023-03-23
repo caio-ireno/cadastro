@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
 import { NoticiaServices } from '../../shared/services/api/noticias/NoticiasService';
 import { VTextField } from '../../shared/components/form/VTextField';
@@ -31,7 +30,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
-        console.log('save apos then');
         setIsLoading(true);
         if (id === 'nova') {
           NoticiaServices.create(dadosValidados).then((result) => {
@@ -52,6 +50,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
             id: Number(id),
             ...dadosValidados,
           }).then((result) => {
+            console.log(result);
             setIsLoading(false);
             if (result instanceof Error) {
               alert(result.message);
@@ -99,6 +98,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
         } else {
           setNome(result.nomeNoticia);
           formRef.current?.setData(result);
+          console.log(result);
         }
       });
     } else {

@@ -25,13 +25,13 @@ export const CarouselComponent = () => {
           alert(result.message);
           return;
         } else {
-          console.log(result);
-
-          setRows(result.data);
+          console.log(result.data);
+          setRows(result.data.slice(0, 3));
         }
       });
     });
   }, []);
+
   return (
     <Box>
       {isLoading && (
@@ -40,11 +40,11 @@ export const CarouselComponent = () => {
         </Box>
       )}
       {!isLoading && (
-        <Carousel autoPlay navButtonsAlwaysVisible>
+        <Carousel autoPlay navButtonsAlwaysVisible indicators={false}>
           {rows.map((row) => (
             <Box
               width={'100%'}
-              maxHeight={smDown ? '200px' : mdDown ? '300px' : '700px'}
+              maxHeight={smDown ? '200px' : mdDown ? '300px' : '500px'}
               display="flex"
               justifyContent={'center'}
               key={row.id}
