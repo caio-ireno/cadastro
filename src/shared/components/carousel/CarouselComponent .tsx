@@ -53,7 +53,7 @@ export const CarouselComponent = () => {
                 width={'100%'}
                 height="auto"
                 component="img"
-                src={row.imgNoticia}
+                src={row.imgNoticia.name}
               />
             </Box>
           ))}

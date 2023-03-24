@@ -50,7 +50,7 @@ export const NoticiaAdm: React.FC = () => {
   useEffect(() => {
     setIsLoading(true);
     debounce(() => {
-      NoticiaServices.getAll(pagina, busca).then((result) => {
+      NoticiaServices.getAll().then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);

@@ -9,15 +9,16 @@ import React, { useEffect, useState } from 'react';
 import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as yup from 'yup';
+import { VImageField } from '../../shared/components/form/VImageField';
 
 interface FormDataProps {
   nomeNoticia: string;
-  imgNoticia: string;
+  imgNoticia: File;
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nomeNoticia: yup.string().required().min(3),
-  imgNoticia: yup.string().required(),
+  imgNoticia: yup.mixed<File>().required(),
 });
 
 export const DetalheNoticiasAdm: React.FC = () => {
@@ -30,6 +31,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
+        console.log(dadosValidados); //quando altero o campo, ele printa
         setIsLoading(true);
         if (id === 'nova') {
           NoticiaServices.create(dadosValidados).then((result) => {
@@ -50,7 +52,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
             id: Number(id),
             ...dadosValidados,
           }).then((result) => {
-            console.log(result);
             setIsLoading(false);
             if (result instanceof Error) {
               alert(result.message);
@@ -98,13 +99,11 @@ export const DetalheNoticiasAdm: React.FC = () => {
         } else {
           setNome(result.nomeNoticia);
           formRef.current?.setData(result);
-          console.log(result);
         }
       });
     } else {
       formRef.current?.setData({
         nomeNoticia: '',
-        imgNoticia: '',
       });
     }
   }, [id]);
@@ -156,15 +155,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
               </Grid>
 
               <Grid item xs={12}>
-                <VTextField
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: 2,
-                    width: '100%',
-                  }}
-                  label="Imagem"
-                  name="imgNoticia"
-                />
+                <VImageField name="imgNoticia" />
               </Grid>
             </Grid>
           </Box>
