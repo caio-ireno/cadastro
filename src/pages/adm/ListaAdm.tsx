@@ -78,6 +78,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/sorvetes" label="Sorvetes" />
           <ListItemLink to="/adm-page/noticias" label="Noticias" />
           <ListItemLink to="/adm-page/lojas" label="Lojas" />
+          <ListItemLink to="/adm-page/tipo-sorvete" label="Tipo Sorvete" />
         </Box>
       </Box>
 

@@ -23,7 +23,7 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nome: yup.string().required().min(3),
   descricao: yup.string().required().min(10),
   imagem: yup.string().required(),
-  sorvete_id: yup.number().required().positive().integer().max(7),
+  sorvete_id: yup.number().required().positive().integer(),
 });
 
 export const DetalheSorveteAdm: React.FC = () => {

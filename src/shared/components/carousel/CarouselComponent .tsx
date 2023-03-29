@@ -31,7 +31,7 @@ export const CarouselComponent = () => {
       });
     });
   }, []);
-
+  rows.map((row) => console.log(typeof row.imgNoticia));
   return (
     <Box>
       {isLoading && (
@@ -53,7 +53,7 @@ export const CarouselComponent = () => {
                 width={'100%'}
                 height="auto"
                 component="img"
-                src={row.imgNoticia.name}
+                src={row.imgNoticia}
               />
             </Box>
           ))}

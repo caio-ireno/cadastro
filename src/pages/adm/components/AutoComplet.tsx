@@ -1,3 +1,4 @@
+import { OpacityOutlined } from '@mui/icons-material';
 import { Autocomplete, Box, CircularProgress, TextField } from '@mui/material';
 import { useField } from '@unform/core';
 import { useEffect, useMemo, useState } from 'react';
@@ -48,8 +49,6 @@ export const AutoComplet: React.FC = () => {
     });
   }, []);
 
-  console.log(opcoes);
-
   const autoCompletSelectedOption = useMemo(() => {
     if (!selectedId) return null;
 
@@ -57,6 +56,9 @@ export const AutoComplet: React.FC = () => {
     if (!selectedId) return null;
     return SelectedOption;
   }, [selectedId, opcoes]);
+
+  console.log('selected  ' + selectedId);
+  console.log(opcoes[6].id);
 
   return (
     <Box width={'100%'} sx={{ backgroundColor: ' #fff ', borderRadius: 2 }}>

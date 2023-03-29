@@ -4,7 +4,7 @@ import { Api } from '../axios-config';
 export interface NoticiaProps {
   id: number;
   nomeNoticia: string;
-  imgNoticia: File;
+  imgNoticia: string;
 }
 
 export interface ListaNoticiaProps {
@@ -62,8 +62,9 @@ const create = async (
   dados: Omit<ListaNoticiaProps, 'id'>,
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<ListaNoticiaProps>('/noticias', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
-
+    console.log(dados);
+    const { data } = await Api.post<ListaNoticiaProps>('/noticias', dados);
+    console.log('Response from server:', data);
     if (data) {
       return data.id;
     }

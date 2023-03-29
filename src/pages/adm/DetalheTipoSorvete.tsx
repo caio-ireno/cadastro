@@ -10,18 +10,17 @@ import { Grid, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import * as yup from 'yup';
 import { VImageField } from '../../shared/components/form/VImageField';
+import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
 
 interface FormDataProps {
-  nomeNoticia: string;
-  imgNoticia: File;
+  tipo: string;
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
-  nomeNoticia: yup.string().required().min(3),
-  imgNoticia: yup.mixed<File>().required(),
+  tipo: yup.string().required().min(3),
 });
 
-export const DetalheNoticiasAdm: React.FC = () => {
+export const DetalheTipoSorvete: React.FC = () => {
   const navigate = useNavigate();
   const { id = 'nova' } = useParams<'id'>();
   const [isLoading, setIsLoading] = useState(false);
@@ -33,20 +32,20 @@ export const DetalheNoticiasAdm: React.FC = () => {
       .then((dadosValidados) => {
         setIsLoading(true);
         if (id === 'nova') {
-          NoticiaServices.create(dadosValidados).then((result) => {
+          AllTypes.createType(dadosValidados).then((result) => {
             setIsLoading(false);
             if (result instanceof Error) {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/noticias/');
+                navigate('/adm-page/tipo-sorvete/');
               } else {
-                navigate(`/adm-page/noticias/${result}`);
+                navigate(`/adm-page/tipo-sorvete/${result}`);
               }
             }
           });
         } else {
-          NoticiaServices.updateById(Number(id), {
+          AllTypes.updateTypeById(Number(id), {
             id: Number(id),
             ...dadosValidados,
           }).then((result) => {
@@ -55,7 +54,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/noticias/');
+                navigate('/adm-page/tipo-sorvete/');
               }
             }
           });
@@ -80,7 +79,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
           alert(result.message);
         } else {
           alert('Registro Apagado com sucesso');
-          navigate('/adm-page/noticias');
+          navigate('/adm-page/tipo-sorvete');
         }
       });
     }
@@ -89,13 +88,13 @@ export const DetalheNoticiasAdm: React.FC = () => {
   useEffect(() => {
     if (id !== 'nova') {
       setIsLoading(true);
-      NoticiaServices.getById(Number(id)).then((result) => {
+      AllTypes.getTypeById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/adm-page/noticias');
+          navigate('/adm-page/tipo-sorvete');
         } else {
-          setNome(result.nomeNoticia);
+          setNome(result.tipo);
           formRef.current?.setData(result);
         }
       });
@@ -115,8 +114,8 @@ export const DetalheNoticiasAdm: React.FC = () => {
           mostarBotaoNovo={id !== 'nova'}
           TextoBotaoNovo="Novo"
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/noticias/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/noticias')}
+          aoClicarEmNovo={() => navigate('/adm-page/tipo-sorvete/nova')}
+          aoClicarEmVoltar={() => navigate('/adm-page/tipo-sorvete')}
           aoClicarEmSalvar={save}
           aoClicarEmSalvrEFechar={saveAndClose}
         />
@@ -135,7 +134,9 @@ export const DetalheNoticiasAdm: React.FC = () => {
           <Box margin={1} display="flex" flexDirection="column">
             <Box textAlign={'center'}>
               <Typography fontSize={30} fontWeight="bold">
-                {id === 'nova' ? 'Criando nova Noticias' : `Editando: ${nome}`}
+                {id === 'nova'
+                  ? 'Criando novo tipo de Sorvete'
+                  : `Editando: ${nome}`}
               </Typography>
             </Box>
             <Grid container direction="column" padding={2} spacing={5}>
@@ -147,13 +148,9 @@ export const DetalheNoticiasAdm: React.FC = () => {
                     width: '100%',
                   }}
                   label="Nome"
-                  name="nomeNoticia"
+                  name="tipo"
                   onChange={(e) => setNome(e.target.value)}
                 />
-              </Grid>
-
-              <Grid item xs={12}>
-                <VImageField name="imgNoticia" />
               </Grid>
             </Grid>
           </Box>

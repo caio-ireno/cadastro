@@ -6,6 +6,7 @@ import {
   ListItemButton,
   CircularProgress,
 } from '@mui/material';
+import path from 'path';
 import React, { useEffect, useState } from 'react';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useDebounce } from '../../shared/hooks';
@@ -74,7 +75,6 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
     setIsLoading(true);
     debounce(() => {
       AllTypes.getAll().then((result) => {
-        console.log(result);
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -85,14 +85,12 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
       });
     });
   }, []);
-
-  console.log(rows);
+  console.log(rows.length);
   const results = [];
   const pathName = window.location.pathname.replace('/sorvetes/', '');
   for (let i = 0; i < rows.length; i++) {
     if (pathName === rows[i].tipo) {
       results.push(rows[i].sabores);
-      console.log(results);
     }
   }
 
@@ -121,13 +119,11 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
         mt={mdDown ? 5 : 10}
         gap={mdDown ? 1 : 3}
       >
-        <ListItemLink to="/sorvetes/gourmet" label="Gourmet" />
-        <ListItemLink to="/sorvetes/standart" label="Standart" />
-        <ListItemLink to="/sorvetes/especial" label="Especial" />
-        <ListItemLink to="/sorvetes/picole" label="Picolé" />
-        <ListItemLink to="/sorvetes/linha-zero" label="Linha Zero" />
-        <ListItemLink to="/sorvetes/acai" label="Açaí" />
-        <ListItemLink to="/sorvetes/copao" label="Copão" />
+        {rows.map((row) => (
+          <Box key={row.id}>
+            <ListItemLink to={`/sorvetes/${row.tipo}`} label={row.tipo} />
+          </Box>
+        ))}
       </Box>
       {isLoading && (
         <Box
