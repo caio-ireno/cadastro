@@ -1,7 +1,7 @@
-import { Button, Icon, TextField, useTheme } from '@mui/material';
-import { Box } from '@mui/system';
+import { Button, Icon, TextField, useTheme } from "@mui/material";
+import { Box } from "@mui/system";
 
-import { Environment } from '../../environment';
+import { Environment } from "../../environment";
 
 interface FerramentasDaListaProps {
   textoBusca?: string;
@@ -15,9 +15,9 @@ interface FerramentasDaListaProps {
 export const FerramentasDaLista: React.FC<FerramentasDaListaProps> = ({
   aoMudarTextoBusca,
   mostarInputBusca = false,
-  textoBusca = '',
+  textoBusca = "",
   aoClicarEmNovo,
-  textoBotaoNovo = 'Novo',
+  textoBotaoNovo = "Novo",
   mostrarBotaoNovo = true,
 }) => {
   const theme = useTheme();
@@ -32,7 +32,7 @@ export const FerramentasDaLista: React.FC<FerramentasDaListaProps> = ({
     >
       {mostarInputBusca && (
         <TextField
-          sx={{ width: '100%', mr: 4 }}
+          sx={{ width: "100%", mr: 4 }}
           value={textoBusca}
           onChange={(e) => aoMudarTextoBusca?.(e.target.value)}
           size="small"

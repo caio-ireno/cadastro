@@ -1,16 +1,17 @@
 /* eslint-disable no-constant-condition */
-import { Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
-import { useVForm } from '../../shared/components/form/useVForm';
-import { VForm } from '../../shared/components/form/VForm';
-import { VTextField } from '../../shared/components/form/VTextField';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import { AllTypes } from '../../shared/services/api/sorvete/AllTypes';
-import * as yup from 'yup';
-import { AutoComplet } from './components/AutoComplet';
+import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import * as yup from "yup";
+
+import FerramentasDeDetalhe from "../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe";
+import { useVForm } from "../../shared/components/form/useVForm";
+import { VForm } from "../../shared/components/form/VForm";
+import { VTextField } from "../../shared/components/form/VTextField";
+import { LayoutBaseDePagina } from "../../shared/layouts";
+import { AllTypes } from "../../shared/services/api/sorvete/AllTypes";
+import { AutoComplet } from "./components/AutoComplet";
 
 interface FormDataProps {
   nome: string;
@@ -29,8 +30,8 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 export const DetalheSorveteAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
-  const { id = 'nova' } = useParams<'id'>();
-  const [nome, setNome] = useState('');
+  const { id = "nova" } = useParams<"id">();
+  const [nome, setNome] = useState("");
   //const [dados, setDados] = useState<ListaSorveteProps>();
   const navigate = useNavigate();
 
@@ -38,14 +39,14 @@ export const DetalheSorveteAdm: React.FC = () => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
         setIsLoading(true);
-        if (id === 'nova') {
+        if (id === "nova") {
           AllTypes.create(dadosValidados).then((result) => {
             setIsLoading(false);
             if (result instanceof Error) {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/sorvetes/');
+                navigate("/adm-page/sorvetes/");
               } else {
                 navigate(`/adm-page/sorvetes/${result}`);
               }
@@ -61,7 +62,7 @@ export const DetalheSorveteAdm: React.FC = () => {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/sorvetes/');
+                navigate("/adm-page/sorvetes/");
               }
             }
           });
@@ -79,26 +80,26 @@ export const DetalheSorveteAdm: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
+    if (confirm("Realmente deseja apagar?")) {
       AllTypes.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          alert('Registro Apagado com sucesso');
-          navigate('/adm-page/sorvetes');
+          alert("Registro Apagado com sucesso");
+          navigate("/adm-page/sorvetes");
         }
       });
     }
   };
 
   useEffect(() => {
-    if (id !== 'nova') {
+    if (id !== "nova") {
       setIsLoading(true);
       AllTypes.getById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/adm-page/sorvetes');
+          navigate("/adm-page/sorvetes");
         } else {
           //setDados(result);
           setNome(result.nome);
@@ -107,10 +108,10 @@ export const DetalheSorveteAdm: React.FC = () => {
       });
     } else {
       formRef.current?.setData({
-        nome: '',
-        descricao: '',
-        imagem: '',
-        sorvete_id: '',
+        nome: "",
+        descricao: "",
+        imagem: "",
+        sorvete_id: "",
       });
     }
   }, [id]);
@@ -121,12 +122,12 @@ export const DetalheSorveteAdm: React.FC = () => {
         barraDeFerramentas={
           <FerramentasDeDetalhe
             mostarBotaoSalvarEFechar
-            mostarBotaoApagar={id !== 'nova'}
-            mostarBotaoNovo={id !== 'nova'}
+            mostarBotaoApagar={id !== "nova"}
+            mostarBotaoNovo={id !== "nova"}
             TextoBotaoNovo="Novo"
             aoClicarEmApagar={() => handleDelete(Number(id))}
-            aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-            aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
+            aoClicarEmNovo={() => navigate("/adm-page/sorvetes/nova")}
+            aoClicarEmVoltar={() => navigate("/adm-page/sorvetes")}
             aoClicarEmSalvar={save}
             aoClicarEmSalvrEFechar={saveAndClose}
           />
@@ -134,27 +135,27 @@ export const DetalheSorveteAdm: React.FC = () => {
       >
         <Box
           py={3}
-          width={'100%'}
-          display={'flex'}
-          justifyContent={'center'}
+          width={"100%"}
+          display={"flex"}
+          justifyContent={"center"}
           alignItems="center"
-          flexDirection={'column'}
-          sx={{ backgroundColor: ' #EBF5FB  ' }}
+          flexDirection={"column"}
+          sx={{ backgroundColor: " #EBF5FB  " }}
         >
-          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+          <VForm style={{ width: "100%" }} ref={formRef} onSubmit={handleSave}>
             <Box margin={1} display="flex" flexDirection="column">
-              <Box textAlign={'center'}>
+              <Box textAlign={"center"}>
                 <Typography fontSize={30} fontWeight="bold">
-                  {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
+                  {id === "nova" ? "Criando novo Sorvete" : `Editando: ${nome}`}
                 </Typography>
               </Box>
               <Grid container direction="column" padding={2} spacing={5}>
                 <Grid item xs={12}>
                   <VTextField
                     sx={{
-                      backgroundColor: '#fff',
+                      backgroundColor: "#fff",
                       borderRadius: 2,
-                      width: '100%',
+                      width: "100%",
                     }}
                     label="Nome"
                     name="nome"
@@ -165,9 +166,9 @@ export const DetalheSorveteAdm: React.FC = () => {
                 <Grid item xs={12}>
                   <VTextField
                     sx={{
-                      backgroundColor: '#fff',
+                      backgroundColor: "#fff",
                       borderRadius: 2,
-                      width: '100%',
+                      width: "100%",
                     }}
                     label="Descrição"
                     name="descricao"
@@ -177,9 +178,9 @@ export const DetalheSorveteAdm: React.FC = () => {
                 <Grid item xs={12}>
                   <VTextField
                     sx={{
-                      backgroundColor: '#fff',
+                      backgroundColor: "#fff",
                       borderRadius: 2,
-                      width: '100%',
+                      width: "100%",
                     }}
                     label="Imagem"
                     name="imagem"

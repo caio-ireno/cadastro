@@ -1,15 +1,16 @@
-import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
-import { NoticiaServices } from '../../shared/services/api/noticias/NoticiasService';
-import { VTextField } from '../../shared/components/form/VTextField';
-import { useVForm } from '../../shared/components/form/useVForm';
-import { VForm } from '../../shared/components/form/VForm';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import { useNavigate, useParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import * as yup from 'yup';
-import { VImageField } from '../../shared/components/form/VImageField';
+import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import * as yup from "yup";
+
+import FerramentasDeDetalhe from "../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe";
+import { useVForm } from "../../shared/components/form/useVForm";
+import { VForm } from "../../shared/components/form/VForm";
+import { VImageField } from "../../shared/components/form/VImageField";
+import { VTextField } from "../../shared/components/form/VTextField";
+import { LayoutBaseDePagina } from "../../shared/layouts";
+import { NoticiaServices } from "../../shared/services/api/noticias/NoticiasService";
 
 interface FormDataProps {
   nomeNoticia: string;
@@ -23,23 +24,23 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 
 export const DetalheNoticiasAdm: React.FC = () => {
   const navigate = useNavigate();
-  const { id = 'nova' } = useParams<'id'>();
+  const { id = "nova" } = useParams<"id">();
   const [isLoading, setIsLoading] = useState(false);
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
-  const [nome, setNome] = useState('');
+  const [nome, setNome] = useState("");
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
         setIsLoading(true);
-        if (id === 'nova') {
+        if (id === "nova") {
           NoticiaServices.create(dadosValidados).then((result) => {
             setIsLoading(false);
             if (result instanceof Error) {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/noticias/');
+                navigate("/adm-page/noticias/");
               } else {
                 navigate(`/adm-page/noticias/${result}`);
               }
@@ -55,7 +56,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/noticias/');
+                navigate("/adm-page/noticias/");
               }
             }
           });
@@ -74,26 +75,26 @@ export const DetalheNoticiasAdm: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
+    if (confirm("Realmente deseja apagar?")) {
       NoticiaServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          alert('Registro Apagado com sucesso');
-          navigate('/adm-page/noticias');
+          alert("Registro Apagado com sucesso");
+          navigate("/adm-page/noticias");
         }
       });
     }
   };
 
   useEffect(() => {
-    if (id !== 'nova') {
+    if (id !== "nova") {
       setIsLoading(true);
       NoticiaServices.getById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/adm-page/noticias');
+          navigate("/adm-page/noticias");
         } else {
           setNome(result.nomeNoticia);
           formRef.current?.setData(result);
@@ -101,8 +102,8 @@ export const DetalheNoticiasAdm: React.FC = () => {
       });
     } else {
       formRef.current?.setData({
-        nomeNoticia: '',
-        imgNoticia: '',
+        nomeNoticia: "",
+        imgNoticia: "",
       });
     }
   }, [id]);
@@ -112,12 +113,12 @@ export const DetalheNoticiasAdm: React.FC = () => {
       barraDeFerramentas={
         <FerramentasDeDetalhe
           mostarBotaoSalvarEFechar
-          mostarBotaoApagar={id !== 'nova'}
-          mostarBotaoNovo={id !== 'nova'}
+          mostarBotaoApagar={id !== "nova"}
+          mostarBotaoNovo={id !== "nova"}
           TextoBotaoNovo="Novo"
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/noticias/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/noticias')}
+          aoClicarEmNovo={() => navigate("/adm-page/noticias/nova")}
+          aoClicarEmVoltar={() => navigate("/adm-page/noticias")}
           aoClicarEmSalvar={save}
           aoClicarEmSalvrEFechar={saveAndClose}
         />
@@ -125,27 +126,27 @@ export const DetalheNoticiasAdm: React.FC = () => {
     >
       <Box
         py={3}
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
+        width={"100%"}
+        display={"flex"}
+        justifyContent={"center"}
         alignItems="center"
-        flexDirection={'column'}
-        sx={{ backgroundColor: ' #EBF5FB  ' }}
+        flexDirection={"column"}
+        sx={{ backgroundColor: " #EBF5FB  " }}
       >
-        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+        <VForm style={{ width: "100%" }} ref={formRef} onSubmit={handleSave}>
           <Box margin={1} display="flex" flexDirection="column">
-            <Box textAlign={'center'}>
+            <Box textAlign={"center"}>
               <Typography fontSize={30} fontWeight="bold">
-                {id === 'nova' ? 'Criando nova Noticias' : `Editando: ${nome}`}
+                {id === "nova" ? "Criando nova Noticias" : `Editando: ${nome}`}
               </Typography>
             </Box>
             <Grid container direction="column" padding={2} spacing={5}>
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="Nome"
                   name="nomeNoticia"

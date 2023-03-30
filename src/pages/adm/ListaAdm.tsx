@@ -1,14 +1,14 @@
-import { Height } from '@mui/icons-material';
 import {
+  ListItemButton,
+  Paper,
   Typography,
   useMediaQuery,
   useTheme,
-  ListItemButton,
-  Paper,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-import { LayoutBaseDePagina } from '../../shared/layouts';
+} from "@mui/material";
+import { Box } from "@mui/system";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+
+import { LayoutBaseDePagina } from "../../shared/layouts";
 
 interface ListItemLinkProps {
   label: string;
@@ -17,18 +17,18 @@ interface ListItemLinkProps {
 
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   const theme = useTheme();
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
 
   const resolvedPath = useResolvedPath(to);
-  const pathName = resolvedPath.pathname.replace('/sorvete/', '');
+  const pathName = resolvedPath.pathname.replace("/sorvete/", "");
   const match = useMatch({ path: pathName, end: false });
 
   const handleClick = () => {
     navigate(to);
   };
   return (
-    <Box display={'flex'} onClick={handleClick}>
+    <Box display={"flex"} onClick={handleClick}>
       <Typography
         selected={!!match}
         component={ListItemButton}
@@ -46,22 +46,22 @@ interface ListaAdmProps {
 
 export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
   const theme = useTheme();
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <LayoutBaseDePagina>
       <Box
         sx={{
-          backgroundColor: '#EBF5FB ',
+          backgroundColor: "#EBF5FB ",
         }}
-        border={'1px solid'}
-        width={'100%'}
-        display={'flex'}
+        border={"1px solid"}
+        width={"100%"}
+        display={"flex"}
         flexDirection="column"
-        justifyContent={'center'}
+        justifyContent={"center"}
         alignItems="center"
-        flexWrap={'wrap'}
+        flexWrap={"wrap"}
         py={2}
         mt={mdDown ? 5 : 0}
         gap={mdDown ? 1 : 3}
@@ -70,10 +70,10 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           Painel de controle Administrativo
         </Typography>
         <Box
-          display={'flex'}
+          display={"flex"}
           flexWrap="wrap"
           flexDirection="row"
-          justifyContent={'center'}
+          justifyContent={"center"}
           alignItems="center"
         >
           <ListItemLink to="/adm-page/sorvetes" label="Sorvetes" />
@@ -86,7 +86,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
       <Box
         component={Paper}
         variant="outlined"
-        sx={{ width: '100%' }}
+        sx={{ width: "100%" }}
         py={1}
         mt={1}
         pb={4}

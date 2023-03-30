@@ -1,8 +1,9 @@
-import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from './routes';
-import { MenuLateral } from './shared/components';
-import { AppThemeProvider, DrawerProvider } from './shared/contexts';
-import ScrollToTopOnNavigate from './shared/hooks/ScrollToTopNavigate';
+import { BrowserRouter } from "react-router-dom";
+
+import { AppRoutes } from "./routes";
+import { MenuLateral } from "./shared/components";
+import { AppThemeProvider, DrawerProvider } from "./shared/contexts";
+import ScrollToTopOnNavigate from "./shared/hooks/ScrollToTopNavigate";
 
 export const App = () => {
   return (

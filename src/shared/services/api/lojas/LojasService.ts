@@ -1,5 +1,5 @@
-import { Environment } from '../../../environment';
-import { Api } from '../axios-config';
+import { Environment } from "../../../environment";
+import { Api } from "../axios-config";
 
 export interface LojasProps {
   id: number;
@@ -26,7 +26,7 @@ type LojasComTotalCount = {
 
 const getAll = async (
   page = 1,
-  filter = '',
+  filter = "",
 ): Promise<LojasComTotalCount | Error> => {
   try {
     const urlRelativa = `/lojas?&_page=${page}&nomeLoja_like=${filter}`;
@@ -36,16 +36,16 @@ const getAll = async (
       return {
         data,
         totalCount: Number(
-          headers['x-total-count'] || Environment.LIMITE_LINHAS,
+          headers["x-total-count"] || Environment.LIMITE_LINHAS,
         ),
       };
     }
 
-    return new Error('Erro ao listar os Registros');
+    return new Error("Erro ao listar os Registros");
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao Carregar',
+      (error as { message: string }).message || "Erro ao Carregar",
     );
   }
 };
@@ -56,7 +56,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao apagar',
+      (error as { message: string }).message || "Erro ao apagar",
     );
   }
 };
@@ -69,29 +69,29 @@ const getById = async (id: number): Promise<ListaLojasProps | Error> => {
       return data;
     }
 
-    return new Error('Erro ao consultar o Registro');
+    return new Error("Erro ao consultar o Registro");
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao consultar',
+      (error as { message: string }).message || "Erro ao consultar",
     );
   }
 };
 
 const create = async (
-  dados: Omit<ListaLojasProps, 'id'>,
+  dados: Omit<ListaLojasProps, "id">,
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<ListaLojasProps>('/lojas', dados); //Dessa forma eu consigo dizer qqual dado esta retornando
+    const { data } = await Api.post<ListaLojasProps>("/lojas", dados); //Dessa forma eu consigo dizer qqual dado esta retornando
 
     if (data) {
       return data.id;
     }
 
-    return new Error('Erro ao criar o Registro');
+    return new Error("Erro ao criar o Registro");
   } catch (error) {
     console.error(error);
-    return new Error((error as { message: string }).message || 'Erro ao criar');
+    return new Error((error as { message: string }).message || "Erro ao criar");
   }
 };
 
@@ -104,7 +104,7 @@ const updateById = async (
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao atualizar',
+      (error as { message: string }).message || "Erro ao atualizar",
     );
   }
 };

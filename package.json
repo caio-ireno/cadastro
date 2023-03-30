@@ -49,8 +49,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "mock": "json-server -w -p 3333 ./mock/database.json",
-    "mock2": "json-server -w -p 3333 ./mock/mock.json",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint"
   },
   "eslintConfig": {
     "extends": [

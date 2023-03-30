@@ -4,9 +4,10 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import { useDrawerContext } from '../contexts';
+} from "@mui/material";
+import { Box } from "@mui/system";
+
+import { useDrawerContext } from "../contexts";
 
 interface LayoutBaseDePaginaProps {
   titulo?: string;
@@ -21,19 +22,19 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
   titulo,
 }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { toggleDrawerOpen } = useDrawerContext();
   return (
-    <Box width={'100%'} display="flex" flexDirection={'column'}>
+    <Box width={"100%"} display="flex" flexDirection={"column"}>
       <Box display="flex">
         {smDown && (
           <Box
             px={2}
             py={1}
-            width={'100%'}
-            display={'flex'}
+            width={"100%"}
+            display={"flex"}
             alignItems="center"
-            justifyContent={'space-between'}
+            justifyContent={"space-between"}
           >
             <IconButton onClick={toggleDrawerOpen}>
               <Icon>menu</Icon>
@@ -51,7 +52,7 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
       </Box>
 
       {barraDeFerramentas && (
-        <Box display="flex" alignItems={'center'} justifyContent="center">
+        <Box display="flex" alignItems={"center"} justifyContent="center">
           {barraDeFerramentas}
         </Box>
       )}

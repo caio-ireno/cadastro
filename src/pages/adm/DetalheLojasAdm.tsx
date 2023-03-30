@@ -1,15 +1,16 @@
 /* eslint-disable no-constant-condition */
-import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe';
-import { LojasServices } from '../../shared/services/api/lojas/LojasService';
-import { VTextField } from '../../shared/components/form/VTextField';
-import { useVForm } from '../../shared/components/form/useVForm';
-import { useNavigate, useParams } from 'react-router-dom';
-import { VForm } from '../../shared/components/form/VForm';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import React, { useEffect, useState } from 'react';
-import { Grid, Typography } from '@mui/material';
-import { Box } from '@mui/system';
-import * as yup from 'yup';
+import { Grid, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import * as yup from "yup";
+
+import FerramentasDeDetalhe from "../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe";
+import { useVForm } from "../../shared/components/form/useVForm";
+import { VForm } from "../../shared/components/form/VForm";
+import { VTextField } from "../../shared/components/form/VTextField";
+import { LayoutBaseDePagina } from "../../shared/layouts";
+import { LojasServices } from "../../shared/services/api/lojas/LojasService";
 
 interface FormDataProps {
   telefone: number;
@@ -30,16 +31,16 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 export const DetalheLojasAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
   const [isLoading, setIsLoading] = useState(false);
-  const { id = 'nova' } = useParams<'id'>();
-  const [nome, setNome] = useState('');
+  const { id = "nova" } = useParams<"id">();
+  const [nome, setNome] = useState("");
   const navigate = useNavigate();
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then((dadosValidados) => {
-        console.log('save apos then');
+        console.log("save apos then");
         setIsLoading(true);
-        if (id === 'nova') {
+        if (id === "nova") {
           LojasServices.create(dadosValidados).then((result) => {
             setIsLoading(false);
 
@@ -47,7 +48,7 @@ export const DetalheLojasAdm: React.FC = () => {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/lojas/');
+                navigate("/adm-page/lojas/");
               } else {
                 navigate(`/adm-page/lojas/${result}`);
               }
@@ -63,7 +64,7 @@ export const DetalheLojasAdm: React.FC = () => {
               alert(result.message);
             } else {
               if (IsSaveAndClose()) {
-                navigate('/adm-page/lojas/');
+                navigate("/adm-page/lojas/");
               }
             }
           });
@@ -82,26 +83,26 @@ export const DetalheLojasAdm: React.FC = () => {
   };
 
   const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
+    if (confirm("Realmente deseja apagar?")) {
       LojasServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
-          alert('Registro Apagado com sucesso');
-          navigate('/adm-page/lojas');
+          alert("Registro Apagado com sucesso");
+          navigate("/adm-page/lojas");
         }
       });
     }
   };
 
   useEffect(() => {
-    if (id !== 'nova') {
+    if (id !== "nova") {
       setIsLoading(true);
       LojasServices.getById(Number(id)).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/adm-page/lojas');
+          navigate("/adm-page/lojas");
         } else {
           setNome(result.nomeLoja);
           formRef.current?.setData(result);
@@ -109,11 +110,11 @@ export const DetalheLojasAdm: React.FC = () => {
       });
     } else {
       formRef.current?.setData({
-        telefone: '',
-        nomeLoja: '',
-        endereço: '',
-        imgLoja: '',
-        rota: '',
+        telefone: "",
+        nomeLoja: "",
+        endereço: "",
+        imgLoja: "",
+        rota: "",
       });
     }
   }, [id]);
@@ -123,12 +124,12 @@ export const DetalheLojasAdm: React.FC = () => {
       barraDeFerramentas={
         <FerramentasDeDetalhe
           mostarBotaoSalvarEFechar
-          mostarBotaoApagar={id !== 'nova'}
-          mostarBotaoNovo={id !== 'nova'}
+          mostarBotaoApagar={id !== "nova"}
+          mostarBotaoNovo={id !== "nova"}
           TextoBotaoNovo="Novo"
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/lojas')}
+          aoClicarEmNovo={() => navigate("/adm-page/lojas/nova")}
+          aoClicarEmVoltar={() => navigate("/adm-page/lojas")}
           aoClicarEmSalvar={save}
           aoClicarEmSalvrEFechar={saveAndClose}
         />
@@ -136,27 +137,27 @@ export const DetalheLojasAdm: React.FC = () => {
     >
       <Box
         py={3}
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
+        width={"100%"}
+        display={"flex"}
+        justifyContent={"center"}
         alignItems="center"
-        flexDirection={'column'}
-        sx={{ backgroundColor: ' #EBF5FB  ' }}
+        flexDirection={"column"}
+        sx={{ backgroundColor: " #EBF5FB  " }}
       >
-        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+        <VForm style={{ width: "100%" }} ref={formRef} onSubmit={handleSave}>
           <Box margin={1} display="flex" flexDirection="column">
-            <Box textAlign={'center'}>
+            <Box textAlign={"center"}>
               <Typography fontSize={30} fontWeight="bold">
-                {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
+                {id === "nova" ? "Criando novo Lojas" : `Editando: ${nome}`}
               </Typography>
             </Box>
             <Grid container direction="column" padding={2} spacing={5}>
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="Nome"
                   name="nomeLoja"
@@ -167,9 +168,9 @@ export const DetalheLojasAdm: React.FC = () => {
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="endereço"
                   name="endereço"
@@ -179,9 +180,9 @@ export const DetalheLojasAdm: React.FC = () => {
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="telefone"
                   name="telefone"
@@ -190,9 +191,9 @@ export const DetalheLojasAdm: React.FC = () => {
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="Imagem"
                   name="imgLoja"
@@ -201,9 +202,9 @@ export const DetalheLojasAdm: React.FC = () => {
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: '#fff',
+                    backgroundColor: "#fff",
                     borderRadius: 2,
-                    width: '100%',
+                    width: "100%",
                   }}
                   label="rota"
                   name="rota"

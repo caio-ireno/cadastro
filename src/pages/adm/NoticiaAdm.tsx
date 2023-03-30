@@ -1,29 +1,28 @@
 import {
+  Grid,
+  Icon,
+  IconButton,
   LinearProgress,
   Pagination,
-  IconButton,
-  Icon,
-  Grid,
-  useTheme,
   useMediaQuery,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { FerramentasDaLista } from '../../shared/components';
+  useTheme,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { Environment } from '../../shared/environment';
-import { useDebounce } from '../../shared/hooks';
-
+import { FerramentasDaLista } from "../../shared/components";
+import { Environment } from "../../shared/environment";
+import { useDebounce } from "../../shared/hooks";
 import {
   NoticiaProps,
   NoticiaServices,
-} from '../../shared/services/api/noticias/NoticiasService';
-import { ListaAdm } from './ListaAdm';
+} from "../../shared/services/api/noticias/NoticiasService";
+import { ListaAdm } from "./ListaAdm";
 
 export const NoticiaAdm: React.FC = () => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [searchParams, setSearchParams] = useSearchParams();
   const [rows, setRows] = useState<NoticiaProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,11 +31,11 @@ export const NoticiaAdm: React.FC = () => {
   const navigate = useNavigate();
 
   const busca = useMemo(() => {
-    return searchParams.get('busca') || '';
+    return searchParams.get("busca") || "";
   }, [searchParams]);
 
   const pagina = useMemo(() => {
-    return Number(searchParams.get('pagina') || '1');
+    return Number(searchParams.get("pagina") || "1");
   }, [searchParams]);
 
   useEffect(() => {
@@ -56,7 +55,7 @@ export const NoticiaAdm: React.FC = () => {
   }, [busca, pagina]);
 
   const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
+    if (confirm("Realmente deseja apagar?")) {
       NoticiaServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
@@ -64,7 +63,7 @@ export const NoticiaAdm: React.FC = () => {
           setRows((oldRows) => {
             return [...oldRows.filter((oldRow) => oldRow.id !== id)];
           });
-          alert('Registro Apagado com sucesso');
+          alert("Registro Apagado com sucesso");
         }
       });
     }
@@ -75,17 +74,17 @@ export const NoticiaAdm: React.FC = () => {
       <FerramentasDaLista
         textoBusca={busca}
         textoBotaoNovo="nova"
-        aoClicarEmNovo={() => navigate('/adm-page/noticias/nova')}
+        aoClicarEmNovo={() => navigate("/adm-page/noticias/nova")}
       />
       <Box p={1}>
         <Grid
           display="flex"
-          fontWeight={'bold'}
+          fontWeight={"bold"}
           container
           textAlign="center"
           fontSize={15}
           m="auto"
-          justifyContent={'center'}
+          justifyContent={"center"}
         >
           <Grid item xs={smDown ? 4 : 1}>
             Ação
@@ -98,21 +97,21 @@ export const NoticiaAdm: React.FC = () => {
         {rows.map((row) => (
           <Grid
             container
-            textAlign={'center'}
+            textAlign={"center"}
             mt={4}
             key={row.id}
             fontSize={15}
             display="flex"
-            justifyContent={'center'}
+            justifyContent={"center"}
           >
             <Grid item xs={smDown ? 3 : 1}>
               <IconButton onClick={() => handleDelete(row.id)}>
-                <Icon fontSize={'small'}>delete</Icon>
+                <Icon fontSize={"small"}>delete</Icon>
               </IconButton>
               <IconButton
                 onClick={() => navigate(`/adm-page/noticias/${row.id}`)}
               >
-                <Icon fontSize={'small'}>edit</Icon>
+                <Icon fontSize={"small"}>edit</Icon>
               </IconButton>
             </Grid>
             <Grid item xs={smDown ? 4 : 2}>

@@ -4,12 +4,13 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDrawerContext } from '../../contexts';
-import { Footer } from '../footer/Footer';
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useDrawerContext } from "../../contexts";
+import { Footer } from "../footer/Footer";
 
 interface ListItemLinkProps {
   label: string;
@@ -20,7 +21,7 @@ interface ListItemLinkProps {
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
   const theme = useTheme();
   // const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -32,17 +33,17 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
   return (
     <ListItemButton
       sx={{
-        ':hover': {
-          backgroundColor: '#fff',
-          textDecorationLine: 'underline',
-          textDecorationColor: '#5DADE2',
-          textDecorationThickness: '5px ',
-          textDecorationSkipInk: 'none',
+        ":hover": {
+          backgroundColor: "#fff",
+          textDecorationLine: "underline",
+          textDecorationColor: "#5DADE2",
+          textDecorationThickness: "5px ",
+          textDecorationSkipInk: "none",
         },
       }}
       onClick={handleClick}
     >
-      <Typography fontSize={mdDown ? 18 : 25} fontWeight={'bold'}>
+      <Typography fontSize={mdDown ? 18 : 25} fontWeight={"bold"}>
         {label}
       </Typography>
     </ListItemButton>
@@ -57,8 +58,8 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
   // const { toggleTheme, themeName } = useAppThemeContext();
 
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext();
 
@@ -67,23 +68,23 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
       <Drawer
         PaperProps={{
           sx: {
-            borderBottom: 'none',
+            borderBottom: "none",
           },
         }}
-        anchor={smDown ? 'left' : 'top'}
+        anchor={smDown ? "left" : "top"}
         open={isDrawerOpen}
-        variant={smDown ? 'temporary' : 'permanent'}
+        variant={smDown ? "temporary" : "permanent"}
         onClose={toggleDrawerOpen}
       >
         <Box
           py={2}
           display="flex"
-          alignItems={'center'}
+          alignItems={"center"}
           justifyContent="center"
-          flexDirection={smDown ? 'column' : 'row'}
-          gap={mdDown ? '10px' : '50px'}
+          flexDirection={smDown ? "column" : "row"}
+          gap={mdDown ? "10px" : "50px"}
         >
-          <Box display="flex" alignItems={'center'} justifyContent="center">
+          <Box display="flex" alignItems={"center"} justifyContent="center">
             <Box
               sx={{
                 height: theme.spacing(8),
@@ -97,8 +98,8 @@ export const MenuLateral: React.FC<MenuLateralProps> = ({ children }) => {
           <Box>
             <Box
               display="flex"
-              flexDirection={smDown ? 'column' : 'row'}
-              gap={mdDown ? '10px' : '50px'}
+              flexDirection={smDown ? "column" : "row"}
+              gap={mdDown ? "10px" : "50px"}
             >
               {drawerOptions.map((drawerOption) => (
                 <ListItemLink

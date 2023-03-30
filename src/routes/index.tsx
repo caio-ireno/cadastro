@@ -1,23 +1,23 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { Dashboard, ListaSorvetes } from '../pages';
-import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm';
-import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm';
-import { DetalheSorveteAdm } from '../pages/adm/DetalheSorveteAdm';
-import { DetalheTipoSorvete } from '../pages/adm/DetalheTipoSorvete';
-import { LojaAdm } from '../pages/adm/LojaAdm';
-import { NoticiaAdm } from '../pages/adm/NoticiaAdm';
-import { SorveteAdm } from '../pages/adm/SorveteAdm';
-import { TipoSorveteAdms } from '../pages/adm/TipoSorveteAdm';
-import { Historia } from '../pages/historia/Historia';
-import { ListaLojas } from '../pages/lojas/ListaLojas';
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
-import { useDrawerContext } from '../shared/contexts';
-import { useDebounce } from '../shared/hooks';
+import { Dashboard, ListaSorvetes } from "../pages";
+import { DetalheLojasAdm } from "../pages/adm/DetalheLojasAdm";
+import { DetalheNoticiasAdm } from "../pages/adm/DetalheNoticiasAdm";
+import { DetalheSorveteAdm } from "../pages/adm/DetalheSorveteAdm";
+import { DetalheTipoSorvete } from "../pages/adm/DetalheTipoSorvete";
+import { LojaAdm } from "../pages/adm/LojaAdm";
+import { NoticiaAdm } from "../pages/adm/NoticiaAdm";
+import { SorveteAdm } from "../pages/adm/SorveteAdm";
+import { TipoSorveteAdms } from "../pages/adm/TipoSorveteAdm";
+import { Historia } from "../pages/historia/Historia";
+import { ListaLojas } from "../pages/lojas/ListaLojas";
+import { useDrawerContext } from "../shared/contexts";
+import { useDebounce } from "../shared/hooks";
 import {
   AllTypes,
   SorveteProps,
-} from '../shared/services/api/sorvete/AllTypes';
+} from "../shared/services/api/sorvete/AllTypes";
 
 export const AppRoutes = () => {
   const { setDrawerOption } = useDrawerContext();
@@ -27,25 +27,25 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOption([
       {
-        label: 'Página inicial',
-        path: '/pagina-inicial',
+        label: "Página inicial",
+        path: "/pagina-inicial",
       },
       {
-        label: 'Sorvetes',
-        path: '/sorvetes/',
+        label: "Sorvetes",
+        path: "/sorvetes/",
       },
 
       {
-        label: 'Lojas',
-        path: '/lojas',
+        label: "Lojas",
+        path: "/lojas",
       },
       {
-        label: 'Historia',
-        path: '/historia',
+        label: "Historia",
+        path: "/historia",
       },
       {
-        label: 'Adm',
-        path: '/adm-page',
+        label: "Adm",
+        path: "/adm-page",
       },
     ]);
   }, []);

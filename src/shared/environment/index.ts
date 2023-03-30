@@ -6,14 +6,14 @@ export const Environment = {
   /**
    * Placeholder exibido nas inputs
    */
-  INPUT_DE_BUSCA: 'Pesquisar...',
+  INPUT_DE_BUSCA: "Pesquisar...",
   /**
    * Texte exibido quando nehum registro é encontrado em uma listagem
    */
-  LISTAGEM_VAZIA: 'Nenhum Registro Encontrado.',
+  LISTAGEM_VAZIA: "Nenhum Registro Encontrado.",
 
   /**
    * URL base de consulta dos dados do projeto
    */
-  URL_BASE: 'http://127.0.0.1:8000/api/',
+  URL_BASE: "http://127.0.0.1:8000/api/",
 };

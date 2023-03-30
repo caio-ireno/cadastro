@@ -3,14 +3,13 @@ import {
   Button,
   Divider,
   Icon,
-  Paper,
   Skeleton,
   Typography,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
 
 interface FerramentasDeDetalheProps {
   TextoBotaoNovo?: string;
@@ -35,7 +34,7 @@ interface FerramentasDeDetalheProps {
 }
 
 const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
-  TextoBotaoNovo = 'novo',
+  TextoBotaoNovo = "novo",
 
   mostarBotaoVoltar = true,
   mostarBotaoNovo = true,
@@ -56,8 +55,8 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
   aoClicarEmSalvrEFechar,
 }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
@@ -81,9 +80,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={'nowrap'}
+              whiteSpace={"nowrap"}
               textOverflow="ellipsis"
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
               Salvar
             </Typography>
@@ -105,9 +104,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           >
             <Typography
               variant="button"
-              whiteSpace={'nowrap'}
+              whiteSpace={"nowrap"}
               textOverflow="ellipsis"
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
               salvar e fechar
             </Typography>
@@ -129,9 +128,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={'nowrap'}
+              whiteSpace={"nowrap"}
               textOverflow="ellipsis"
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
               apagar
             </Typography>
@@ -152,9 +151,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={'nowrap'}
+              whiteSpace={"nowrap"}
               textOverflow="ellipsis"
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
               {TextoBotaoNovo}
             </Typography>
@@ -175,9 +174,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={'nowrap'}
+              whiteSpace={"nowrap"}
               textOverflow="ellipsis"
-              overflow={'hidden'}
+              overflow={"hidden"}
             >
               Voltar
             </Typography>

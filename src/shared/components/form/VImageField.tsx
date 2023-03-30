@@ -1,6 +1,6 @@
-import { useField } from '@unform/core';
-import { Input, InputProps } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import { Input, InputProps } from "@mui/material";
+import { useField } from "@unform/core";
+import React, { useEffect, useRef, useState } from "react";
 
 type VImageFieldProps = InputProps & {
   name: string;
@@ -11,15 +11,15 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, defaultValue, error, clearError } =
     useField(name);
 
-  const [imageRoute, setImageRoute] = useState<string>(defaultValue || '');
+  const [imageRoute, setImageRoute] = useState<string>(defaultValue || "");
 
   useEffect(() => {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path: 'files[0]',
+      path: "files[0]",
       clearValue: (ref: HTMLInputElement) => {
-        ref.value = '';
+        ref.value = "";
       },
     });
   }, [fieldName, registerField]);
@@ -31,12 +31,12 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        setImageRoute((e.target?.result as string) || '');
+        setImageRoute((e.target?.result as string) || "");
       };
 
       reader.readAsDataURL(file);
     } else {
-      setImageRoute('');
+      setImageRoute("");
     }
   }
 
@@ -51,7 +51,7 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
         onChange={handleImageChange}
         {...rest}
       />
-      {error && <span style={{ color: 'red' }}>{error}</span>}
+      {error && <span style={{ color: "red" }}>{error}</span>}
       {imageRoute && <img src={imageRoute} alt="Imagem da notícia" />}
     </>
   );

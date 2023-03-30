@@ -1,4 +1,4 @@
-import { Facebook, Instagram } from '@mui/icons-material';
+import { Facebook, Instagram } from "@mui/icons-material";
 import {
   Grid,
   Icon,
@@ -6,10 +6,10 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ListItemLinkProps {
   label: string;
@@ -19,7 +19,7 @@ interface ListItemLinkProps {
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   const theme = useTheme();
   // const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -28,17 +28,17 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   return (
     <ListItemButton
       sx={{
-        ':hover': {
-          backgroundColor: '#fff',
-          textDecorationLine: 'underline',
-          textDecorationColor: '#5DADE2',
-          textDecorationThickness: '5px ',
-          textDecorationSkipInk: 'none',
+        ":hover": {
+          backgroundColor: "#fff",
+          textDecorationLine: "underline",
+          textDecorationColor: "#5DADE2",
+          textDecorationThickness: "5px ",
+          textDecorationSkipInk: "none",
         },
       }}
       onClick={handleClick}
     >
-      <Typography fontSize={mdDown ? 12 : 15} fontWeight={'bold'}>
+      <Typography fontSize={mdDown ? 12 : 15} fontWeight={"bold"}>
         {label}
       </Typography>
     </ListItemButton>
@@ -47,19 +47,19 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
 
 export const Footer: React.FC = () => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Box
-      display={'flex'}
+      display={"flex"}
       justifyContent="space-between"
       mx={mdDown ? 2 : 5}
       my={2}
       p={3}
     >
       {!smDown && (
-        <Box display="flex" alignItems={'center'} justifyContent="center">
+        <Box display="flex" alignItems={"center"} justifyContent="center">
           <Box
             sx={{
               height: mdDown ? theme.spacing(6) : theme.spacing(14),
@@ -73,18 +73,18 @@ export const Footer: React.FC = () => {
 
       {!smDown && (
         <Grid
-          flexDirection={mdDown ? 'column' : 'row'}
-          display={'flex'}
+          flexDirection={mdDown ? "column" : "row"}
+          display={"flex"}
           alignItems="center"
-          justifyContent={'center'}
-          width={'300px'}
+          justifyContent={"center"}
+          width={"300px"}
           container
         >
           <Grid
-            display={'flex'}
+            display={"flex"}
             alignItems="center"
-            justifyContent={'center'}
-            flexDirection={'column'}
+            justifyContent={"center"}
+            flexDirection={"column"}
             item
             xs={6}
           >
@@ -92,10 +92,10 @@ export const Footer: React.FC = () => {
             <ListItemLink to="/sorvetes" label="Sorvetes" />
           </Grid>
           <Grid
-            display={'flex'}
-            flexDirection={'column'}
+            display={"flex"}
+            flexDirection={"column"}
             alignItems="center"
-            justifyContent={'center'}
+            justifyContent={"center"}
             item
             xs={6}
           >
@@ -108,23 +108,23 @@ export const Footer: React.FC = () => {
       <Box display="flex" flexDirection="column">
         <Typography
           color="#3498DB"
-          fontWeight={'bold'}
+          fontWeight={"bold"}
           fontSize={mdDown ? 20 : 30}
         >
           Fale conosco
         </Typography>
         <Typography
           fontSize={mdDown ? 15 : 20}
-          marginLeft={mdDown ? '0px' : '25px'}
+          marginLeft={mdDown ? "0px" : "25px"}
           color="#717D7E"
         >
           Se quiser bater um papo, ligue
         </Typography>
-        <Box gap={2} display="flex" alignItems={'center'} mt={2}>
+        <Box gap={2} display="flex" alignItems={"center"} mt={2}>
           {!mdDown && <Icon>phone</Icon>}
           <Typography fontSize={mdDown ? 15 : 20}>(15) 996641733</Typography>
         </Box>
-        <Box gap={2} display="flex" alignItems={'center'} mt={1}>
+        <Box gap={2} display="flex" alignItems={"center"} mt={1}>
           {!mdDown && <Icon>mail</Icon>}
           <Typography fontSize={mdDown ? 15 : 20}>urla@gmail.com</Typography>
         </Box>
@@ -133,13 +133,13 @@ export const Footer: React.FC = () => {
       <Box display="flex" flexDirection="column">
         <Typography
           color="#3498DB"
-          fontWeight={'bold'}
+          fontWeight={"bold"}
           fontSize={mdDown ? 20 : 30}
         >
-          {mdDown && 'Nossas redes sociais'}
-          {!mdDown && 'Siga nossas redes sociais'}
+          {mdDown && "Nossas redes sociais"}
+          {!mdDown && "Siga nossas redes sociais"}
         </Typography>
-        <Box gap={2} display="flex" alignItems={'center'} mt={2}>
+        <Box gap={2} display="flex" alignItems={"center"} mt={2}>
           {!mdDown && (
             <Icon>
               <Facebook />
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
           )}
           <Typography fontSize={mdDown ? 15 : 20}>(15) 996641733</Typography>
         </Box>
-        <Box gap={2} display="flex" alignItems={'center'} mt={1}>
+        <Box gap={2} display="flex" alignItems={"center"} mt={1}>
           {!mdDown && (
             <Icon>
               <Instagram></Instagram>

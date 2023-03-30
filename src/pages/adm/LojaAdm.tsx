@@ -1,36 +1,28 @@
 import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TableFooter,
+  Grid,
+  Icon,
+  IconButton,
   LinearProgress,
   Pagination,
-  IconButton,
-  Icon,
-  Grid,
-  useTheme,
   useMediaQuery,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { FerramentasDaLista } from '../../shared/components';
+  useTheme,
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { Environment } from '../../shared/environment';
-import { useDebounce } from '../../shared/hooks';
+import { FerramentasDaLista } from "../../shared/components";
+import { Environment } from "../../shared/environment";
+import { useDebounce } from "../../shared/hooks";
 import {
   LojasProps,
   LojasServices,
-} from '../../shared/services/api/lojas/LojasService';
-import { ListaAdm } from './ListaAdm';
+} from "../../shared/services/api/lojas/LojasService";
+import { ListaAdm } from "./ListaAdm";
 
 export const LojaAdm: React.FC = () => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const [searchParams, setSearchParams] = useSearchParams();
   const [rows, setRows] = useState<LojasProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -39,11 +31,11 @@ export const LojaAdm: React.FC = () => {
   const navigate = useNavigate();
 
   const busca = useMemo(() => {
-    return searchParams.get('busca') || '';
+    return searchParams.get("busca") || "";
   }, [searchParams]);
 
   const pagina = useMemo(() => {
-    return Number(searchParams.get('pagina') || '1');
+    return Number(searchParams.get("pagina") || "1");
   }, [searchParams]);
 
   useEffect(() => {
@@ -63,7 +55,7 @@ export const LojaAdm: React.FC = () => {
   }, [busca, pagina]);
 
   const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
+    if (confirm("Realmente deseja apagar?")) {
       LojasServices.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
@@ -71,7 +63,7 @@ export const LojaAdm: React.FC = () => {
           setRows((oldRows) => {
             return [...oldRows.filter((oldRow) => oldRow.id !== id)];
           });
-          alert('Registro Apagado com sucesso');
+          alert("Registro Apagado com sucesso");
         }
       });
     }
@@ -82,17 +74,17 @@ export const LojaAdm: React.FC = () => {
       <FerramentasDaLista
         textoBusca={busca}
         aoMudarTextoBusca={(texto) =>
-          setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
+          setSearchParams({ busca: texto, pagina: "1" }, { replace: true })
         }
         mostarInputBusca
         textoBotaoNovo="nova"
-        aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
+        aoClicarEmNovo={() => navigate("/adm-page/lojas/nova")}
       />
 
       <Grid
         display="flex"
-        justifyContent={'center'}
-        fontWeight={'bold'}
+        justifyContent={"center"}
+        fontWeight={"bold"}
         container
         textAlign="center"
         fontSize={15}
@@ -115,19 +107,19 @@ export const LojaAdm: React.FC = () => {
       {rows.map((row) => (
         <Grid
           display="flex"
-          justifyContent={'center'}
+          justifyContent={"center"}
           container
-          textAlign={'center'}
+          textAlign={"center"}
           mt={4}
           key={row.id}
           fontSize={15}
         >
           <Grid item xs={smDown ? 3 : 1}>
             <IconButton onClick={() => handleDelete(row.id)}>
-              <Icon fontSize={'small'}>delete</Icon>
+              <Icon fontSize={"small"}>delete</Icon>
             </IconButton>
             <IconButton onClick={() => navigate(`/adm-page/lojas/${row.id}`)}>
-              <Icon fontSize={'small'}>edit</Icon>
+              <Icon fontSize={"small"}>edit</Icon>
             </IconButton>
           </Grid>
           <Grid item xs={smDown ? 3 : 2}>

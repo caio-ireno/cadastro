@@ -1,17 +1,18 @@
-import { Box, CircularProgress, useMediaQuery, useTheme } from '@mui/material';
-import { useEffect, useState } from 'react';
-import Carousel from 'react-material-ui-carousel';
-import { useDebounce } from '../../hooks';
+import { Box, CircularProgress, useMediaQuery, useTheme } from "@mui/material";
+import { useEffect, useState } from "react";
+import Carousel from "react-material-ui-carousel";
+
+import { useDebounce } from "../../hooks";
 import {
   NoticiaProps,
   NoticiaServices,
-} from '../../services/api/noticias/NoticiasService';
+} from "../../services/api/noticias/NoticiasService";
 
 export const CarouselComponent = () => {
   const { debounce } = useDebounce();
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
 
   const [rows, setRows] = useState<NoticiaProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +35,7 @@ export const CarouselComponent = () => {
   return (
     <Box>
       {isLoading && (
-        <Box display="flex" alignItems={'center'} justifyContent="center">
+        <Box display="flex" alignItems={"center"} justifyContent="center">
           <CircularProgress />
         </Box>
       )}
@@ -42,14 +43,14 @@ export const CarouselComponent = () => {
         <Carousel autoPlay navButtonsAlwaysVisible indicators={false}>
           {rows.map((row) => (
             <Box
-              width={'100%'}
-              maxHeight={smDown ? '200px' : mdDown ? '300px' : '500px'}
+              width={"100%"}
+              maxHeight={smDown ? "200px" : mdDown ? "300px" : "500px"}
               display="flex"
-              justifyContent={'center'}
+              justifyContent={"center"}
               key={row.id}
             >
               <Box
-                width={'100%'}
+                width={"100%"}
                 height="auto"
                 component="img"
                 src={row.imgNoticia}

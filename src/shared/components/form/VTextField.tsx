@@ -1,6 +1,6 @@
-import { TextField, TextFieldProps } from '@mui/material';
-import { useField } from '@unform/core';
-import React, { useEffect, useState } from 'react';
+import { TextField, TextFieldProps } from "@mui/material";
+import { useField } from "@unform/core";
+import React, { useEffect, useState } from "react";
 
 type VTextFieldProps = TextFieldProps & {
   name: string;
@@ -9,7 +9,7 @@ type VTextFieldProps = TextFieldProps & {
 export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, defaultValue, error, clearError } =
     useField(name);
-  const [value, setValue] = useState<string | number>(defaultValue || '');
+  const [value, setValue] = useState<string | number>(defaultValue || "");
 
   useEffect(() => {
     registerField({

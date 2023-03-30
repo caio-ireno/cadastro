@@ -1,9 +1,9 @@
-import { OpacityOutlined } from '@mui/icons-material';
-import { Autocomplete, Box, CircularProgress, TextField } from '@mui/material';
-import { useField } from '@unform/core';
-import { useEffect, useMemo, useState } from 'react';
-import { useDebounce } from '../../../shared/hooks';
-import { TipoSorveteService } from '../../../shared/services/api/tipo sorvete/TipoSorvete';
+import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
+import { useField } from "@unform/core";
+import { useEffect, useMemo, useState } from "react";
+
+import { useDebounce } from "../../../shared/hooks";
+import { TipoSorveteService } from "../../../shared/services/api/tipo sorvete/TipoSorvete";
 
 type AutoCompleteOption = {
   label: string;
@@ -12,7 +12,7 @@ type AutoCompleteOption = {
 
 export const AutoComplet: React.FC = () => {
   const { fieldName, registerField, error, clearError } =
-    useField('sorvete_id');
+    useField("sorvete_id");
 
   const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
@@ -58,7 +58,7 @@ export const AutoComplet: React.FC = () => {
   }, [selectedId, opcoes]);
 
   return (
-    <Box width={'100%'} sx={{ backgroundColor: ' #fff ', borderRadius: 2 }}>
+    <Box width={"100%"} sx={{ backgroundColor: " #fff ", borderRadius: 2 }}>
       <Autocomplete
         openText="Abrir"
         closeText="Fechar"

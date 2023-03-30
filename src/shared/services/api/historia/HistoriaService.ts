@@ -1,4 +1,4 @@
-import { Api } from '../axios-config';
+import { Api } from "../axios-config";
 
 export interface TextoProps {
   id: number;
@@ -9,7 +9,7 @@ type TextoComTotalCount = {
   data: TextoProps[];
 };
 
-const getAll = async (filter = ''): Promise<TextoComTotalCount | Error> => {
+const getAll = async (filter = ""): Promise<TextoComTotalCount | Error> => {
   try {
     const urlRelativa = `/image-base?&nomeNoticia_like=${filter}`;
     const { data } = await Api.get(urlRelativa);
@@ -20,11 +20,11 @@ const getAll = async (filter = ''): Promise<TextoComTotalCount | Error> => {
       };
     }
 
-    return new Error('Erro ao listar os Registros');
+    return new Error("Erro ao listar os Registros");
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao Carregar',
+      (error as { message: string }).message || "Erro ao Carregar",
     );
   }
 };
@@ -38,7 +38,7 @@ const updateById = async (
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao atualizar',
+      (error as { message: string }).message || "Erro ao atualizar",
     );
   }
 };
@@ -49,7 +49,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
   } catch (error) {
     console.error(error);
     return new Error(
-      (error as { message: string }).message || 'Erro ao apagar',
+      (error as { message: string }).message || "Erro ao apagar",
     );
   }
 };
