@@ -140,21 +140,7 @@ export const SorveteAdm: React.FC = () => {
             </Grid>
 
             <Grid item xs={smDown ? 3 : 2}>
-              {row.sorvete_id === 1
-                ? 'Gourmet'
-                : row.sorvete_id === 2
-                ? 'Standart'
-                : row.sorvete_id === 3
-                ? 'Especial'
-                : row.sorvete_id === 4
-                ? 'Açaí'
-                : row.sorvete_id === 5
-                ? 'Copão'
-                : row.sorvete_id === 6
-                ? 'Picolé'
-                : row.sorvete_id === 7
-                ? 'Linha Zero'
-                : 'Mais Populares'}
+              {row.sorvete_id}
             </Grid>
 
             <Grid item xs={smDown ? 3 : 2}>
