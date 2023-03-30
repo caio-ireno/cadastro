@@ -1,5 +1,5 @@
-import { createTheme } from "@mui/material";
-import { blue, orange } from "@mui/material/colors";
+import { createTheme } from '@mui/material'
+import { blue, orange } from '@mui/material/colors'
 
 export const LightTheme = createTheme({
   palette: {
@@ -7,23 +7,23 @@ export const LightTheme = createTheme({
       main: blue[600],
       dark: blue[800],
       light: blue[400],
-      contrastText: "#fff",
+      contrastText: '#fff',
     },
     secondary: {
       main: orange[400],
       dark: orange[600],
       light: orange[300],
-      contrastText: "#fff",
+      contrastText: '#fff',
     },
     background: {
-      default: "#fff",
-      paper: "#fff",
+      default: '#fff',
+      paper: '#fff',
     },
   },
   typography: {
     allVariants: {
-      color: "black",
-      fontFamily: "Philosopher",
+      color: 'black',
+      fontFamily: 'Philosopher',
     },
   },
-});
+})

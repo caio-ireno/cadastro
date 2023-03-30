@@ -1,120 +1,120 @@
-import { Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import * as yup from "yup";
+import { Grid, Typography } from '@mui/material'
+import { Box } from '@mui/system'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import * as yup from 'yup'
 
-import FerramentasDeDetalhe from "../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe";
-import { useVForm } from "../../shared/components/form/useVForm";
-import { VForm } from "../../shared/components/form/VForm";
-import { VTextField } from "../../shared/components/form/VTextField";
-import { LayoutBaseDePagina } from "../../shared/layouts";
-import { AllTypes } from "../../shared/services/api/sorvete/AllTypes";
+import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe'
+import { useVForm } from '../../shared/components/form/useVForm'
+import { VForm } from '../../shared/components/form/VForm'
+import { VTextField } from '../../shared/components/form/VTextField'
+import { LayoutBaseDePagina } from '../../shared/layouts'
+import { AllTypes } from '../../shared/services/api/sorvete/AllTypes'
 
 interface FormDataProps {
-  tipo: string;
+  tipo: string
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   tipo: yup.string().required().min(3),
-});
+})
 
 export const DetalheTipoSorvete: React.FC = () => {
-  const navigate = useNavigate();
-  const { id = "nova" } = useParams<"id">();
-  const [isLoading, setIsLoading] = useState(false);
-  const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm();
-  const [nome, setNome] = useState("");
+  const navigate = useNavigate()
+  const { id = 'nova' } = useParams<'id'>()
+  const [isLoading, setIsLoading] = useState(false)
+  const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
+  const [nome, setNome] = useState('')
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
-      .then((dadosValidados) => {
-        setIsLoading(true);
-        if (id === "nova") {
-          AllTypes.createType(dadosValidados).then((result) => {
-            setIsLoading(false);
+      .then(dadosValidados => {
+        setIsLoading(true)
+        if (id === 'nova') {
+          AllTypes.createType(dadosValidados).then(result => {
+            setIsLoading(false)
             if (result instanceof Error) {
-              alert(result.message);
+              alert(result.message)
             } else {
               if (IsSaveAndClose()) {
-                navigate("/adm-page/tipo-sorvete/");
+                navigate('/adm-page/tipo-sorvete/')
               } else {
-                navigate(`/adm-page/tipo-sorvete/${result}`);
+                navigate(`/adm-page/tipo-sorvete/${result}`)
               }
             }
-          });
+          })
         } else {
           AllTypes.updateTypeById(Number(id), {
             id: Number(id),
             ...dadosValidados,
-          }).then((result) => {
-            setIsLoading(false);
+          }).then(result => {
+            setIsLoading(false)
             if (result instanceof Error) {
-              alert(result.message);
+              alert(result.message)
             } else {
               if (IsSaveAndClose()) {
-                navigate("/adm-page/tipo-sorvete/");
+                navigate('/adm-page/tipo-sorvete/')
               }
             }
-          });
+          })
         }
       })
       .catch((errors: yup.ValidationError) => {
-        const ValidationErrors: { [key: string]: string } = {};
-        errors.inner.forEach((error) => {
-          if (!error.path) return;
+        const ValidationErrors: { [key: string]: string } = {}
+        errors.inner.forEach(error => {
+          if (!error.path) return
 
-          ValidationErrors[error.path] = error.message;
-        });
+          ValidationErrors[error.path] = error.message
+        })
 
-        formRef.current?.setErrors(ValidationErrors);
-      });
-  };
+        formRef.current?.setErrors(ValidationErrors)
+      })
+  }
 
   const handleDelete = (id: number) => {
-    if (confirm("Realmente deseja apagar?")) {
-      AllTypes.deleteById(id).then((result) => {
+    if (confirm('Realmente deseja apagar?')) {
+      AllTypes.deleteById(id).then(result => {
         if (result instanceof Error) {
-          alert(result.message);
+          alert(result.message)
         } else {
-          alert("Registro Apagado com sucesso");
-          navigate("/adm-page/tipo-sorvete");
+          alert('Registro Apagado com sucesso')
+          navigate('/adm-page/tipo-sorvete')
         }
-      });
+      })
     }
-  };
+  }
 
   useEffect(() => {
-    if (id !== "nova") {
-      setIsLoading(true);
-      AllTypes.getTypeById(Number(id)).then((result) => {
-        setIsLoading(false);
+    if (id !== 'nova') {
+      setIsLoading(true)
+      AllTypes.getTypeById(Number(id)).then(result => {
+        setIsLoading(false)
         if (result instanceof Error) {
-          alert(result.message);
-          navigate("/adm-page/tipo-sorvete");
+          alert(result.message)
+          navigate('/adm-page/tipo-sorvete')
         } else {
-          setNome(result.tipo);
-          formRef.current?.setData(result);
+          setNome(result.tipo)
+          formRef.current?.setData(result)
         }
-      });
+      })
     } else {
       formRef.current?.setData({
-        nomeNoticia: "",
-      });
+        nomeNoticia: '',
+      })
     }
-  }, [id]);
+  }, [id])
 
   return (
     <LayoutBaseDePagina
       barraDeFerramentas={
         <FerramentasDeDetalhe
           mostarBotaoSalvarEFechar
-          mostarBotaoApagar={id !== "nova"}
-          mostarBotaoNovo={id !== "nova"}
+          mostarBotaoApagar={id !== 'nova'}
+          mostarBotaoNovo={id !== 'nova'}
           TextoBotaoNovo="Novo"
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate("/adm-page/tipo-sorvete/nova")}
-          aoClicarEmVoltar={() => navigate("/adm-page/tipo-sorvete")}
+          aoClicarEmNovo={() => navigate('/adm-page/tipo-sorvete/nova')}
+          aoClicarEmVoltar={() => navigate('/adm-page/tipo-sorvete')}
           aoClicarEmSalvar={save}
           aoClicarEmSalvrEFechar={saveAndClose}
         />
@@ -122,19 +122,19 @@ export const DetalheTipoSorvete: React.FC = () => {
     >
       <Box
         py={3}
-        width={"100%"}
-        display={"flex"}
-        justifyContent={"center"}
+        width={'100%'}
+        display={'flex'}
+        justifyContent={'center'}
         alignItems="center"
-        flexDirection={"column"}
-        sx={{ backgroundColor: " #EBF5FB  " }}
+        flexDirection={'column'}
+        sx={{ backgroundColor: ' #EBF5FB  ' }}
       >
-        <VForm style={{ width: "100%" }} ref={formRef} onSubmit={handleSave}>
+        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
           <Box margin={1} display="flex" flexDirection="column">
-            <Box textAlign={"center"}>
+            <Box textAlign={'center'}>
               <Typography fontSize={30} fontWeight="bold">
-                {id === "nova"
-                  ? "Criando novo tipo de Sorvete"
+                {id === 'nova'
+                  ? 'Criando novo tipo de Sorvete'
                   : `Editando: ${nome}`}
               </Typography>
             </Box>
@@ -142,13 +142,13 @@ export const DetalheTipoSorvete: React.FC = () => {
               <Grid item xs={12}>
                 <VTextField
                   sx={{
-                    backgroundColor: "#fff",
+                    backgroundColor: '#fff',
                     borderRadius: 2,
-                    width: "100%",
+                    width: '100%',
                   }}
                   label="Nome"
                   name="tipo"
-                  onChange={(e) => setNome(e.target.value)}
+                  onChange={e => setNome(e.target.value)}
                 />
               </Grid>
             </Grid>
@@ -156,5 +156,5 @@ export const DetalheTipoSorvete: React.FC = () => {
         </VForm>
       </Box>
     </LayoutBaseDePagina>
-  );
-};
+  )
+}

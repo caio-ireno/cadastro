@@ -1,23 +1,23 @@
-import { TextField, TextFieldProps } from "@mui/material";
-import { useField } from "@unform/core";
-import React, { useEffect, useState } from "react";
+import { TextField, TextFieldProps } from '@mui/material'
+import { useField } from '@unform/core'
+import React, { useEffect, useState } from 'react'
 
 type VTextFieldProps = TextFieldProps & {
-  name: string;
-};
+  name: string
+}
 
 export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, defaultValue, error, clearError } =
-    useField(name);
-  const [value, setValue] = useState<string | number>(defaultValue || "");
+    useField(name)
+  const [value, setValue] = useState<string | number>(defaultValue || '')
 
   useEffect(() => {
     registerField({
       name: fieldName,
       getValue: () => value,
       setValue: (_, NewValue) => setValue(NewValue),
-    });
-  }, [registerField, fieldName, value]);
+    })
+  }, [registerField, fieldName, value])
 
   return (
     <TextField
@@ -26,17 +26,17 @@ export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
       error={!!error}
       helperText={error}
       defaultValue={defaultValue}
-      onKeyDown={(e) => {
-        error && clearError();
-        rest.onKeyDown?.(e);
+      onKeyDown={e => {
+        error && clearError()
+        rest.onKeyDown?.(e)
       }}
       value={value}
-      onChange={(e) => {
-        const newValue = e.target.value;
-        const isNumber = !isNaN(parseInt(newValue));
-        setValue(isNumber ? parseFloat(newValue) : newValue);
-        rest.onChange?.(e);
+      onChange={e => {
+        const newValue = e.target.value
+        const isNumber = !isNaN(parseInt(newValue))
+        setValue(isNumber ? parseFloat(newValue) : newValue)
+        rest.onChange?.(e)
       }}
     />
-  );
-};
+  )
+}

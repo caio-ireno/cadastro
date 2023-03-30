@@ -1,64 +1,63 @@
-import { Autocomplete, Box, CircularProgress, TextField } from "@mui/material";
-import { useField } from "@unform/core";
-import { useEffect, useMemo, useState } from "react";
+import { Autocomplete, Box, CircularProgress, TextField } from '@mui/material'
+import { useField } from '@unform/core'
+import { useEffect, useMemo, useState } from 'react'
 
-import { useDebounce } from "../../../shared/hooks";
-import { TipoSorveteService } from "../../../shared/services/api/tipo sorvete/TipoSorvete";
+import { useDebounce } from '../../../shared/hooks'
+import { TipoSorveteService } from '../../../shared/services/api/tipo sorvete/TipoSorvete'
 
 type AutoCompleteOption = {
-  label: string;
-  id: number;
-};
+  label: string
+  id: number
+}
 
 export const AutoComplet: React.FC = () => {
-  const { fieldName, registerField, error, clearError } =
-    useField("sorvete_id");
+  const { fieldName, registerField, error, clearError } = useField('sorvete_id')
 
-  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
+  const [selectedId, setSelectedId] = useState<number | undefined>(undefined)
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
-  const [opcoes, setOpcoes] = useState<AutoCompleteOption[]>([]);
-  const { debounce } = useDebounce();
+  const [opcoes, setOpcoes] = useState<AutoCompleteOption[]>([])
+  const { debounce } = useDebounce()
 
   useEffect(() => {
     registerField({
       name: fieldName,
       getValue: () => selectedId,
       setValue: (_, newSelectedId) => setSelectedId(newSelectedId),
-    });
-  }, [registerField, fieldName, selectedId]);
+    })
+  }, [registerField, fieldName, selectedId])
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     debounce(() => {
-      TipoSorveteService.getAll().then((result) => {
-        setIsLoading(false);
+      TipoSorveteService.getAll().then(result => {
+        setIsLoading(false)
         if (result instanceof Error) {
-          alert(result.message);
-          return;
+          alert(result.message)
+          return
         } else {
           setOpcoes(
-            result.data.map((o) => ({
+            result.data.map(o => ({
               label: o.tipo,
               id: o.id,
             })),
-          );
+          )
         }
-      });
-    });
-  }, []);
+      })
+    })
+  }, [])
 
   const autoCompletSelectedOption = useMemo(() => {
-    if (!selectedId) return null;
+    if (!selectedId) return null
 
-    const SelectedOption = opcoes.find((opcao) => opcao.id === selectedId);
-    if (!selectedId) return null;
-    return SelectedOption;
-  }, [selectedId, opcoes]);
+    const SelectedOption = opcoes.find(opcao => opcao.id === selectedId)
+    if (!selectedId) return null
+    return SelectedOption
+  }, [selectedId, opcoes])
 
   return (
-    <Box width={"100%"} sx={{ backgroundColor: " #fff ", borderRadius: 2 }}>
+    <Box width={'100%'} sx={{ backgroundColor: ' #fff ', borderRadius: 2 }}>
       <Autocomplete
         openText="Abrir"
         closeText="Fechar"
@@ -70,10 +69,10 @@ export const AutoComplet: React.FC = () => {
         loading={isLoading}
         options={opcoes}
         onChange={(_, newValue) => {
-          setSelectedId(newValue?.id);
-          clearError();
+          setSelectedId(newValue?.id)
+          clearError()
         }}
-        renderInput={(params) => (
+        renderInput={params => (
           <TextField
             {...params}
             error={!!error}
@@ -83,5 +82,5 @@ export const AutoComplet: React.FC = () => {
         )}
       />
     </Box>
-  );
-};
+  )
+}

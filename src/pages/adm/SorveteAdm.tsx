@@ -8,93 +8,93 @@ import {
   Pagination,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+} from '@mui/material'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-import { FerramentasDaLista } from "../../shared/components";
-import { Environment } from "../../shared/environment";
-import { useDebounce } from "../../shared/hooks";
+import { FerramentasDaLista } from '../../shared/components'
+import { Environment } from '../../shared/environment'
+import { useDebounce } from '../../shared/hooks'
 import {
   AllTypes,
   ListaSorveteProps,
-} from "../../shared/services/api/sorvete/AllTypes";
-import { ListaAdm } from "./ListaAdm";
+} from '../../shared/services/api/sorvete/AllTypes'
+import { ListaAdm } from './ListaAdm'
 
 export const SorveteAdm: React.FC = () => {
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const theme = useTheme()
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'))
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const { debounce } = useDebounce();
+  const [searchParams, setSearchParams] = useSearchParams()
+  const { debounce } = useDebounce()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [rows, setRows] = useState<ListaSorveteProps[]>([]);
-  const [totalCount, SetTotalCount] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [rows, setRows] = useState<ListaSorveteProps[]>([])
+  const [totalCount, SetTotalCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
 
   const busca = useMemo(() => {
-    return searchParams.get("busca") || "";
-  }, [searchParams]);
+    return searchParams.get('busca') || ''
+  }, [searchParams])
 
   const page = useMemo(() => {
-    return Number(searchParams.get("page") || "1");
-  }, [searchParams]);
+    return Number(searchParams.get('page') || '1')
+  }, [searchParams])
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     debounce(() => {
-      AllTypes.getAllSabores(page).then((result) => {
-        setIsLoading(false);
+      AllTypes.getAllSabores(page).then(result => {
+        setIsLoading(false)
         if (result instanceof Error) {
-          alert(result.message);
-          return;
+          alert(result.message)
+          return
         } else {
-          setRows(result.data.data);
-          console.log(result.data);
-          SetTotalCount(100);
+          setRows(result.data.data)
+          console.log(result.data)
+          SetTotalCount(100)
         }
-      });
-    });
-  }, [page]);
+      })
+    })
+  }, [page])
 
   const handleDelete = (id: number) => {
-    if (confirm("Realmente deseja apagar?")) {
-      AllTypes.deleteById(id).then((result) => {
+    if (confirm('Realmente deseja apagar?')) {
+      AllTypes.deleteById(id).then(result => {
         if (result instanceof Error) {
-          alert(result.message);
+          alert(result.message)
         } else {
-          setRows((oldRows) => {
-            return [...oldRows.filter((oldRow) => oldRow.id !== id)];
-          });
-          alert("Registro Apagado com sucesso");
+          setRows(oldRows => {
+            return [...oldRows.filter(oldRow => oldRow.id !== id)]
+          })
+          alert('Registro Apagado com sucesso')
         }
-      });
+      })
     }
-  };
+  }
 
-  const ITEMS_PER_PAGE = 10; // or any other value you want
+  const ITEMS_PER_PAGE = 10 // or any other value you want
 
   const totalPages = useMemo(() => {
-    return Math.ceil(totalCount / ITEMS_PER_PAGE);
-  }, [totalCount]);
+    return Math.ceil(totalCount / ITEMS_PER_PAGE)
+  }, [totalCount])
 
   return (
     <ListaAdm>
       <FerramentasDaLista
         textoBusca={busca}
-        aoMudarTextoBusca={(texto) =>
-          setSearchParams({ busca: texto, page: "1" }, { replace: true })
+        aoMudarTextoBusca={texto =>
+          setSearchParams({ busca: texto, page: '1' }, { replace: true })
         }
         mostarInputBusca
-        aoClicarEmNovo={() => navigate("/adm-page/sorvetes/nova")}
+        aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
       />
       <Box p={1}>
         <Grid
           display="flex"
-          justifyContent={"center"}
-          fontWeight={"bold"}
+          justifyContent={'center'}
+          fontWeight={'bold'}
           container
           textAlign="center"
           fontSize={15}
@@ -114,24 +114,24 @@ export const SorveteAdm: React.FC = () => {
           </Grid>
         </Grid>
 
-        {rows.map((row) => (
+        {rows.map(row => (
           <Grid
             display="flex"
-            justifyContent={"center"}
+            justifyContent={'center'}
             container
-            textAlign={"center"}
+            textAlign={'center'}
             mt={4}
             key={row.id}
             fontSize={15}
           >
             <Grid item xs={smDown ? 3 : 1}>
               <IconButton onClick={() => handleDelete(row.id)}>
-                <Icon fontSize={"small"}>delete</Icon>
+                <Icon fontSize={'small'}>delete</Icon>
               </IconButton>
               <IconButton
                 onClick={() => navigate(`/adm-page/sorvetes/${row.id}`)}
               >
-                <Icon fontSize={"small"}>edit</Icon>
+                <Icon fontSize={'small'}>edit</Icon>
               </IconButton>
             </Grid>
             <Grid item xs={smDown ? 3 : 2}>
@@ -170,5 +170,5 @@ export const SorveteAdm: React.FC = () => {
         </Box>
       )}
     </ListaAdm>
-  );
-};
+  )
+}

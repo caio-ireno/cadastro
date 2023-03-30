@@ -5,73 +5,73 @@ import {
   LinearProgress,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material'
+import { Box } from '@mui/system'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { FerramentasDaLista } from "../../shared/components";
-import { useDebounce } from "../../shared/hooks";
+import { FerramentasDaLista } from '../../shared/components'
+import { useDebounce } from '../../shared/hooks'
 import {
   AllTypes,
   SorveteProps,
-} from "../../shared/services/api/sorvete/AllTypes";
-import { ListaAdm } from "./ListaAdm";
+} from '../../shared/services/api/sorvete/AllTypes'
+import { ListaAdm } from './ListaAdm'
 
 export const TipoSorveteAdms: React.FC = () => {
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
-  const [rows, setRows] = useState<SorveteProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
-  const { debounce } = useDebounce();
+  const theme = useTheme()
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+  const [rows, setRows] = useState<SorveteProps[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
+  const { debounce } = useDebounce()
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true)
     debounce(() => {
-      AllTypes.getAll().then((result) => {
-        console.log(result);
-        setIsLoading(false);
+      AllTypes.getAll().then(result => {
+        console.log(result)
+        setIsLoading(false)
         if (result instanceof Error) {
-          alert(result.message);
-          return;
+          alert(result.message)
+          return
         } else {
-          setRows(result.data);
+          setRows(result.data)
         }
-      });
-    });
-  }, []);
+      })
+    })
+  }, [])
 
   const handleDelete = (id: number) => {
-    if (confirm("Realmente deseja apagar?")) {
-      AllTypes.deleteTypeById(id).then((result) => {
+    if (confirm('Realmente deseja apagar?')) {
+      AllTypes.deleteTypeById(id).then(result => {
         if (result instanceof Error) {
-          alert(result.message);
+          alert(result.message)
         } else {
-          setRows((oldRows) => {
-            return [...oldRows.filter((oldRow) => oldRow.id !== id)];
-          });
-          alert("Registro Apagado com sucesso");
+          setRows(oldRows => {
+            return [...oldRows.filter(oldRow => oldRow.id !== id)]
+          })
+          alert('Registro Apagado com sucesso')
         }
-      });
+      })
     }
-  };
+  }
 
   return (
     <ListaAdm>
       <FerramentasDaLista
         textoBotaoNovo="nova"
-        aoClicarEmNovo={() => navigate("/adm-page/tipo-sorvete/nova")}
+        aoClicarEmNovo={() => navigate('/adm-page/tipo-sorvete/nova')}
       />
       <Box p={1}>
         <Grid
           display="flex"
-          fontWeight={"bold"}
+          fontWeight={'bold'}
           container
           textAlign="center"
           fontSize={15}
           m="auto"
-          justifyContent={"center"}
+          justifyContent={'center'}
         >
           <Grid item xs={smDown ? 4 : 1}>
             Ação
@@ -81,24 +81,24 @@ export const TipoSorveteAdms: React.FC = () => {
           </Grid>
         </Grid>
 
-        {rows.map((row) => (
+        {rows.map(row => (
           <Grid
             container
-            textAlign={"center"}
+            textAlign={'center'}
             mt={4}
             key={row.id}
             fontSize={15}
             display="flex"
-            justifyContent={"center"}
+            justifyContent={'center'}
           >
             <Grid item xs={smDown ? 3 : 1}>
               <IconButton onClick={() => handleDelete(row.id)}>
-                <Icon fontSize={"small"}>delete</Icon>
+                <Icon fontSize={'small'}>delete</Icon>
               </IconButton>
               <IconButton
                 onClick={() => navigate(`/adm-page/tipo-sorvete/${row.id}`)}
               >
-                <Icon fontSize={"small"}>edit</Icon>
+                <Icon fontSize={'small'}>edit</Icon>
               </IconButton>
             </Grid>
             <Grid item xs={smDown ? 4 : 2}>
@@ -114,5 +114,5 @@ export const TipoSorveteAdms: React.FC = () => {
         </Box>
       )}
     </ListaAdm>
-  );
-};
+  )
+}

@@ -4,15 +4,15 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import { Box } from "@mui/system";
+} from '@mui/material'
+import { Box } from '@mui/system'
 
-import { useDrawerContext } from "../contexts";
+import { useDrawerContext } from '../contexts'
 
 interface LayoutBaseDePaginaProps {
-  titulo?: string;
-  barraDeFerramentas?: React.ReactNode;
-  children: React.ReactNode;
+  titulo?: string
+  barraDeFerramentas?: React.ReactNode
+  children: React.ReactNode
 }
 
 //Layout que fica dentro da pagina que queremos que tenha esse design
@@ -21,20 +21,20 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
   barraDeFerramentas,
   titulo,
 }) => {
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
-  const { toggleDrawerOpen } = useDrawerContext();
+  const theme = useTheme()
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+  const { toggleDrawerOpen } = useDrawerContext()
   return (
-    <Box width={"100%"} display="flex" flexDirection={"column"}>
+    <Box width={'100%'} display="flex" flexDirection={'column'}>
       <Box display="flex">
         {smDown && (
           <Box
             px={2}
             py={1}
-            width={"100%"}
-            display={"flex"}
+            width={'100%'}
+            display={'flex'}
             alignItems="center"
-            justifyContent={"space-between"}
+            justifyContent={'space-between'}
           >
             <IconButton onClick={toggleDrawerOpen}>
               <Icon>menu</Icon>
@@ -52,7 +52,7 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
       </Box>
 
       {barraDeFerramentas && (
-        <Box display="flex" alignItems={"center"} justifyContent="center">
+        <Box display="flex" alignItems={'center'} justifyContent="center">
           {barraDeFerramentas}
         </Box>
       )}
@@ -60,5 +60,5 @@ export const LayoutBaseDePagina: React.FC<LayoutBaseDePaginaProps> = ({
 
       <Box p={1}>{children}</Box>
     </Box>
-  );
-};
+  )
+}

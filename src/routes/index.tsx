@@ -1,68 +1,65 @@
-import { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { Dashboard, ListaSorvetes } from "../pages";
-import { DetalheLojasAdm } from "../pages/adm/DetalheLojasAdm";
-import { DetalheNoticiasAdm } from "../pages/adm/DetalheNoticiasAdm";
-import { DetalheSorveteAdm } from "../pages/adm/DetalheSorveteAdm";
-import { DetalheTipoSorvete } from "../pages/adm/DetalheTipoSorvete";
-import { LojaAdm } from "../pages/adm/LojaAdm";
-import { NoticiaAdm } from "../pages/adm/NoticiaAdm";
-import { SorveteAdm } from "../pages/adm/SorveteAdm";
-import { TipoSorveteAdms } from "../pages/adm/TipoSorveteAdm";
-import { Historia } from "../pages/historia/Historia";
-import { ListaLojas } from "../pages/lojas/ListaLojas";
-import { useDrawerContext } from "../shared/contexts";
-import { useDebounce } from "../shared/hooks";
-import {
-  AllTypes,
-  SorveteProps,
-} from "../shared/services/api/sorvete/AllTypes";
+import { Dashboard, ListaSorvetes } from '../pages'
+import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm'
+import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm'
+import { DetalheSorveteAdm } from '../pages/adm/DetalheSorveteAdm'
+import { DetalheTipoSorvete } from '../pages/adm/DetalheTipoSorvete'
+import { LojaAdm } from '../pages/adm/LojaAdm'
+import { NoticiaAdm } from '../pages/adm/NoticiaAdm'
+import { SorveteAdm } from '../pages/adm/SorveteAdm'
+import { TipoSorveteAdms } from '../pages/adm/TipoSorveteAdm'
+import { Historia } from '../pages/historia/Historia'
+import { ListaLojas } from '../pages/lojas/ListaLojas'
+import { useDrawerContext } from '../shared/contexts'
+import { useDebounce } from '../shared/hooks'
+import { AllTypes, SorveteProps } from '../shared/services/api/sorvete/AllTypes'
 
 export const AppRoutes = () => {
-  const { setDrawerOption } = useDrawerContext();
-  const [rows, setRows] = useState<SorveteProps[]>([]);
-  const { debounce } = useDebounce();
+  const { setDrawerOption } = useDrawerContext()
+  const [rows, setRows] = useState<SorveteProps[]>([])
+  const { debounce } = useDebounce()
 
   useEffect(() => {
     setDrawerOption([
       {
-        label: "Página inicial",
-        path: "/pagina-inicial",
+        label: 'Página inicial',
+        path: '/pagina-inicial',
       },
       {
-        label: "Sorvetes",
-        path: "/sorvetes/",
+        label: 'Sorvetes',
+        path: '/sorvetes/',
       },
 
       {
-        label: "Lojas",
-        path: "/lojas",
+        label: 'Lojas',
+        path: '/lojas',
       },
       {
-        label: "Historia",
-        path: "/historia",
+        label: 'Historia',
+        path: '/historia',
       },
       {
-        label: "Adm",
-        path: "/adm-page",
+        label: 'Adm',
+        path: '/adm-page',
       },
-    ]);
-  }, []);
+    ])
+  }, [])
 
   useEffect(() => {
     debounce(() => {
-      AllTypes.getAll().then((result) => {
-        console.log(result);
+      AllTypes.getAll().then(result => {
+        console.log(result)
         if (result instanceof Error) {
-          alert(result.message);
-          return;
+          alert(result.message)
+          return
         } else {
-          setRows(result.data);
+          setRows(result.data)
         }
-      });
-    });
-  }, []);
+      })
+    })
+  }, [])
 
   return (
     <Routes>
@@ -88,7 +85,7 @@ export const AppRoutes = () => {
 
       <Route path="/sorvetes" element={<ListaSorvetes />} />
 
-      {rows.map((row) => (
+      {rows.map(row => (
         <Route
           key={row.id}
           path={`/sorvetes/${row.tipo}`}
@@ -100,5 +97,5 @@ export const AppRoutes = () => {
 
       <Route path="/sorvetes" element={<Navigate to="/sorvetes/gourmet" />} />
     </Routes>
-  );
-};
+  )
+}

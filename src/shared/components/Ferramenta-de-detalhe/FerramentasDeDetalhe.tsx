@@ -7,34 +7,34 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
-import { Box } from "@mui/system";
-import React from "react";
+} from '@mui/material'
+import { Box } from '@mui/system'
+import React from 'react'
 
 interface FerramentasDeDetalheProps {
-  TextoBotaoNovo?: string;
+  TextoBotaoNovo?: string
 
-  mostarBotaoVoltarCarregando?: boolean;
-  mostarBotaoNovoCarregando?: boolean;
-  mostarBotaoApagarCarregando?: boolean;
-  mostarBotaoSalvarCarregando?: boolean;
-  mostarBotaoSalvarEFecharCarregando?: boolean;
+  mostarBotaoVoltarCarregando?: boolean
+  mostarBotaoNovoCarregando?: boolean
+  mostarBotaoApagarCarregando?: boolean
+  mostarBotaoSalvarCarregando?: boolean
+  mostarBotaoSalvarEFecharCarregando?: boolean
 
-  mostarBotaoNovo?: boolean;
-  mostarBotaoVoltar?: boolean;
-  mostarBotaoApagar?: boolean;
-  mostarBotaoSalvar?: boolean;
-  mostarBotaoSalvarEFechar?: boolean;
+  mostarBotaoNovo?: boolean
+  mostarBotaoVoltar?: boolean
+  mostarBotaoApagar?: boolean
+  mostarBotaoSalvar?: boolean
+  mostarBotaoSalvarEFechar?: boolean
 
-  aoClicarEmNovo?: () => void;
-  aoClicarEmVoltar?: () => void;
-  aoClicarEmSalvar?: () => void;
-  aoClicarEmApagar?: () => void;
-  aoClicarEmSalvrEFechar?: () => void;
+  aoClicarEmNovo?: () => void
+  aoClicarEmVoltar?: () => void
+  aoClicarEmSalvar?: () => void
+  aoClicarEmApagar?: () => void
+  aoClicarEmSalvrEFechar?: () => void
 }
 
 const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
-  TextoBotaoNovo = "novo",
+  TextoBotaoNovo = 'novo',
 
   mostarBotaoVoltar = true,
   mostarBotaoNovo = true,
@@ -54,9 +54,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
   aoClicarEmApagar,
   aoClicarEmSalvrEFechar,
 }) => {
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
-  const mdDown = useMediaQuery(theme.breakpoints.down("md"));
+  const theme = useTheme()
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
     <Box
@@ -80,9 +80,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={"nowrap"}
+              whiteSpace={'nowrap'}
               textOverflow="ellipsis"
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
               Salvar
             </Typography>
@@ -104,9 +104,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           >
             <Typography
               variant="button"
-              whiteSpace={"nowrap"}
+              whiteSpace={'nowrap'}
               textOverflow="ellipsis"
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
               salvar e fechar
             </Typography>
@@ -128,9 +128,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={"nowrap"}
+              whiteSpace={'nowrap'}
               textOverflow="ellipsis"
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
               apagar
             </Typography>
@@ -151,9 +151,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={"nowrap"}
+              whiteSpace={'nowrap'}
               textOverflow="ellipsis"
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
               {TextoBotaoNovo}
             </Typography>
@@ -174,9 +174,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
           {!smDown && (
             <Typography
               variant="button"
-              whiteSpace={"nowrap"}
+              whiteSpace={'nowrap'}
               textOverflow="ellipsis"
-              overflow={"hidden"}
+              overflow={'hidden'}
             >
               Voltar
             </Typography>
@@ -185,7 +185,7 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
       )}
       {mostarBotaoVoltarCarregando && <Skeleton width={110} height={60} />}
     </Box>
-  );
-};
+  )
+}
 
-export default FerramentasDeDetalhe;
+export default FerramentasDeDetalhe

@@ -52,12 +52,12 @@
     "eject": "react-scripts eject",
     "lint": "eslint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
