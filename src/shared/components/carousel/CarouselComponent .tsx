@@ -25,13 +25,12 @@ export const CarouselComponent = () => {
           alert(result.message);
           return;
         } else {
-          console.log(result.data);
           setRows(result.data.slice(0, 3));
         }
       });
     });
   }, []);
-  rows.map((row) => console.log(typeof row.imgNoticia));
+
   return (
     <Box>
       {isLoading && (

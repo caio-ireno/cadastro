@@ -39,7 +39,7 @@ type SaboresComTotalCount = {
 
 const getAll = async (page = 1): Promise<SorveteComTotalCount | Error> => {
   try {
-    const urlRelativa = `/sorvetes?&_embed=sabores&_page=${page}`;
+    const urlRelativa = `/sorvetes?&_page=${page}`;
     const { data, headers } = await Api.get(urlRelativa);
 
     if (data) {
