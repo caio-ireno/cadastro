@@ -74,7 +74,7 @@ export const DetalheTipoSorvete: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      NoticiaServices.deleteById(id).then((result) => {
+      AllTypes.deleteById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {

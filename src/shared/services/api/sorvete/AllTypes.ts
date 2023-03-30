@@ -201,6 +201,7 @@ const updateTypeById = async (
     );
   }
 };
+
 export const AllTypes = {
   getAll,
   deleteById,

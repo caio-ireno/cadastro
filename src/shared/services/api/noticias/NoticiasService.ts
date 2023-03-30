@@ -62,9 +62,12 @@ const create = async (
   dados: Omit<ListaNoticiaProps, 'id'>,
 ): Promise<number | Error> => {
   try {
-    console.log(dados);
-    const { data } = await Api.post<ListaNoticiaProps>('/noticias', dados);
-    console.log('Response from server:', data);
+    console.log({ dados });
+    const { data } = await Api.post<ListaNoticiaProps>('/noticias', dados, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     if (data) {
       return data.id;
     }

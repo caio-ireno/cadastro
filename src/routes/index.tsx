@@ -32,7 +32,7 @@ export const AppRoutes = () => {
       },
       {
         label: 'Sorvetes',
-        path: '/sorvetes/gourmet',
+        path: '/sorvetes/',
       },
 
       {

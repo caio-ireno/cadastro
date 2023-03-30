@@ -95,7 +95,11 @@ export const ListaLojas: React.FC = () => {
               <Box
                 borderRadius={'5px'}
                 display={smDown ? 'none' : ''}
-                width={smDown ? '200px' : mdDown ? '180px' : '200px'}
+                flexBasis="40%"
+                flexGrow={1}
+                maxWidth="40%"
+                // width="200px"
+                // width={smDown ? '200px' : mdDown ? '180px' : '200px'}
                 height={smDown ? '200px' : mdDown ? '180px' : '200px'}
                 component="img"
                 sx={{
@@ -108,6 +112,9 @@ export const ListaLojas: React.FC = () => {
                 padding={1}
                 gap={1}
                 display={'flex'}
+                flexBasis="60%"
+                flexGrow={1}
+                maxWidth="60%"
                 flexWrap="wrap"
                 flexDirection="column"
                 alignItems={'start'}

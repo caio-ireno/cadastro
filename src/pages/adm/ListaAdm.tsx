@@ -71,6 +71,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
         </Typography>
         <Box
           display={'flex'}
+          flexWrap="wrap"
           flexDirection="row"
           justifyContent={'center'}
           alignItems="center"

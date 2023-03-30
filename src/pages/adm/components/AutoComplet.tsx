@@ -57,9 +57,6 @@ export const AutoComplet: React.FC = () => {
     return SelectedOption;
   }, [selectedId, opcoes]);
 
-  console.log('selected  ' + selectedId);
-  console.log(opcoes[6].id);
-
   return (
     <Box width={'100%'} sx={{ backgroundColor: ' #fff ', borderRadius: 2 }}>
       <Autocomplete

@@ -25,6 +25,7 @@ interface ListItemLinkProps {
 const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const navigate = useNavigate();
 
   const resolvedPath = useResolvedPath(to);
@@ -51,7 +52,7 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
       <Typography
         selected={!!match}
         component={ListItemButton}
-        fontSize={mdDown ? 15 : 20}
+        fontSize={smDown ? 12 : mdDown ? 15 : 20}
         fontWeight={'bold'}
       >
         {label}
@@ -85,11 +86,13 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
       });
     });
   }, []);
-  console.log(rows.length);
+
   const results = [];
   const pathName = window.location.pathname.replace('/sorvetes/', '');
+  console.log(pathName);
   for (let i = 0; i < rows.length; i++) {
     if (pathName === rows[i].tipo) {
+      console.log(rows[i]);
       results.push(rows[i].sabores);
     }
   }

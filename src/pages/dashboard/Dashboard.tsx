@@ -1,13 +1,6 @@
 import { LayoutBaseDePagina } from '../../shared/layouts';
-import {
-  Grid,
-  ImageList,
-  ImageListItem,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { Box, rgbToHex } from '@mui/system';
+import { Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/system';
 
 import { ProdutosHome } from '../../shared/components/Produtos-home/ProdutosHome';
 import { CarouselComponent } from '../../shared/components/carousel/CarouselComponent ';
