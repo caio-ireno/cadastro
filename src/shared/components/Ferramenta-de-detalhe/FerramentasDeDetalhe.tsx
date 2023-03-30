@@ -58,6 +58,9 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
+  const mostrarButton =
+    mostarBotaoSalvarEFechar && !mostarBotaoSalvarEFecharCarregando && !mdDown
+
   return (
     <Box
       height={theme.spacing(5)}
@@ -92,26 +95,24 @@ const FerramentasDeDetalhe: React.FC<FerramentasDeDetalheProps> = ({
 
       {mostarBotaoSalvarCarregando && <Skeleton width={110} height={60} />}
 
-      {mostarBotaoSalvarEFechar &&
-        !mostarBotaoSalvarEFecharCarregando &&
-        !mdDown && (
-          <Button
-            onClick={aoClicarEmSalvrEFechar}
-            color="primary"
-            disableElevation
-            variant="outlined"
-            startIcon={<Icon>save</Icon>}
+      {mostrarButton && (
+        <Button
+          onClick={aoClicarEmSalvrEFechar}
+          color="primary"
+          disableElevation
+          variant="outlined"
+          startIcon={<Icon>save</Icon>}
+        >
+          <Typography
+            variant="button"
+            whiteSpace={'nowrap'}
+            textOverflow="ellipsis"
+            overflow={'hidden'}
           >
-            <Typography
-              variant="button"
-              whiteSpace={'nowrap'}
-              textOverflow="ellipsis"
-              overflow={'hidden'}
-            >
-              salvar e fechar
-            </Typography>
-          </Button>
-        )}
+            salvar e fechar
+          </Typography>
+        </Button>
+      )}
 
       {mostarBotaoSalvarEFecharCarregando && !mdDown && (
         <Skeleton width={180} height={60} />
