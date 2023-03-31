@@ -82,7 +82,7 @@ export const NoticiaAdm: React.FC = () => {
           m="auto"
           justifyContent={'center'}
         >
-          <Grid item xs={smDown ? 4 : 1}>
+          <Grid item xs={smDown ? 4 : 2}>
             Ação
           </Grid>
           <Grid item xs={smDown ? 4 : 2}>
@@ -100,7 +100,7 @@ export const NoticiaAdm: React.FC = () => {
             display="flex"
             justifyContent={'center'}
           >
-            <Grid item xs={smDown ? 3 : 1}>
+            <Grid item xs={smDown ? 4 : 2}>
               <IconButton onClick={() => handleDelete(row.id)}>
                 <Icon fontSize={'small'}>delete</Icon>
               </IconButton>

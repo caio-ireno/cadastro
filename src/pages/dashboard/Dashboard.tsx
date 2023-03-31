@@ -25,7 +25,7 @@ export const Dashboard = () => {
           icon="https://static.thenounproject.com/png/2463767-200.png"
           nameProduto="Açai"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
-          imgProduto="https://scontent.fsod2-1.fna.fbcdn.net/v/t1.6435-9/196852938_1855868837904549_5075483553856899655_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a26aad&_nc_ohc=6C51Gl5SidcAX8jTc9z&_nc_ht=scontent.fsod2-1.fna&oh=00_AfCpx_0hwBnwa-dcGZl3jQJc_f3LBcAUS_Mrl2U15xWiDA&oe=6408B550"
+          imgProduto="https://images.unsplash.com/photo-1504380790957-2616a8994f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
           to="/sorvetes/acai"
         />
         <ProdutosHome

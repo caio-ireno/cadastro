@@ -169,12 +169,11 @@ export const DetalheSorveteAdm: React.FC = () => {
                     name="descricao"
                   />
                 </Grid>
-
-                <Grid item xs={12}>
-                  <VImageField name="Imagem" />
-                </Grid>
                 <Grid item xs={12}>
                   <AutoComplet />
+                </Grid>
+                <Grid item xs={12}>
+                  <VImageField name="Imagem" />
                 </Grid>
               </Grid>
             </Box>
