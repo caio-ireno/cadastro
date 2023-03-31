@@ -1,4 +1,4 @@
-import { Input, InputProps } from '@mui/material'
+import { Box, Input, InputProps } from '@mui/material'
 import { useField } from '@unform/core'
 import React, { useEffect, useRef, useState } from 'react'
 
@@ -41,7 +41,7 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
   }
 
   return (
-    <>
+    <Box>
       <Input
         type="file"
         inputRef={inputRef}
@@ -51,8 +51,7 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
         onChange={handleImageChange}
         {...rest}
       />
-      {error && <span style={{ color: 'red' }}>{error}</span>}
-      {imageRoute && <img src={imageRoute} alt="Imagem da notícia" />}
-    </>
+      <h1> {imageRoute}</h1>
+    </Box>
   )
 }

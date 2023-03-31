@@ -91,13 +91,14 @@ export const DetalheNoticiasAdm: React.FC = () => {
           navigate('/adm-page/noticias')
         } else {
           setNome(result.nomeNoticia)
-          formRef.current?.setData(result)
+          formRef.current?.setData({
+            nomeNoticia: result.nomeNoticia,
+            imgNoticia: result.imgNoticia,
+          })
         }
       })
     } else {
-      formRef.current?.setData({
-        nomeNoticia: '',
-      })
+      formRef.current?.setData({})
     }
   }, [id])
 
