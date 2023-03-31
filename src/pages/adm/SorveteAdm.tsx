@@ -95,7 +95,7 @@ export const SorveteAdm: React.FC = () => {
           fontSize={15}
           m="auto"
         >
-          <Grid item xs={smDown ? 3 : 1}>
+          <Grid item xs={smDown ? 3 : 2}>
             Ação
           </Grid>
           <Grid item xs={smDown ? 3 : 2}>
@@ -104,9 +104,11 @@ export const SorveteAdm: React.FC = () => {
           <Grid item xs={smDown ? 3 : 2}>
             Tipo
           </Grid>
-          <Grid item xs={smDown ? 3 : 2}>
-            Descrição
-          </Grid>
+          {!smDown && (
+            <Grid item xs={smDown ? 3 : 2}>
+              Descrição
+            </Grid>
+          )}
         </Grid>
 
         {rows.map(row => (
@@ -119,7 +121,7 @@ export const SorveteAdm: React.FC = () => {
             key={row.id}
             fontSize={15}
           >
-            <Grid item xs={smDown ? 3 : 1}>
+            <Grid item xs={smDown ? 3 : 2}>
               <IconButton onClick={() => handleDelete(row.id)}>
                 <Icon fontSize={'small'}>delete</Icon>
               </IconButton>
@@ -137,9 +139,11 @@ export const SorveteAdm: React.FC = () => {
               {row.sorvete_id}
             </Grid>
 
-            <Grid item xs={smDown ? 3 : 2}>
-              {row.descricao}
-            </Grid>
+            {!smDown && (
+              <Grid item xs={smDown ? 3 : 2}>
+                {row.descricao}
+              </Grid>
+            )}
           </Grid>
         ))}
       </Box>
