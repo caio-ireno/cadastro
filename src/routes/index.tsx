@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Dashboard, ListaSorvetes } from '../pages'
@@ -13,13 +13,9 @@ import { TipoSorveteAdms } from '../pages/adm/TipoSorveteAdm'
 import { Historia } from '../pages/historia/Historia'
 import { ListaLojas } from '../pages/lojas/ListaLojas'
 import { useDrawerContext } from '../shared/contexts'
-import { useDebounce } from '../shared/hooks'
-import { AllTypes, SorveteProps } from '../shared/services/api/sorvete/AllTypes'
 
 export const AppRoutes = () => {
   const { setDrawerOption } = useDrawerContext()
-  const [rows, setRows] = useState<SorveteProps[]>([])
-  const { debounce } = useDebounce()
 
   useEffect(() => {
     setDrawerOption([
@@ -47,20 +43,6 @@ export const AppRoutes = () => {
     ])
   }, [])
 
-  useEffect(() => {
-    debounce(() => {
-      AllTypes.getAll().then(result => {
-        console.log(result)
-        if (result instanceof Error) {
-          alert(result.message)
-          return
-        } else {
-          setRows(result.data)
-        }
-      })
-    })
-  }, [])
-
   return (
     <Routes>
       <Route path="/pagina-inicial" element={<Dashboard />} />
@@ -85,17 +67,13 @@ export const AppRoutes = () => {
 
       <Route path="/sorvetes" element={<ListaSorvetes />} />
 
-      {rows.map(row => (
-        <Route
-          key={row.id}
-          path={`/sorvetes/${row.tipo}`}
-          element={<ListaSorvetes />}
-        />
-      ))}
-
       <Route path="*" element={<Navigate to="/pagina-inicial" />} />
 
       <Route path="/sorvetes" element={<Navigate to="/sorvetes/gourmet" />} />
+
+      <Route path="/sorvetes">
+        <Route path=":idOrName" element={<ListaSorvetes />} />
+      </Route>
     </Routes>
   )
 }

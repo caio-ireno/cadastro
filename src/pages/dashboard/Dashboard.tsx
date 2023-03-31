@@ -26,14 +26,14 @@ export const Dashboard = () => {
           nameProduto="Açai"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
           imgProduto="https://images.unsplash.com/photo-1504380790957-2616a8994f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          to="/sorvetes/acai"
+          to="/sorvetes/açaí"
         />
         <ProdutosHome
           icon="https://cdn-icons-png.flaticon.com/512/3132/3132683.png"
           nameProduto="Picole Zero"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje? "
           imgProduto="https://images.unsplash.com/photo-1504380790957-2616a8994f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          to="/sorvetes/linha-zero"
+          to="/sorvetes/linha zero"
         />
         <ProdutosHome
           icon="https://static.thenounproject.com/png/2463767-200.png"

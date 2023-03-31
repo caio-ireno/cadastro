@@ -105,7 +105,7 @@ export const DetalheSorveteAdm: React.FC = () => {
       formRef.current?.setData({
         nome: '',
         descricao: '',
-        imagem: '',
+
         sorvete_id: '',
       })
     }
@@ -173,7 +173,7 @@ export const DetalheSorveteAdm: React.FC = () => {
                   <AutoComplet />
                 </Grid>
                 <Grid item xs={12}>
-                  <VImageField name="Imagem" />
+                  <VImageField name="imagem" />
                 </Grid>
               </Grid>
             </Box>

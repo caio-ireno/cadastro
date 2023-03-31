@@ -7,7 +7,12 @@ import {
   useTheme,
 } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom'
+import {
+  useMatch,
+  useNavigate,
+  useParams,
+  useResolvedPath,
+} from 'react-router-dom'
 
 import { useDebounce } from '../../shared/hooks'
 import { LayoutBaseDePagina } from '../../shared/layouts'
@@ -70,6 +75,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const [rows, setRows] = useState<SorveteProps[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const { idOrName } = useParams()
 
   useEffect(() => {
     debounce(() => {
@@ -85,15 +91,9 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
     })
   }, [])
 
-  const results = []
-  const pathName = window.location.pathname.replace('/sorvetes/', '')
-  console.log(pathName)
-  for (let i = 0; i < rows.length; i++) {
-    if (pathName === rows[i].tipo) {
-      console.log(rows[i])
-      results.push(rows[i].sabores)
-    }
-  }
+  const results = rows
+    .filter(row => row.tipo === idOrName)
+    .flatMap(row => row.sabores)
 
   return (
     <LayoutBaseDePagina>
