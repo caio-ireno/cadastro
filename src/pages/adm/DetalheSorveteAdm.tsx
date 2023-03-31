@@ -29,7 +29,6 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 
 export const DetalheSorveteAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
-  const [isLoading, setIsLoading] = useState(false)
   const { id = 'nova' } = useParams<'id'>()
   const [nome, setNome] = useState('')
   //const [dados, setDados] = useState<ListaSorveteProps>();
@@ -38,10 +37,8 @@ export const DetalheSorveteAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
-        setIsLoading(true)
         if (id === 'nova') {
           AllTypes.create(dadosValidados).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -57,7 +54,6 @@ export const DetalheSorveteAdm: React.FC = () => {
             id: Number(id),
             ...dadosValidados,
           }).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -94,9 +90,7 @@ export const DetalheSorveteAdm: React.FC = () => {
 
   useEffect(() => {
     if (id !== 'nova') {
-      setIsLoading(true)
       AllTypes.getById(Number(id)).then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           navigate('/adm-page/sorvetes')

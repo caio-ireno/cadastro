@@ -4,7 +4,6 @@ import {
   Grid,
   Icon,
   IconButton,
-  LinearProgress,
   Pagination,
   useMediaQuery,
   useTheme,
@@ -13,7 +12,6 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { FerramentasDaLista } from '../../shared/components'
-import { Environment } from '../../shared/environment'
 import { useDebounce } from '../../shared/hooks'
 import {
   AllTypes,
@@ -32,7 +30,6 @@ export const SorveteAdm: React.FC = () => {
 
   const [rows, setRows] = useState<ListaSorveteProps[]>([])
   const [totalCount, SetTotalCount] = useState(0)
-  const [isLoading, setIsLoading] = useState(true)
 
   const busca = useMemo(() => {
     return searchParams.get('busca') || ''
@@ -43,10 +40,8 @@ export const SorveteAdm: React.FC = () => {
   }, [searchParams])
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       AllTypes.getAllSabores(page).then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           return
@@ -148,14 +143,6 @@ export const SorveteAdm: React.FC = () => {
           </Grid>
         ))}
       </Box>
-      {totalCount === 0 && !isLoading && (
-        <caption>{Environment.LISTAGEM_VAZIA}</caption>
-      )}
-      {isLoading && (
-        <Box my={4}>
-          <LinearProgress variant="indeterminate"></LinearProgress>
-        </Box>
-      )}
 
       {totalCount > 0 && (
         <Box my={4}>

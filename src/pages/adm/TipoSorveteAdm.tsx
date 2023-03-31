@@ -1,11 +1,4 @@
-import {
-  Grid,
-  Icon,
-  IconButton,
-  LinearProgress,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
+import { Grid, Icon, IconButton, useMediaQuery, useTheme } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -16,22 +9,21 @@ import {
   AllTypes,
   SorveteProps,
 } from '../../shared/services/api/sorvete/AllTypes'
+import { TipoSorveteService } from '../../shared/services/api/tipo sorvete/TipoSorvete'
 import { ListaAdm } from './ListaAdm'
 
 export const TipoSorveteAdms: React.FC = () => {
   const theme = useTheme()
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const [rows, setRows] = useState<SorveteProps[]>([])
-  const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
   const { debounce } = useDebounce()
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       AllTypes.getAll().then(result => {
         console.log(result)
-        setIsLoading(false)
+
         if (result instanceof Error) {
           alert(result.message)
           return
@@ -44,7 +36,7 @@ export const TipoSorveteAdms: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      AllTypes.deleteTypeById(id).then(result => {
+      TipoSorveteService.deleteTypeById(id).then(result => {
         if (result instanceof Error) {
           alert(result.message)
         } else {
@@ -107,12 +99,6 @@ export const TipoSorveteAdms: React.FC = () => {
           </Grid>
         ))}
       </Box>
-
-      {isLoading && (
-        <Box my={4}>
-          <LinearProgress variant="indeterminate"></LinearProgress>
-        </Box>
-      )}
     </ListaAdm>
   )
 }

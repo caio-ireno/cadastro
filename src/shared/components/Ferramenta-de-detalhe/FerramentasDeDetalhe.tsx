@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import {
   Button,
   Divider,

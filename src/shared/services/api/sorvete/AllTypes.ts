@@ -13,11 +13,6 @@ export interface SorveteProps {
   }
 }
 
-export interface SorveteTypeProps {
-  id: number
-  tipo: string
-}
-
 export interface ListaSorveteProps {
   id: number
   nome: string
@@ -139,74 +134,11 @@ const updateById = async (
   }
 }
 
-/////////////////// TIPOS SORVETE /////////////////
-
-const deleteTypeById = async (id: number): Promise<void | Error> => {
-  try {
-    await Api.delete<SorveteTypeProps>(`/sorvetes/${id}`)
-  } catch (error) {
-    console.error(error)
-    return new Error((error as { message: string }).message || 'Erro ao apagar')
-  }
-}
-
-const getTypeById = async (id: number): Promise<SorveteTypeProps | Error> => {
-  try {
-    const { data } = await Api.get(`/sorvetes/${id}`)
-
-    if (data) {
-      return data
-    }
-
-    return new Error('Erro ao consultar o Registro')
-  } catch (error) {
-    console.error(error)
-    return new Error(
-      (error as { message: string }).message || 'Erro ao consultar',
-    )
-  }
-}
-
-const createType = async (
-  dados: Omit<SorveteTypeProps, 'id'>,
-): Promise<number | Error> => {
-  try {
-    const { data } = await Api.post<SorveteTypeProps>('/sorvetes', dados) //Dessa forma eu consigo dizer qqual dado esta retornando
-
-    if (data) {
-      return data.id
-    }
-
-    return new Error('Erro ao criar o Registro')
-  } catch (error) {
-    console.error(error)
-    return new Error((error as { message: string }).message || 'Erro ao criar')
-  }
-}
-
-const updateTypeById = async (
-  id: number,
-  dados: SorveteTypeProps,
-): Promise<void | Error> => {
-  try {
-    await Api.put(`/sorvetes/${id}`, dados)
-  } catch (error) {
-    console.error(error)
-    return new Error(
-      (error as { message: string }).message || 'Erro ao atualizar',
-    )
-  }
-}
-
 export const AllTypes = {
   getAll,
   deleteById,
-  deleteTypeById,
   getAllSabores,
   getById,
   create,
   updateById,
-  getTypeById,
-  createType,
-  updateTypeById,
 }

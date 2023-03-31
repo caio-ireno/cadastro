@@ -24,7 +24,6 @@ export const ListaLojas: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       LojasServices.getAll().then(result => {
         setIsLoading(false)

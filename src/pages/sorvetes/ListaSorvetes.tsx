@@ -69,10 +69,9 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const [rows, setRows] = useState<SorveteProps[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       AllTypes.getAll().then(result => {
         setIsLoading(false)

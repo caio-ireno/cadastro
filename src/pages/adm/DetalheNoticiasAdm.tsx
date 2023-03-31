@@ -25,17 +25,14 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 export const DetalheNoticiasAdm: React.FC = () => {
   const navigate = useNavigate()
   const { id = 'nova' } = useParams<'id'>()
-  const [isLoading, setIsLoading] = useState(false)
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
   const [nome, setNome] = useState('')
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
-        setIsLoading(true)
         if (id === 'nova') {
           NoticiaServices.create(dadosValidados).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -51,7 +48,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
             id: Number(id),
             ...dadosValidados,
           }).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -89,9 +85,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
 
   useEffect(() => {
     if (id !== 'nova') {
-      setIsLoading(true)
       NoticiaServices.getById(Number(id)).then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           navigate('/adm-page/noticias')

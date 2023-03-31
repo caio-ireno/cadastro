@@ -2,7 +2,6 @@ import {
   Grid,
   Icon,
   IconButton,
-  LinearProgress,
   Pagination,
   useMediaQuery,
   useTheme,
@@ -25,7 +24,6 @@ export const NoticiaAdm: React.FC = () => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const [searchParams, setSearchParams] = useSearchParams()
   const [rows, setRows] = useState<NoticiaProps[]>([])
-  const [isLoading, setIsLoading] = useState(true)
   const [totalCount, SetTotalCount] = useState(0)
   const { debounce } = useDebounce()
   const navigate = useNavigate()
@@ -39,10 +37,8 @@ export const NoticiaAdm: React.FC = () => {
   }, [searchParams])
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       NoticiaServices.getAll().then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           return
@@ -121,15 +117,6 @@ export const NoticiaAdm: React.FC = () => {
         ))}
       </Box>
 
-      {totalCount === 0 && !isLoading && (
-        <caption>{Environment.LISTAGEM_VAZIA}</caption>
-      )}
-
-      {isLoading && (
-        <Box my={4}>
-          <LinearProgress variant="indeterminate"></LinearProgress>
-        </Box>
-      )}
       {totalCount > 0 && totalCount > Environment.LIMITE_LINHAS && (
         <Box my={4}>
           <Pagination

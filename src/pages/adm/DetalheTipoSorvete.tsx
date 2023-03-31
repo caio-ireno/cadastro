@@ -9,7 +9,7 @@ import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
-import { AllTypes } from '../../shared/services/api/sorvete/AllTypes'
+import { TipoSorveteService } from '../../shared/services/api/tipo sorvete/TipoSorvete'
 
 interface FormDataProps {
   tipo: string
@@ -22,17 +22,15 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 export const DetalheTipoSorvete: React.FC = () => {
   const navigate = useNavigate()
   const { id = 'nova' } = useParams<'id'>()
-  const [isLoading, setIsLoading] = useState(false)
+
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
   const [nome, setNome] = useState('')
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
-        setIsLoading(true)
         if (id === 'nova') {
-          AllTypes.createType(dadosValidados).then(result => {
-            setIsLoading(false)
+          TipoSorveteService.createType(dadosValidados).then(result => {
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -44,11 +42,10 @@ export const DetalheTipoSorvete: React.FC = () => {
             }
           })
         } else {
-          AllTypes.updateTypeById(Number(id), {
+          TipoSorveteService.updateTypeById(Number(id), {
             id: Number(id),
             ...dadosValidados,
           }).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -73,7 +70,7 @@ export const DetalheTipoSorvete: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      AllTypes.deleteById(id).then(result => {
+      TipoSorveteService.deleteTypeById(id).then(result => {
         if (result instanceof Error) {
           alert(result.message)
         } else {
@@ -86,9 +83,7 @@ export const DetalheTipoSorvete: React.FC = () => {
 
   useEffect(() => {
     if (id !== 'nova') {
-      setIsLoading(true)
-      AllTypes.getTypeById(Number(id)).then(result => {
-        setIsLoading(false)
+      TipoSorveteService.getTypeById(Number(id)).then(result => {
         if (result instanceof Error) {
           alert(result.message)
           navigate('/adm-page/tipo-sorvete')

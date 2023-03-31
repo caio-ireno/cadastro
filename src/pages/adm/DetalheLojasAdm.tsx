@@ -30,7 +30,6 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
 
 export const DetalheLojasAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
-  const [isLoading, setIsLoading] = useState(false)
   const { id = 'nova' } = useParams<'id'>()
   const [nome, setNome] = useState('')
   const navigate = useNavigate()
@@ -39,11 +38,8 @@ export const DetalheLojasAdm: React.FC = () => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
         console.log('save apos then')
-        setIsLoading(true)
         if (id === 'nova') {
           LojasServices.create(dadosValidados).then(result => {
-            setIsLoading(false)
-
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -59,7 +55,6 @@ export const DetalheLojasAdm: React.FC = () => {
             id: Number(id),
             ...dadosValidados,
           }).then(result => {
-            setIsLoading(false)
             if (result instanceof Error) {
               alert(result.message)
             } else {
@@ -97,9 +92,7 @@ export const DetalheLojasAdm: React.FC = () => {
 
   useEffect(() => {
     if (id !== 'nova') {
-      setIsLoading(true)
       LojasServices.getById(Number(id)).then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           navigate('/adm-page/lojas')

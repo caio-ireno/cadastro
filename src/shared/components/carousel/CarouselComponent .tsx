@@ -15,10 +15,9 @@ export const CarouselComponent = () => {
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
   const [rows, setRows] = useState<NoticiaProps[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       NoticiaServices.getAll().then(result => {
         setIsLoading(false)

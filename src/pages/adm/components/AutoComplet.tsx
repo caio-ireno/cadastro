@@ -1,4 +1,4 @@
-import { Autocomplete, Box, CircularProgress, TextField } from '@mui/material'
+import { Autocomplete, Box, TextField } from '@mui/material'
 import { useField } from '@unform/core'
 import { useEffect, useMemo, useState } from 'react'
 
@@ -15,8 +15,6 @@ export const AutoComplet: React.FC = () => {
 
   const [selectedId, setSelectedId] = useState<number | undefined>(undefined)
 
-  const [isLoading, setIsLoading] = useState(false)
-
   const [opcoes, setOpcoes] = useState<AutoCompleteOption[]>([])
   const { debounce } = useDebounce()
 
@@ -29,10 +27,8 @@ export const AutoComplet: React.FC = () => {
   }, [registerField, fieldName, selectedId])
 
   useEffect(() => {
-    setIsLoading(true)
     debounce(() => {
       TipoSorveteService.getAll().then(result => {
-        setIsLoading(false)
         if (result instanceof Error) {
           alert(result.message)
           return
@@ -65,8 +61,8 @@ export const AutoComplet: React.FC = () => {
         loadingText="Carregando..."
         disablePortal
         value={autoCompletSelectedOption}
-        popupIcon={isLoading ? <CircularProgress size={28} /> : undefined}
-        loading={isLoading}
+        // popupIcon={isLoading ? <CircularProgress size={28} /> : undefined}
+        // loading={isLoading}
         options={opcoes}
         onChange={(_, newValue) => {
           setSelectedId(newValue?.id)
