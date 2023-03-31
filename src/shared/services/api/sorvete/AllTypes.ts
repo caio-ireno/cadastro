@@ -16,7 +16,7 @@ export interface SorveteProps {
 export interface ListaSorveteProps {
   id: number
   nome: string
-  imagem: string
+  imagem: File
   descricao: string
   sorvete_id: number
 }
@@ -107,7 +107,11 @@ const create = async (
   dados: Omit<ListaSorveteProps, 'id'>,
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<ListaSorveteProps>('/sabores', dados) //Dessa forma eu consigo dizer qqual dado esta retornando
+    const { data } = await Api.post<ListaSorveteProps>('/sabores', dados, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
 
     if (data) {
       return data.id

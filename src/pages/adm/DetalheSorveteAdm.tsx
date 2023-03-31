@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe'
 import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
+import { VImageField } from '../../shared/components/form/VImageField'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes'
@@ -16,14 +17,14 @@ import { AutoComplet } from './components/AutoComplet'
 interface FormDataProps {
   nome: string
   descricao: string
-  imagem: string
+  imagem: File
   sorvete_id: number
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nome: yup.string().required().min(3),
   descricao: yup.string().required().min(10),
-  imagem: yup.string().required(),
+  imagem: yup.mixed<File>().required(),
   sorvete_id: yup.number().required().positive().integer(),
 })
 
@@ -170,15 +171,7 @@ export const DetalheSorveteAdm: React.FC = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="Imagem"
-                    name="imagem"
-                  />
+                  <VImageField name="Imagem" />
                 </Grid>
                 <Grid item xs={12}>
                   <AutoComplet />
