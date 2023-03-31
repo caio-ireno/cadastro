@@ -97,7 +97,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
     } else {
       formRef.current?.setData({
         nomeNoticia: '',
-        imgNoticia: '',
       })
     }
   }, [id])
