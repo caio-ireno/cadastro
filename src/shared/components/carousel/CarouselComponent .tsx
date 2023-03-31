@@ -49,6 +49,7 @@ export const CarouselComponent = () => {
               key={row.id}
             >
               <Box
+                borderRadius={2}
                 width={'100%'}
                 height="auto"
                 component="img"
