@@ -1,17 +1,15 @@
-import { Box, Input, InputProps } from '@mui/material'
 import { useField } from '@unform/core'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
-type VImageFieldProps = InputProps & {
+interface Props {
   name: string
 }
 
-export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
-  const inputRef = useRef<HTMLInputElement>(null)
-  const { fieldName, registerField, defaultValue, error, clearError } =
-    useField(name)
+type InputProps = JSX.IntrinsicElements['input'] & Props
 
-  const [imageRoute, setImageRoute] = useState<string>(defaultValue || '')
+export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const { fieldName, registerField, defaultValue, error } = useField(name)
 
   useEffect(() => {
     registerField({
@@ -24,34 +22,16 @@ export const VImageField: React.FC<VImageFieldProps> = ({ name, ...rest }) => {
     })
   }, [fieldName, registerField])
 
-  function handleImageChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0]
-
-    if (file) {
-      const reader = new FileReader()
-
-      reader.onload = e => {
-        setImageRoute((e.target?.result as string) || '')
-      }
-
-      reader.readAsDataURL(file)
-    } else {
-      setImageRoute('')
-    }
-  }
-
   return (
-    <Box>
-      <Input
+    <div>
+      <input
         type="file"
-        inputRef={inputRef}
-        onClick={() => {
-          error && clearError()
-        }}
-        onChange={handleImageChange}
+        id={fieldName}
+        ref={inputRef}
+        defaultValue={defaultValue}
         {...rest}
       />
-      <h1> {imageRoute}</h1>
-    </Box>
+      {error && <span>{error}</span>}
+    </div>
   )
 }
