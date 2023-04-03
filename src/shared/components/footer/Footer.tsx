@@ -53,9 +53,10 @@ export const Footer: React.FC = () => {
   return (
     <Box>
       <Box
+        mr={smDown ? 5 : 10}
+        ml={smDown ? 5 : 10}
         display={'flex'}
         justifyContent="space-between"
-        mx={mdDown ? 2 : 3}
         my={2}
         p={1}
       >

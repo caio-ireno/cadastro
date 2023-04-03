@@ -9,18 +9,17 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { FerramentasDaLista } from '../../shared/components'
 import { useDebounce } from '../../shared/hooks'
 import {
+  HistoriaProps,
   HistoriaService,
-  TextoProps,
 } from '../../shared/services/api/historia/HistoriaService'
 import { ListaAdm } from './ListaAdm'
 
 export const HistoriaAdm: React.FC = () => {
   const theme = useTheme()
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-  const [rows, setRows] = useState<TextoProps[]>([])
+  const [rows, setRows] = useState<HistoriaProps[]>([])
   const { debounce } = useDebounce()
   const navigate = useNavigate()
 
@@ -37,28 +36,8 @@ export const HistoriaAdm: React.FC = () => {
     })
   }, [])
 
-  const handleDelete = (id: number) => {
-    if (confirm('Realmente deseja apagar?')) {
-      HistoriaService.deleteById(id).then(result => {
-        if (result instanceof Error) {
-          alert(result.message)
-        } else {
-          setRows(oldRows => {
-            return [...oldRows.filter(oldRow => oldRow.id !== id)]
-          })
-          alert('Registro Apagado com sucesso')
-        }
-      })
-    }
-  }
-
   return (
     <ListaAdm>
-      <FerramentasDaLista
-        textoBotaoNovo="nova"
-        aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
-      />
-
       <Typography
         display="flex"
         justifyContent={'center'}
@@ -80,12 +59,12 @@ export const HistoriaAdm: React.FC = () => {
           mt={2}
           key={row.id}
           fontSize={15}
+          gap={5}
         >
           <Box display={'flex'} flexDirection={'row'}>
-            <IconButton onClick={() => handleDelete(row.id)}>
-              <Icon fontSize={'small'}>delete</Icon>
-            </IconButton>
-            <IconButton onClick={() => navigate(`/adm-page/lojas/${row.id}`)}>
+            <IconButton
+              onClick={() => navigate(`/adm-page/historias/${row.id}`)}
+            >
               <Icon fontSize={'small'}>edit</Icon>
             </IconButton>
           </Box>

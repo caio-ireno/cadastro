@@ -1,17 +1,17 @@
 import { Api } from '../axios-config'
 
-export interface TextoProps {
+export interface HistoriaProps {
   id: number
   texto: string
 }
 
 type TextoComTotalCount = {
-  data: TextoProps[]
+  data: HistoriaProps[]
 }
 
 const getAll = async (): Promise<TextoComTotalCount | Error> => {
   try {
-    const urlRelativa = '/historia'
+    const urlRelativa = '/historias'
     const { data } = await Api.get(urlRelativa)
 
     if (data) {
@@ -31,10 +31,10 @@ const getAll = async (): Promise<TextoComTotalCount | Error> => {
 
 const updateById = async (
   id: number,
-  dados: TextoProps,
+  dados: HistoriaProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/noticias/${id}`, dados)
+    await Api.put(`/historias/${id}`, dados)
   } catch (error) {
     console.error(error)
     return new Error(
@@ -42,10 +42,26 @@ const updateById = async (
     )
   }
 }
+const getById = async (id: number): Promise<HistoriaProps | Error> => {
+  try {
+    const { data } = await Api.get(`/historias/${id}`)
+
+    if (data) {
+      return data
+    }
+
+    return new Error('Erro ao consultar o Registro')
+  } catch (error) {
+    console.error(error)
+    return new Error(
+      (error as { message: string }).message || 'Erro ao consultar',
+    )
+  }
+}
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete<TextoProps>(`/noticias/${id}`)
+    await Api.delete<HistoriaProps>(`/historias/${id}`)
   } catch (error) {
     console.error(error)
     return new Error((error as { message: string }).message || 'Erro ao apagar')
@@ -54,6 +70,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
 
 export const HistoriaService = {
   getAll,
+  getById,
   updateById,
   deleteById,
 }
