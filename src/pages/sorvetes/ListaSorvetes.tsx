@@ -152,6 +152,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
         >
           {results.flat().map(result => (
             <Box
+              sx={{ backgroundColor: '#fff' }}
               p={1}
               width={'500px'}
               height={smDown ? 'auto' : 'auto'}
@@ -160,6 +161,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
               display="flex"
               flexDirection={'row'}
               border="1px solid"
+              borderRadius={2}
             >
               <Box>
                 <Typography
@@ -179,6 +181,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
                     width: smDown ? theme.spacing(15) : theme.spacing(24),
                   }}
                   component="img"
+                  borderRadius={2}
                   src={result.imagem}
                 />
               </Box>

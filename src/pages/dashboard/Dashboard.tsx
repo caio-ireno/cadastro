@@ -87,7 +87,7 @@ export const Dashboard = () => {
           </Box>
         </Box>
 
-        {!smDown && (
+        {!mdDown && (
           <Box
             display="flex"
             alignItems={'center'}
@@ -95,39 +95,14 @@ export const Dashboard = () => {
             flexDirection="row"
             width={'100%'}
           >
-            <Box>
-              <Box
-                sx={{ objectFit: 'cover' }}
-                width={'100%'}
-                height={smDown ? '200px' : mdDown ? '250px' : '300px'}
-                component="img"
-                src="https://images.unsplash.com/photo-1467224298296-81a33a3f3022?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1413&q=80"
-              />
-              <Box
-                sx={{ objectFit: 'cover' }}
-                width={'100%'}
-                height={smDown ? '200px' : mdDown ? '250px' : '300px'}
-                component="img"
-                src="https://images.unsplash.com/photo-1602101449157-e1d06a4b3383?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              />
-            </Box>
-
-            <Box>
-              <Box
-                sx={{ objectFit: 'cover' }}
-                width={'100%'}
-                height={smDown ? '200px' : mdDown ? '250px' : '300px'}
-                component="img"
-                src="https://images.unsplash.com/photo-1600103377176-1ee12e3458f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=703&q=80"
-              />
-              <Box
-                sx={{ objectFit: 'cover' }}
-                width={'100%'}
-                height={smDown ? '200px' : mdDown ? '250px' : '300px'}
-                component="img"
-                src="https://images.unsplash.com/photo-1625387432556-efce62ba5bb7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              />
-            </Box>
+            <Box
+              borderRadius={1}
+              sx={{ objectFit: 'cover' }}
+              width={'100%'}
+              height={smDown ? '200px' : mdDown ? '250px' : '400px'}
+              component="img"
+              src="https://images.unsplash.com/photo-1630569266941-f8a348786bf0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80"
+            />
           </Box>
         )}
       </Box>

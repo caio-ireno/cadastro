@@ -52,7 +52,7 @@ const deleteById = async (id: number): Promise<void | Error> => {
   }
 }
 
-export const ImageService = {
+export const HistoriaService = {
   getAll,
   updateById,
   deleteById,

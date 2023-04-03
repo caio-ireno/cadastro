@@ -43,7 +43,7 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
       }}
       onClick={handleClick}
     >
-      <Typography fontSize={mdDown ? 18 : 25} fontWeight={'bold'}>
+      <Typography fontSize={mdDown ? 18 : 20} fontWeight={'bold'}>
         {label}
       </Typography>
     </ListItemButton>
