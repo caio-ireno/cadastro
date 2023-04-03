@@ -9,9 +9,9 @@ type TextoComTotalCount = {
   data: TextoProps[]
 }
 
-const getAll = async (filter = ''): Promise<TextoComTotalCount | Error> => {
+const getAll = async (): Promise<TextoComTotalCount | Error> => {
   try {
-    const urlRelativa = `/image-base?&nomeNoticia_like=${filter}`
+    const urlRelativa = '/historia'
     const { data } = await Api.get(urlRelativa)
 
     if (data) {

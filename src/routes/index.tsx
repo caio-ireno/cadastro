@@ -2,10 +2,12 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Dashboard, ListaSorvetes } from '../pages'
+import { DetalheHistoriaAdm } from '../pages/adm/DetalheHistoriaAdm'
 import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm'
 import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm'
 import { DetalheSorveteAdm } from '../pages/adm/DetalheSorveteAdm'
 import { DetalheTipoSorvete } from '../pages/adm/DetalheTipoSorvete'
+import { HistoriaAdm } from '../pages/adm/HistoriaAdm'
 import { LojaAdm } from '../pages/adm/LojaAdm'
 import { NoticiaAdm } from '../pages/adm/NoticiaAdm'
 import { SorveteAdm } from '../pages/adm/SorveteAdm'
@@ -58,6 +60,9 @@ export const AppRoutes = () => {
 
       <Route path="/adm-page/lojas" element={<LojaAdm />} />
       <Route path="/adm-page/lojas/:id" element={<DetalheLojasAdm />} />
+
+      <Route path="/adm-page/historia" element={<HistoriaAdm />} />
+      <Route path="/adm-page/historia/:id" element={<DetalheHistoriaAdm />} />
 
       <Route path="/adm-page/tipo-sorvete" element={<TipoSorveteAdms />} />
       <Route
