@@ -16,7 +16,7 @@ export const Historia: React.FC = () => {
           alert(result.message)
           return
         } else {
-          setRows(result.data[0].texto)
+          setRows(result.data[0].textoHistoriaPage)
         }
       })
     })

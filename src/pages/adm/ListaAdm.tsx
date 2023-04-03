@@ -80,7 +80,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/noticias" label="Noticias" />
           <ListItemLink to="/adm-page/lojas" label="Lojas" />
           <ListItemLink to="/adm-page/tipo-sorvete" label="Tipo Sorvete" />
-          <ListItemLink to="/adm-page/historias" label="Historia" />
+          <ListItemLink to="/adm-page/historias/1" label="Historia" />
         </Box>
       </Box>
 

@@ -2,9 +2,19 @@ import { Api } from '../axios-config'
 
 export interface HistoriaProps {
   id: number
-  texto: string
+  textoHistoriaPage: string
+  imagemPageHistoria: string
+  textoHistoriaHome: string
+  imagemHistoriaHome: string
 }
 
+export interface ListaHistoriaProps {
+  id: number
+  textoHistoriaPage: string
+  imagemPageHistoria: File
+  textoHistoriaHome: string
+  imagemHistoriaHome: File
+}
 type TextoComTotalCount = {
   data: HistoriaProps[]
 }
@@ -31,10 +41,14 @@ const getAll = async (): Promise<TextoComTotalCount | Error> => {
 
 const updateById = async (
   id: number,
-  dados: HistoriaProps,
+  dados: ListaHistoriaProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/historias/${id}`, dados)
+    await Api.put(`/historias/${id}`, dados, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
   } catch (error) {
     console.error(error)
     return new Error(
@@ -42,7 +56,7 @@ const updateById = async (
     )
   }
 }
-const getById = async (id: number): Promise<HistoriaProps | Error> => {
+const getById = async (id: number): Promise<ListaHistoriaProps | Error> => {
   try {
     const { data } = await Api.get(`/historias/${id}`)
 
@@ -61,7 +75,7 @@ const getById = async (id: number): Promise<HistoriaProps | Error> => {
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete<HistoriaProps>(`/historias/${id}`)
+    await Api.delete<ListaHistoriaProps>(`/historias/${id}`)
   } catch (error) {
     console.error(error)
     return new Error((error as { message: string }).message || 'Erro ao apagar')
