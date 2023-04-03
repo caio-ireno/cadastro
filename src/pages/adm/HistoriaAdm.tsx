@@ -1,4 +1,11 @@
-import { Grid, Icon, IconButton, useMediaQuery, useTheme } from '@mui/material'
+import {
+  Box,
+  Icon,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -48,47 +55,42 @@ export const HistoriaAdm: React.FC = () => {
   return (
     <ListaAdm>
       <FerramentasDaLista
-        mostarInputBusca
         textoBotaoNovo="nova"
         aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
       />
 
-      <Grid
+      <Typography
         display="flex"
         justifyContent={'center'}
         fontWeight={'bold'}
-        container
         textAlign="center"
         fontSize={15}
         m="auto"
+        mt={2}
       >
-        <Grid item xs={smDown ? 3 : 1}>
-          Texto
-        </Grid>
-      </Grid>
+        Texto
+      </Typography>
 
       {rows.map(row => (
-        <Grid
+        <Box
           display="flex"
           justifyContent={'center'}
-          container
           textAlign={'center'}
-          mt={4}
+          px={4}
+          mt={2}
           key={row.id}
           fontSize={15}
         >
-          <Grid item xs={smDown ? 3 : 1}>
+          <Box display={'flex'} flexDirection={'row'}>
             <IconButton onClick={() => handleDelete(row.id)}>
               <Icon fontSize={'small'}>delete</Icon>
             </IconButton>
             <IconButton onClick={() => navigate(`/adm-page/lojas/${row.id}`)}>
               <Icon fontSize={'small'}>edit</Icon>
             </IconButton>
-          </Grid>
-          <Grid item xs={smDown ? 3 : 2}>
-            {row.texto}
-          </Grid>
-        </Grid>
+          </Box>
+          <Typography fontSize={smDown ? 10 : 15}>{row.texto}</Typography>
+        </Box>
       ))}
     </ListaAdm>
   )
