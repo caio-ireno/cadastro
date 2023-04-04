@@ -105,7 +105,7 @@ export const ListaSorvetes: React.FC<ListaSorvetelProps> = () => {
             objectFit: 'cover',
           }}
           component="img"
-          src="https://images.unsplash.com/photo-1629385744299-74b9cf013f52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src="https://i.ibb.co/qCpkZ77/1000-F-323631075-n-Cr-PGFR1-T3-Hja-Z9-Hd-S5-RU6-Qjx-Ajaub-WY-transformed.jpg"
         />
       </Box>
 
