@@ -67,6 +67,7 @@ export const DetalheContatoAdm: React.FC = () => {
           navigate('/adm-page/contato')
         } else {
           formRef.current?.setData(result)
+          console.log(result)
         }
       })
     }

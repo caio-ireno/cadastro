@@ -1,4 +1,5 @@
 import {
+  Button,
   ListItemButton,
   Paper,
   Typography,
@@ -48,6 +49,13 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
   const theme = useTheme()
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+  const navigate = useNavigate()
+
+  function handleLogout() {
+    localStorage.removeItem('authToken')
+    navigate('/login')
+  }
+  //const isAuthenticated = localStorage.getItem('authToken') !== null
 
   return (
     <LayoutBaseDePagina>
@@ -66,6 +74,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
         mt={mdDown ? 5 : 0}
         gap={mdDown ? 1 : 3}
       >
+        <Button onClick={handleLogout}>Logout</Button>
         <Typography fontSize={smDown ? 12 : mdDown ? 15 : 30}>
           Painel de controle Administrativo
         </Typography>
