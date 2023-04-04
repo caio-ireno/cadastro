@@ -15,7 +15,7 @@ export interface ListaLojasProps {
   telefone: number
   nomeLoja: string
   endereço: string
-  imgLoja: string
+  imgLoja: File
   rota: string
 }
 
@@ -80,7 +80,11 @@ const create = async (
   dados: Omit<ListaLojasProps, 'id'>,
 ): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<ListaLojasProps>('/lojas', dados) //Dessa forma eu consigo dizer qqual dado esta retornando
+    const { data } = await Api.post<ListaLojasProps>('/lojas', dados, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }) //Dessa forma eu consigo dizer qqual dado esta retornando
 
     if (data) {
       return data.id
@@ -98,7 +102,11 @@ const updateById = async (
   dados: ListaLojasProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/lojas/${id}`, dados)
+    await Api.put(`/lojas/${id}`, dados, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
   } catch (error) {
     console.error(error)
     return new Error(

@@ -3,17 +3,13 @@ import { Api } from '../axios-config'
 export interface HistoriaProps {
   id: number
   textoHistoriaPage: string
-  imagemPageHistoria: string
   textoHistoriaHome: string
-  imagemHistoriaHome: string
 }
 
 export interface ListaHistoriaProps {
   id: number
   textoHistoriaPage: string
-  imagemPageHistoria: File
   textoHistoriaHome: string
-  imagemHistoriaHome: File
 }
 type TextoComTotalCount = {
   data: HistoriaProps[]
@@ -44,11 +40,7 @@ const updateById = async (
   dados: ListaHistoriaProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/historias/${id}`, dados, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    await Api.put(`/historias/${id}`, dados)
   } catch (error) {
     console.error(error)
     return new Error(

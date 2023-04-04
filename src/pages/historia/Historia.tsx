@@ -21,6 +21,7 @@ export const Historia: React.FC = () => {
       })
     })
   }, [])
+
   return (
     <LayoutBaseDePagina>
       <Box>

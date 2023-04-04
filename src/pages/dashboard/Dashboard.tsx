@@ -1,15 +1,34 @@
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { Box } from '@mui/system'
+import { useEffect, useState } from 'react'
 
 import { CarouselComponent } from '../../shared/components/carousel/CarouselComponent '
 import { ListItemLink } from '../../shared/components/List Item Link/ListItemLink'
 import { ProdutosHome } from '../../shared/components/Produtos-home/ProdutosHome'
+import { useDebounce } from '../../shared/hooks'
 import { LayoutBaseDePagina } from '../../shared/layouts'
+import { HistoriaService } from '../../shared/services/api/historia/HistoriaService'
 
 export const Dashboard = () => {
   const theme = useTheme()
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const { debounce } = useDebounce()
+  const [rows, setRows] = useState<string>('')
+
+  useEffect(() => {
+    debounce(() => {
+      HistoriaService.getAll().then(result => {
+        if (result instanceof Error) {
+          alert(result.message)
+          return
+        } else {
+          setRows(result.data[0].textoHistoriaHome)
+        }
+      })
+    })
+  }, [])
 
   return (
     <LayoutBaseDePagina>
@@ -25,21 +44,21 @@ export const Dashboard = () => {
           icon="https://static.thenounproject.com/png/2463767-200.png"
           nameProduto="Açai"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
-          imgProduto="https://images.unsplash.com/photo-1504380790957-2616a8994f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          imgProduto="https://i.ibb.co/whQzTv1/acai.png"
           to="/sorvetes/açaí"
         />
         <ProdutosHome
           icon="https://cdn-icons-png.flaticon.com/512/3132/3132683.png"
           nameProduto="Picole Zero"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje? "
-          imgProduto="https://images.unsplash.com/photo-1504380790957-2616a8994f18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          imgProduto="https://i.ibb.co/bHLtv3q/28660419-917346951756747-1957560773722520013-n.jpg"
           to="/sorvetes/linha zero"
         />
         <ProdutosHome
           icon="https://static.thenounproject.com/png/2463767-200.png"
           nameProduto="Sorvetes Urla"
           labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
-          imgProduto="https://images.unsplash.com/photo-1629385701021-fcd568a743e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          imgProduto="https://i.ibb.co/S0wmB3K/53633608-1169841463173960-2174527888831807488-n.jpg"
           to="/sorvetes/gourmet"
         />
       </Box>
@@ -72,15 +91,7 @@ export const Dashboard = () => {
             textAlign={'center'}
             fontSize={smDown ? 10 : mdDown ? 20 : 25}
           >
-            Também no ramo há 22 anos por influência da família do marido, a
-            empresária Sônia Cristina Nogueira Ferraz, uma das proprietárias da
-            sorveteria Urla Urla (o marido e o cunhado compõem a sociedade),
-            entrou para a modalidade do atacadão há três anos, com a primeira
-            loja desse segmento aberta na avenida Otávio Augusto Rangel, 960. E
-            a iniciativa deu tão certo que, além da fábrica, com sede em
-            Votorantim, no Parque Jataí, o grupo familiar inaugurou três
-            franquias em Sorocaba, no Jardim Vera Cruz, no Jardim Aeroporto, e
-            no Éden.
+            {rows}
           </Typography>
           <Box>
             <ListItemLink to="/historia" label="Saiba Mais" />
@@ -101,7 +112,7 @@ export const Dashboard = () => {
               width={'100%'}
               height={smDown ? '200px' : mdDown ? '250px' : '400px'}
               component="img"
-              src="https://images.unsplash.com/photo-1630569266941-f8a348786bf0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80"
+              src="https://i.ibb.co/w4C21fF/equipe-urla.jpg"
             />
           </Box>
         )}
@@ -125,7 +136,7 @@ export const Dashboard = () => {
           width={'100%'}
           height="100%"
           component="img"
-          src="https://images.unsplash.com/photo-1525451167239-264fb77ad20f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          src="https://i.ibb.co/7RmfHtc/pac-man-urla.jpg"
         />
         <Box
           display={'flex'}

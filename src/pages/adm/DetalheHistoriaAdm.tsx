@@ -7,23 +7,18 @@ import * as yup from 'yup'
 import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe'
 import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
-import { VImageField } from '../../shared/components/form/VImageField'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { HistoriaService } from '../../shared/services/api/historia/HistoriaService'
 
 interface FormDataProps {
   textoHistoriaPage: string
-  imagemPageHistoria: File
   textoHistoriaHome: string
-  imagemHistoriaHome: File
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   textoHistoriaPage: yup.string().required(),
-  imagemPageHistoria: yup.mixed<File>().required(),
   textoHistoriaHome: yup.string().required(),
-  imagemHistoriaHome: yup.mixed<File>().required(),
 })
 
 export const DetalheHistoriaAdm: React.FC = () => {
@@ -104,7 +99,7 @@ export const DetalheHistoriaAdm: React.FC = () => {
                 borderRadius: 2,
                 width: '100%',
               }}
-              label="Texto Historia"
+              label="Texto Pagína Historia"
               name="textoHistoriaHome"
             />
           </Box>
@@ -116,15 +111,9 @@ export const DetalheHistoriaAdm: React.FC = () => {
                 borderRadius: 2,
                 width: '100%',
               }}
-              label="Texto Historia"
+              label="Texto da pagína inicial "
               name="textoHistoriaPage"
             />
-          </Box>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VImageField name="imagemPageHistoria" />
-          </Box>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VImageField name="imagemHistoriaHome" />
           </Box>
         </VForm>
       </Box>

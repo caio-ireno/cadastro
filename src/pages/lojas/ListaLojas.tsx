@@ -49,7 +49,7 @@ export const ListaLojas: React.FC = () => {
             objectFit: 'cover',
           }}
           component="img"
-          src="https://images.unsplash.com/photo-1542012618332-b93d90d6fed7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80"
+          src="https://i.ibb.co/WtdbDXk/vecteezy-online-shopping-on-phone-buy-sell-business-digital-web-4299835.jpg"
         />
       </Box>
 

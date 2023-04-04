@@ -8,6 +8,7 @@ import * as yup from 'yup'
 import FerramentasDeDetalhe from '../../shared/components/Ferramenta-de-detalhe/FerramentasDeDetalhe'
 import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
+import { VImageField } from '../../shared/components/form/VImageField'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { LojasServices } from '../../shared/services/api/lojas/LojasService'
@@ -16,7 +17,7 @@ interface FormDataProps {
   telefone: number
   nomeLoja: string
   endereço: string
-  imgLoja: string
+  imgLoja: File
   rota: string
 }
 
@@ -24,7 +25,7 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   telefone: yup.number().required(),
   nomeLoja: yup.string().required().min(3),
   endereço: yup.string().required().min(5),
-  imgLoja: yup.string().required(),
+  imgLoja: yup.mixed<File>().required(),
   rota: yup.string().required(),
 })
 
@@ -37,7 +38,6 @@ export const DetalheLojasAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
-        console.log('save apos then')
         if (id === 'nova') {
           LojasServices.create(dadosValidados).then(result => {
             if (result instanceof Error) {
@@ -106,7 +106,6 @@ export const DetalheLojasAdm: React.FC = () => {
         telefone: '',
         nomeLoja: '',
         endereço: '',
-        imgLoja: '',
         rota: '',
       })
     }
@@ -188,20 +187,12 @@ export const DetalheLojasAdm: React.FC = () => {
                     borderRadius: 2,
                     width: '100%',
                   }}
-                  label="Imagem"
-                  name="imgLoja"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <VTextField
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: 2,
-                    width: '100%',
-                  }}
                   label="rota"
                   name="rota"
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <VImageField name="imgLoja" />
               </Grid>
             </Grid>
           </Box>
