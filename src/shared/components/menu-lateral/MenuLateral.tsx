@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useMatch, useNavigate } from 'react-router-dom'
 
 import { useDrawerContext } from '../../contexts'
 import { Footer } from '../footer/Footer'
@@ -23,6 +23,7 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
   // const smDown = useMediaQuery(theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const navigate = useNavigate()
+  const isActive = useMatch(to)
 
   const handleClick = () => {
     navigate(to)
@@ -35,15 +36,23 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label, onClick }) => {
       sx={{
         ':hover': {
           backgroundColor: '#fff',
-          textDecorationLine: 'underline',
-          textDecorationColor: '#5DADE2',
-          textDecorationThickness: '5px ',
-          textDecorationSkipInk: 'none',
         },
       }}
       onClick={handleClick}
     >
-      <Typography fontSize={mdDown ? 18 : 20} fontWeight={'bold'}>
+      <Typography
+        sx={{
+          ':hover': {
+            backgroundColor: '#fff',
+            textDecorationColor: '#5DADE2',
+            textDecorationSkipInk: 'none',
+            color: '#5DADE2',
+          },
+          color: isActive ? '#5DADE2' : 'inherit',
+        }}
+        fontSize={mdDown ? 18 : 20}
+        fontWeight={'bold'}
+      >
         {label}
       </Typography>
     </ListItemButton>

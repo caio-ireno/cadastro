@@ -30,15 +30,22 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
       sx={{
         ':hover': {
           backgroundColor: '#fff',
-          textDecorationLine: 'underline',
-          textDecorationColor: '#5DADE2',
-          textDecorationThickness: '5px ',
-          textDecorationSkipInk: 'none',
         },
       }}
       onClick={handleClick}
     >
-      <Typography fontSize={mdDown ? 12 : 15} fontWeight={'bold'}>
+      <Typography
+        sx={{
+          ':hover': {
+            backgroundColor: '#fff',
+            textDecorationColor: '#5DADE2',
+            textDecorationSkipInk: 'none',
+            color: '#5DADE2',
+          },
+        }}
+        fontSize={mdDown ? 12 : 15}
+        fontWeight={'bold'}
+      >
         {label}
       </Typography>
     </ListItemButton>
