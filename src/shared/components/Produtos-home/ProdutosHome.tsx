@@ -58,15 +58,17 @@ export const ProdutosHome: React.FC<ProdutosHomeProps> = ({
 
   return (
     <Box
+      borderRadius={1}
       p={1}
       display={'flex'}
       flexDirection="column"
       alignItems={'center'}
       gap={smDown ? 1 : 3}
       mt={5}
-      sx={{ backgroundColor: '#EAEDED' }}
+      sx={{ backgroundColor: '#EBF5FB' }}
     >
       <Box
+        borderRadius={1}
         sx={{ objectFit: 'cover' }}
         width={'100%'}
         height={smDown ? '200px' : mdDown ? '200px' : '400px'}
@@ -84,7 +86,7 @@ export const ProdutosHome: React.FC<ProdutosHomeProps> = ({
       </Typography>
 
       <Typography
-        fontSize={smDown ? 15 : mdDown ? 20 : 25}
+        fontSize={smDown ? 15 : mdDown ? 18 : 20}
         textAlign={'center'}
       >
         {labelProduto}

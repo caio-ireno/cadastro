@@ -41,23 +41,23 @@ export const Dashboard = () => {
         width={'100%'}
       >
         <ProdutosHome
-          icon="https://static.thenounproject.com/png/2463767-200.png"
+          icon="https://i.ibb.co/bHVwpL9/5854205.png"
           nameProduto="Açai"
-          labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
+          labelProduto="Comece o seu dia com nosso Açaí delicioso e nutritivo, feito com frutas frescas e ingredientes saudáveis. Experimente agora!"
           imgProduto="https://i.ibb.co/whQzTv1/acai.png"
           to="/sorvetes/açaí"
         />
         <ProdutosHome
-          icon="https://cdn-icons-png.flaticon.com/512/3132/3132683.png"
-          nameProduto="Picole Zero"
-          labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje? "
+          icon="https://i.ibb.co/T0g0VtX/3132683.png"
+          nameProduto="Linha Zero"
+          labelProduto="Experimente nossos picolés da Linha Zero, com menos calorias e açúcar. Refresque-se com sabores deliciosos e naturais. Experimente já!"
           imgProduto="https://i.ibb.co/bHLtv3q/28660419-917346951756747-1957560773722520013-n.jpg"
           to="/sorvetes/linha zero"
         />
         <ProdutosHome
-          icon="https://static.thenounproject.com/png/2463767-200.png"
+          icon="https://i.ibb.co/SPqY4CR/2463767-200.png"
           nameProduto="Sorvetes Urla"
-          labelProduto="É uma explosão de sabor e energia a qualquer momento do dia. Que tal uma dose de energia hoje?"
+          labelProduto="Conheça nossos sorvetes artesanais em diferentes sabores. Feitos com ingredientes selecionados para oferecer textura cremosa e sabor intenso."
           imgProduto="https://i.ibb.co/S0wmB3K/53633608-1169841463173960-2174527888831807488-n.jpg"
           to="/sorvetes/gourmet"
         />
