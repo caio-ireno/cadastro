@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { Dashboard, ListaSorvetes } from '../pages'
+import { DetalheContatoAdm } from '../pages/adm/DetalheContatoAdm'
 import { DetalheHistoriaAdm } from '../pages/adm/DetalheHistoriaAdm'
 import { DetalheLojasAdm } from '../pages/adm/DetalheLojasAdm'
 import { DetalheNoticiasAdm } from '../pages/adm/DetalheNoticiasAdm'
@@ -61,6 +62,8 @@ export const AppRoutes = () => {
       <Route path="/adm-page/lojas/:id" element={<DetalheLojasAdm />} />
 
       <Route path="/adm-page/historias/:id" element={<DetalheHistoriaAdm />} />
+
+      <Route path="/adm-page/contato/:id" element={<DetalheContatoAdm />} />
 
       <Route path="/adm-page/tipo-sorvete" element={<TipoSorveteAdms />} />
       <Route

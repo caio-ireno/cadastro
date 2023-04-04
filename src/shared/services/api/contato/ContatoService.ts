@@ -13,7 +13,7 @@ type ContatoComTotalCount = {
 }
 const getAll = async (): Promise<ContatoComTotalCount | Error> => {
   try {
-    const urlRelativa = '/contato'
+    const urlRelativa = '/contatos'
     const { data } = await Api.get(urlRelativa)
 
     if (data) {
@@ -30,10 +30,25 @@ const getAll = async (): Promise<ContatoComTotalCount | Error> => {
     )
   }
 }
+const getById = async (id: number): Promise<ContatoProps | Error> => {
+  try {
+    const { data } = await Api.get(`/contatos/${id}`)
 
+    if (data) {
+      return data
+    }
+
+    return new Error('Erro ao consultar o Registro')
+  } catch (error) {
+    console.error(error)
+    return new Error(
+      (error as { message: string }).message || 'Erro ao consultar',
+    )
+  }
+}
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete<ContatoProps>(`/contato/${id}`)
+    await Api.delete<ContatoProps>(`/contatos/${id}`)
   } catch (error) {
     console.error(error)
     return new Error((error as { message: string }).message || 'Erro ao apagar')
@@ -45,7 +60,7 @@ const updateById = async (
   dados: ContatoProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/contato/${id}`, dados)
+    await Api.put(`/contatos/${id}`, dados)
   } catch (error) {
     console.error(error)
     return new Error(
@@ -54,8 +69,9 @@ const updateById = async (
   }
 }
 
-export const LojasServices = {
+export const ContatoServices = {
   getAll,
   updateById,
   deleteById,
+  getById,
 }

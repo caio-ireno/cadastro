@@ -1,4 +1,3 @@
-import { Facebook, Instagram } from '@mui/icons-material'
 import {
   Divider,
   Icon,
@@ -8,8 +7,15 @@ import {
   useTheme,
 } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { FaFacebook, FaInstagram } from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useDebounce } from '../../hooks'
+import {
+  ContatoProps,
+  ContatoServices,
+} from '../../services/api/contato/ContatoService'
 
 interface ListItemLinkProps {
   label: string
@@ -57,6 +63,22 @@ export const Footer: React.FC = () => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
+  const { debounce } = useDebounce()
+  const [rows, setRows] = useState<ContatoProps[]>([])
+
+  useEffect(() => {
+    debounce(() => {
+      ContatoServices.getAll().then(result => {
+        if (result instanceof Error) {
+          alert(result.message)
+          return
+        } else {
+          setRows(result.data)
+        }
+      })
+    })
+  }, [])
+
   return (
     <Box>
       <Box
@@ -101,49 +123,61 @@ export const Footer: React.FC = () => {
           <ListItemLink to="/historia" label="Historia" />
         </Box>
 
-        <Box display="flex" flexDirection="column" gap={2}>
-          <Box>
-            <Typography
-              color="#3498DB"
-              fontWeight={'bold'}
-              fontSize={mdDown ? 20 : 30}
-            >
-              Fale conosco
-            </Typography>
-            <Typography
-              fontSize={mdDown ? 15 : 20}
-              marginLeft={mdDown ? '0px' : '25px'}
-              color="#717D7E"
-            >
-              Se quiser bater um papo, ligue
-            </Typography>
-          </Box>
-
-          <Box>
-            <Box gap={2} display="flex" alignItems={'center'} mt={2}>
-              {!mdDown && <Icon>phone</Icon>}
-              <Typography fontSize={mdDown ? 15 : 20}>
-                (15) 996641733
+        {rows.map(row => (
+          <Box key={row.id} display="flex" flexDirection="column" gap={2}>
+            <Box>
+              <Typography
+                color="#3498DB"
+                fontWeight={'bold'}
+                fontSize={mdDown ? 20 : 30}
+              >
+                Fale conosco
+              </Typography>
+              <Typography
+                fontSize={mdDown ? 15 : 20}
+                marginLeft={mdDown ? '0px' : '25px'}
+                color="#717D7E"
+              >
+                Se quiser bater um papo, ligue
               </Typography>
             </Box>
-            <Box gap={2} display="flex" alignItems={'center'} mt={1}>
-              {!mdDown && <Icon>mail</Icon>}
-              <Typography fontSize={mdDown ? 15 : 20}>
-                urla@gmail.com
-              </Typography>
+
+            <Box>
+              <Box gap={2} display="flex" alignItems={'center'} mt={2}>
+                {!mdDown && <Icon>phone</Icon>}
+                <a
+                  href={`tel:${row.celular}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Typography fontSize={mdDown ? 15 : 20}>
+                    {row.celular}
+                  </Typography>
+                </a>
+              </Box>
+              <Box gap={2} display="flex" alignItems={'center'} mt={1}>
+                {!mdDown && <Icon>mail</Icon>}
+                <a
+                  href={`mailto:${row.email}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <Typography fontSize={mdDown ? 15 : 20}>
+                    {row.email}
+                  </Typography>
+                </a>
+              </Box>
+            </Box>
+
+            <Divider />
+            <Box display={'flex'} flexDirection="row" gap={2}>
+              <Link to={row.facebook}>
+                <FaFacebook size={40} color="#5DADE2" />
+              </Link>
+              <Link to={row.instagram}>
+                <FaInstagram size={40} color="#5DADE2" />
+              </Link>
             </Box>
           </Box>
-
-          <Divider />
-          <Box display={'flex'} flexDirection="row" gap={2}>
-            <Icon>
-              <Facebook />
-            </Icon>
-            <Icon>
-              <Instagram></Instagram>
-            </Icon>
-          </Box>
-        </Box>
+        ))}
       </Box>
       <Box width={'100%'} height={'100px'} display="flex" alignItems={'center'}>
         <Typography

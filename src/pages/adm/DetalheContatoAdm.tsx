@@ -9,19 +9,23 @@ import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
-import { HistoriaService } from '../../shared/services/api/historia/HistoriaService'
+import { ContatoServices } from '../../shared/services/api/contato/ContatoService'
 
 interface FormDataProps {
-  textoHistoriaPage: string
-  textoHistoriaHome: string
+  celular: string
+  email: string
+  facebook: string
+  instagram: string
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
-  textoHistoriaPage: yup.string().required(),
-  textoHistoriaHome: yup.string().required(),
+  celular: yup.string().required(),
+  email: yup.string().required(),
+  facebook: yup.string().required(),
+  instagram: yup.string().required(),
 })
 
-export const DetalheHistoriaAdm: React.FC = () => {
+export const DetalheContatoAdm: React.FC = () => {
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
   const { id = 'nova' } = useParams<'id'>()
   const navigate = useNavigate()
@@ -29,7 +33,7 @@ export const DetalheHistoriaAdm: React.FC = () => {
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
       .then(dadosValidados => {
-        HistoriaService.updateById(Number(id), {
+        ContatoServices.updateById(Number(id), {
           id: Number(id),
           ...dadosValidados,
         }).then(result => {
@@ -37,7 +41,7 @@ export const DetalheHistoriaAdm: React.FC = () => {
             alert(result.message)
           } else {
             if (IsSaveAndClose()) {
-              navigate('/adm-page/historias/')
+              navigate('/adm-page/contato/')
             }
           }
         })
@@ -56,11 +60,11 @@ export const DetalheHistoriaAdm: React.FC = () => {
 
   useEffect(() => {
     if (id !== 'nova') {
-      HistoriaService.getById(Number(id)).then(result => {
+      ContatoServices.getById(Number(id)).then(result => {
         console.log(result)
         if (result instanceof Error) {
           alert(result.message)
-          navigate('/adm-page/historias')
+          navigate('/adm-page/contato')
         } else {
           formRef.current?.setData(result)
         }
@@ -99,8 +103,8 @@ export const DetalheHistoriaAdm: React.FC = () => {
                 borderRadius: 2,
                 width: '100%',
               }}
-              label="Texto Pagína Historia"
-              name="textoHistoriaHome"
+              label="Calular"
+              name="celular"
             />
           </Box>
           <Box margin={1} display="flex" flexDirection="column">
@@ -111,8 +115,32 @@ export const DetalheHistoriaAdm: React.FC = () => {
                 borderRadius: 2,
                 width: '100%',
               }}
-              label="Texto da pagína inicial "
-              name="textoHistoriaPage"
+              label="Email"
+              name="email"
+            />
+          </Box>
+          <Box margin={1} display="flex" flexDirection="column">
+            <VTextField
+              multiline
+              sx={{
+                backgroundColor: '#fff',
+                borderRadius: 2,
+                width: '100%',
+              }}
+              label="Facebook "
+              name="facebook"
+            />
+          </Box>
+          <Box margin={1} display="flex" flexDirection="column">
+            <VTextField
+              multiline
+              sx={{
+                backgroundColor: '#fff',
+                borderRadius: 2,
+                width: '100%',
+              }}
+              label="Instagram"
+              name="instagram"
             />
           </Box>
         </VForm>
