@@ -13,7 +13,6 @@ import { NoticiaAdm } from '../pages/adm/NoticiaAdm'
 import { SorveteAdm } from '../pages/adm/SorveteAdm'
 import { TipoSorveteAdms } from '../pages/adm/TipoSorveteAdm'
 import { Historia } from '../pages/historia/Historia'
-import Login from '../pages/login/Login'
 import { ListaLojas } from '../pages/lojas/ListaLojas'
 import { useDrawerContext } from '../shared/contexts'
 
@@ -57,8 +56,6 @@ export const AppRoutes = () => {
 
       <Route path="/adm-page/lojas" element={<LojaAdm />} />
       <Route path="/adm-page/lojas/:id" element={<DetalheLojasAdm />} />
-
-      <Route path="/login" element={<Login />} />
 
       <Route path="/adm-page/historias/:id" element={<DetalheHistoriaAdm />} />
 

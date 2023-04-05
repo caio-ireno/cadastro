@@ -1,5 +1,6 @@
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import { Login } from './pages/login/Login'
 import { AppRoutes } from './routes'
 import { MenuLateral } from './shared/components'
 import { AppThemeProvider, DrawerProvider } from './shared/contexts'
@@ -11,9 +12,18 @@ export const App = () => {
       <DrawerProvider>
         <BrowserRouter>
           <ScrollToTopOnNavigate />
-          <MenuLateral>
-            <AppRoutes />
-          </MenuLateral>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+
+            <Route
+              path="*"
+              element={
+                <MenuLateral>
+                  <AppRoutes />
+                </MenuLateral>
+              }
+            />
+          </Routes>
         </BrowserRouter>
       </DrawerProvider>
     </AppThemeProvider>
