@@ -1,15 +1,12 @@
 import {
   Button,
   ListItemButton,
-  Paper,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@mui/material'
 import { Box } from '@mui/system'
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom'
-
-import { LayoutBaseDePagina } from '../../shared/layouts'
 
 interface ListItemLinkProps {
   label: string
@@ -28,6 +25,8 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
   const handleClick = () => {
     navigate(to)
   }
+
+  console.log(localStorage)
   return (
     <Box display={'flex'} onClick={handleClick}>
       <Typography
@@ -48,7 +47,6 @@ interface ListaAdmProps {
 export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
   const theme = useTheme()
   const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'))
   const navigate = useNavigate()
 
   function handleLogout() {
@@ -58,15 +56,11 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
   //const isAuthenticated = localStorage.getItem('authToken') !== null
 
   return (
-    <LayoutBaseDePagina>
+    <Box>
       <Box
-        sx={{
-          backgroundColor: '#EBF5FB ',
-        }}
-        border={'1px solid'}
         width={'100%'}
         display={'flex'}
-        flexDirection="column"
+        flexDirection="row"
         justifyContent={'center'}
         alignItems="center"
         flexWrap={'wrap'}
@@ -74,10 +68,6 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
         mt={mdDown ? 5 : 0}
         gap={mdDown ? 1 : 3}
       >
-        <Button onClick={handleLogout}>Logout</Button>
-        <Typography fontSize={smDown ? 12 : mdDown ? 15 : 30}>
-          Painel de controle Administrativo
-        </Typography>
         <Box
           display={'flex'}
           flexWrap="wrap"
@@ -92,18 +82,17 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/historias/1" label="Historia" />
           <ListItemLink to="/adm-page/contato/1" label="Contato" />
         </Box>
+        <Button
+          sx={{ backgroundColor: '#FFF', color: '#000', fontWeight: 'bold' }}
+          onClick={handleLogout}
+        >
+          Logout
+        </Button>
       </Box>
 
-      <Box
-        component={Paper}
-        variant="outlined"
-        sx={{ width: '100%' }}
-        py={1}
-        mt={1}
-        pb={4}
-      >
+      <Box sx={{ width: '100%' }} py={1} mt={1} pb={4}>
         {children}
       </Box>
-    </LayoutBaseDePagina>
+    </Box>
   )
 }
