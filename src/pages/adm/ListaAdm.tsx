@@ -33,6 +33,7 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
         selected={!!match}
         component={ListItemButton}
         fontSize={mdDown ? 15 : 20}
+        color="#fff"
       >
         {label}
       </Typography>
@@ -45,8 +46,8 @@ interface ListaAdmProps {
 }
 
 export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
-  const theme = useTheme()
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'))
+  //const theme = useTheme()
+  //const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const navigate = useNavigate()
 
   function handleLogout() {
@@ -61,12 +62,11 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
         width={'100%'}
         display={'flex'}
         flexDirection="row"
-        justifyContent={'center'}
+        justifyContent={'space-between'}
         alignItems="center"
         flexWrap={'wrap'}
-        py={2}
-        mt={mdDown ? 5 : 0}
-        gap={mdDown ? 1 : 3}
+        py={1}
+        sx={{ backgroundColor: '#1e88e5' }}
       >
         <Box
           display={'flex'}
@@ -83,14 +83,20 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/contato/1" label="Contato" />
         </Box>
         <Button
-          sx={{ backgroundColor: '#FFF', color: '#000', fontWeight: 'bold' }}
+          variant="contained"
+          sx={{
+            backgroundColor: '#fff',
+            color: '#1e88e5',
+            fontWeight: 'bold',
+            mr: 4,
+          }}
           onClick={handleLogout}
         >
           Logout
         </Button>
       </Box>
 
-      <Box sx={{ width: '100%' }} py={1} mt={1} pb={4}>
+      <Box sx={{ width: '100%' }} py={1} pb={4}>
         {children}
       </Box>
     </Box>

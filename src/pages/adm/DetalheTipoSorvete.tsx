@@ -10,6 +10,7 @@ import { VForm } from '../../shared/components/form/VForm'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { TipoSorveteService } from '../../shared/services/api/tipo sorvete/TipoSorvete'
+import { ListaAdm } from './ListaAdm'
 
 interface FormDataProps {
   tipo: string
@@ -100,56 +101,58 @@ export const DetalheTipoSorvete: React.FC = () => {
   }, [id])
 
   return (
-    <LayoutBaseDePagina
-      barraDeFerramentas={
-        <FerramentasDeDetalhe
-          mostarBotaoSalvarEFechar
-          mostarBotaoApagar={id !== 'nova'}
-          mostarBotaoNovo={id !== 'nova'}
-          TextoBotaoNovo="Novo"
-          aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/adm-page/tipo-sorvete/nova')}
-          aoClicarEmVoltar={() => navigate('/adm-page/tipo-sorvete')}
-          aoClicarEmSalvar={save}
-          aoClicarEmSalvrEFechar={saveAndClose}
-        />
-      }
-    >
-      <Box
-        py={3}
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems="center"
-        flexDirection={'column'}
-        sx={{ backgroundColor: ' #EBF5FB  ' }}
+    <ListaAdm>
+      <LayoutBaseDePagina
+        barraDeFerramentas={
+          <FerramentasDeDetalhe
+            mostarBotaoSalvarEFechar
+            mostarBotaoApagar={id !== 'nova'}
+            mostarBotaoNovo={id !== 'nova'}
+            TextoBotaoNovo="Novo"
+            aoClicarEmApagar={() => handleDelete(Number(id))}
+            aoClicarEmNovo={() => navigate('/adm-page/tipo-sorvete/nova')}
+            aoClicarEmVoltar={() => navigate('/adm-page/tipo-sorvete')}
+            aoClicarEmSalvar={save}
+            aoClicarEmSalvrEFechar={saveAndClose}
+          />
+        }
       >
-        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
-          <Box margin={1} display="flex" flexDirection="column">
-            <Box textAlign={'center'}>
-              <Typography fontSize={30} fontWeight="bold">
-                {id === 'nova'
-                  ? 'Criando novo tipo de Sorvete'
-                  : `Editando: ${nome}`}
-              </Typography>
-            </Box>
-            <Grid container direction="column" padding={2} spacing={5}>
-              <Grid item xs={12}>
-                <VTextField
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: 2,
-                    width: '100%',
-                  }}
-                  label="Nome"
-                  name="tipo"
-                  onChange={e => setNome(e.target.value)}
-                />
+        <Box
+          py={3}
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems="center"
+          flexDirection={'column'}
+          sx={{ backgroundColor: ' #EBF5FB  ' }}
+        >
+          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+            <Box margin={1} display="flex" flexDirection="column">
+              <Box textAlign={'center'}>
+                <Typography fontSize={30} fontWeight="bold">
+                  {id === 'nova'
+                    ? 'Criando novo tipo de Sorvete'
+                    : `Editando: ${nome}`}
+                </Typography>
+              </Box>
+              <Grid container direction="column" padding={2} spacing={5}>
+                <Grid item xs={12}>
+                  <VTextField
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
+                    label="Nome"
+                    name="tipo"
+                    onChange={e => setNome(e.target.value)}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </Box>
-        </VForm>
-      </Box>
-    </LayoutBaseDePagina>
+            </Box>
+          </VForm>
+        </Box>
+      </LayoutBaseDePagina>
+    </ListaAdm>
   )
 }

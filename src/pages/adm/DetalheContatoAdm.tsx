@@ -10,6 +10,7 @@ import { VForm } from '../../shared/components/form/VForm'
 import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { ContatoServices } from '../../shared/services/api/contato/ContatoService'
+import { ListaAdm } from './ListaAdm'
 
 interface FormDataProps {
   celular: string
@@ -41,7 +42,7 @@ export const DetalheContatoAdm: React.FC = () => {
             alert(result.message)
           } else {
             if (IsSaveAndClose()) {
-              navigate('/adm-page/contato/')
+              navigate('/adm-page')
             }
           }
         })
@@ -74,78 +75,80 @@ export const DetalheContatoAdm: React.FC = () => {
   }, [id])
 
   return (
-    <LayoutBaseDePagina
-      barraDeFerramentas={
-        <FerramentasDeDetalhe
-          mostarBotaoNovo={false}
-          mostarBotaoSalvarEFechar
-          mostarBotaoApagar={false}
-          aoClicarEmVoltar={() => navigate('/adm-page')}
-          aoClicarEmSalvar={save}
-          aoClicarEmSalvrEFechar={saveAndClose}
-        />
-      }
-    >
-      <Box
-        py={3}
-        width={'100%'}
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems="center"
-        flexDirection={'column'}
-        sx={{ backgroundColor: ' #EBF5FB  ' }}
+    <ListaAdm>
+      <LayoutBaseDePagina
+        barraDeFerramentas={
+          <FerramentasDeDetalhe
+            mostarBotaoNovo={false}
+            mostarBotaoSalvarEFechar
+            mostarBotaoApagar={false}
+            aoClicarEmVoltar={() => navigate('/adm-page')}
+            aoClicarEmSalvar={save}
+            aoClicarEmSalvrEFechar={saveAndClose}
+          />
+        }
       >
-        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VTextField
-              multiline
-              sx={{
-                backgroundColor: '#fff',
-                borderRadius: 2,
-                width: '100%',
-              }}
-              label="Calular"
-              name="celular"
-            />
-          </Box>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VTextField
-              multiline
-              sx={{
-                backgroundColor: '#fff',
-                borderRadius: 2,
-                width: '100%',
-              }}
-              label="Email"
-              name="email"
-            />
-          </Box>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VTextField
-              multiline
-              sx={{
-                backgroundColor: '#fff',
-                borderRadius: 2,
-                width: '100%',
-              }}
-              label="Facebook "
-              name="facebook"
-            />
-          </Box>
-          <Box margin={1} display="flex" flexDirection="column">
-            <VTextField
-              multiline
-              sx={{
-                backgroundColor: '#fff',
-                borderRadius: 2,
-                width: '100%',
-              }}
-              label="Instagram"
-              name="instagram"
-            />
-          </Box>
-        </VForm>
-      </Box>
-    </LayoutBaseDePagina>
+        <Box
+          py={3}
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems="center"
+          flexDirection={'column'}
+          sx={{ backgroundColor: ' #EBF5FB  ' }}
+        >
+          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+            <Box margin={1} display="flex" flexDirection="column">
+              <VTextField
+                multiline
+                sx={{
+                  backgroundColor: '#fff',
+                  borderRadius: 2,
+                  width: '100%',
+                }}
+                label="Calular"
+                name="celular"
+              />
+            </Box>
+            <Box margin={1} display="flex" flexDirection="column">
+              <VTextField
+                multiline
+                sx={{
+                  backgroundColor: '#fff',
+                  borderRadius: 2,
+                  width: '100%',
+                }}
+                label="Email"
+                name="email"
+              />
+            </Box>
+            <Box margin={1} display="flex" flexDirection="column">
+              <VTextField
+                multiline
+                sx={{
+                  backgroundColor: '#fff',
+                  borderRadius: 2,
+                  width: '100%',
+                }}
+                label="Facebook "
+                name="facebook"
+              />
+            </Box>
+            <Box margin={1} display="flex" flexDirection="column">
+              <VTextField
+                multiline
+                sx={{
+                  backgroundColor: '#fff',
+                  borderRadius: 2,
+                  width: '100%',
+                }}
+                label="Instagram"
+                name="instagram"
+              />
+            </Box>
+          </VForm>
+        </Box>
+      </LayoutBaseDePagina>
+    </ListaAdm>
   )
 }

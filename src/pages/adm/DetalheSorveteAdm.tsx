@@ -13,6 +13,7 @@ import { VTextField } from '../../shared/components/form/VTextField'
 import { LayoutBaseDePagina } from '../../shared/layouts'
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes'
 import { AutoComplet } from './components/AutoComplet'
+import { ListaAdm } from './ListaAdm'
 
 interface FormDataProps {
   nome: string
@@ -112,74 +113,82 @@ export const DetalheSorveteAdm: React.FC = () => {
   }, [id])
 
   return (
-    <Box>
-      <LayoutBaseDePagina
-        barraDeFerramentas={
-          <FerramentasDeDetalhe
-            mostarBotaoSalvarEFechar
-            mostarBotaoApagar={id !== 'nova'}
-            mostarBotaoNovo={id !== 'nova'}
-            TextoBotaoNovo="Novo"
-            aoClicarEmApagar={() => handleDelete(Number(id))}
-            aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-            aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
-            aoClicarEmSalvar={save}
-            aoClicarEmSalvrEFechar={saveAndClose}
-          />
-        }
-      >
-        <Box
-          py={3}
-          width={'100%'}
-          display={'flex'}
-          justifyContent={'center'}
-          alignItems="center"
-          flexDirection={'column'}
-          sx={{ backgroundColor: ' #EBF5FB  ' }}
+    <ListaAdm>
+      <Box>
+        <LayoutBaseDePagina
+          barraDeFerramentas={
+            <FerramentasDeDetalhe
+              mostarBotaoSalvarEFechar
+              mostarBotaoApagar={id !== 'nova'}
+              mostarBotaoNovo={id !== 'nova'}
+              TextoBotaoNovo="Novo"
+              aoClicarEmApagar={() => handleDelete(Number(id))}
+              aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
+              aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
+              aoClicarEmSalvar={save}
+              aoClicarEmSalvrEFechar={saveAndClose}
+            />
+          }
         >
-          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
-            <Box margin={1} display="flex" flexDirection="column">
-              <Box textAlign={'center'}>
-                <Typography fontSize={30} fontWeight="bold">
-                  {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
-                </Typography>
-              </Box>
-              <Grid container direction="column" padding={2} spacing={5}>
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="Nome"
-                    name="nome"
-                    onChange={e => setNome(e.target.value)}
-                  />
-                </Grid>
+          <Box
+            py={3}
+            width={'100%'}
+            display={'flex'}
+            justifyContent={'center'}
+            alignItems="center"
+            flexDirection={'column'}
+            sx={{ backgroundColor: ' #EBF5FB  ' }}
+          >
+            <VForm
+              style={{ width: '100%' }}
+              ref={formRef}
+              onSubmit={handleSave}
+            >
+              <Box margin={1} display="flex" flexDirection="column">
+                <Box textAlign={'center'}>
+                  <Typography fontSize={30} fontWeight="bold">
+                    {id === 'nova'
+                      ? 'Criando novo Sorvete'
+                      : `Editando: ${nome}`}
+                  </Typography>
+                </Box>
+                <Grid container direction="column" padding={2} spacing={5}>
+                  <Grid item xs={12}>
+                    <VTextField
+                      sx={{
+                        backgroundColor: '#fff',
+                        borderRadius: 2,
+                        width: '100%',
+                      }}
+                      label="Nome"
+                      name="nome"
+                      onChange={e => setNome(e.target.value)}
+                    />
+                  </Grid>
 
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="Descrição"
-                    name="descricao"
-                  />
+                  <Grid item xs={12}>
+                    <VTextField
+                      sx={{
+                        backgroundColor: '#fff',
+                        borderRadius: 2,
+                        width: '100%',
+                      }}
+                      label="Descrição"
+                      name="descricao"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <AutoComplet />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <VImageField name="imagem" />
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <AutoComplet />
-                </Grid>
-                <Grid item xs={12}>
-                  <VImageField name="imagem" />
-                </Grid>
-              </Grid>
-            </Box>
-          </VForm>
-        </Box>
-      </LayoutBaseDePagina>
-    </Box>
+              </Box>
+            </VForm>
+          </Box>
+        </LayoutBaseDePagina>
+      </Box>
+    </ListaAdm>
   )
 }
