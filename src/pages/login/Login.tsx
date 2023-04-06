@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { Api } from '../../shared/services/api/axios-config'
 
-export const Login: React.FC = () => {
+interface LoginProps {
+  onLogin: () => void
+}
+
+export const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(false)
@@ -25,6 +29,7 @@ export const Login: React.FC = () => {
       const token = response.data.data.token
       console.log(token)
       localStorage.setItem('authToken', token)
+      onLogin()
       navigate('/adm-page')
     } catch (error) {
       setUser(true)
