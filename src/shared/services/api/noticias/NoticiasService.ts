@@ -85,7 +85,7 @@ const updateById = async (
 ): Promise<void | Error> => {
   try {
     console.log({ dados })
-    await Api.put(`/noticias/${id}`, dados, {
+    await Api.post(`/noticias/${id}?_method=PUT`, dados, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -97,6 +97,28 @@ const updateById = async (
     )
   }
 }
+
+// const updateById = async (
+//   id: number,
+//   dados: ListaNoticiaProps,
+// ): Promise<void | Error> => {
+//   try {
+//     const formData = new FormData()
+//     formData.append('nomeNoticia', dados.nomeNoticia)
+//     formData.append('imgNoticia', dados.imgNoticia)
+
+//     await Api.put(`/noticias/${id}`, formData, {
+//       headers: {
+//         'Content-Type': 'multipart/form-data',
+//       },
+//     })
+//   } catch (error) {
+//     console.error(error)
+//     return new Error(
+//       (error as { message: string }).message || 'Erro ao atualizar',
+//     )
+//   }
+// }
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {

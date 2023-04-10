@@ -25,7 +25,7 @@ export const AppRoutes = () => {
         path: '/lojas',
       },
       {
-        label: 'Historia',
+        label: 'História',
         path: '/historia',
       },
     ])
@@ -44,6 +44,7 @@ export const AppRoutes = () => {
       <Route path="/sorvetes" element={<Navigate to="/sorvetes/gourmet" />} />
 
       <Route path="/sorvetes">
+        <Route path="/sorvetes" element={<Navigate to="/sorvetes/gourmet" />} />
         <Route path=":idOrName" element={<ListaSorvetes />} />
       </Route>
     </Routes>

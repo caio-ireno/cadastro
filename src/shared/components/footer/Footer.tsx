@@ -120,7 +120,7 @@ export const Footer: React.FC = () => {
           <ListItemLink to="/pagna-inicial" label="Pagina inicial" />
           <ListItemLink to="/sorvetes" label="Sorvetes" />
           <ListItemLink to="/lojas" label="Lojas" />
-          <ListItemLink to="/historia" label="Historia" />
+          <ListItemLink to="/historia" label="História" />
         </Box>
 
         {rows.map(row => (

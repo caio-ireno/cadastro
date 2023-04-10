@@ -81,6 +81,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/tipo-sorvete" label="Tipo Sorvete" />
           <ListItemLink to="/adm-page/historias/1" label="Historia" />
           <ListItemLink to="/adm-page/contato/1" label="Contato" />
+          <ListItemLink to="/adm-page/user" label="Users" />
         </Box>
         <Button
           variant="contained"

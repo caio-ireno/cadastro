@@ -35,6 +35,7 @@ export const DetalheLojasAdm: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>()
   const [nome, setNome] = useState('')
   const navigate = useNavigate()
+  const [imagem, setImagem] = useState<File | string>()
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
@@ -98,6 +99,7 @@ export const DetalheLojasAdm: React.FC = () => {
           alert(result.message)
           navigate('/adm-page/lojas')
         } else {
+          setImagem(result.imgLoja)
           setNome(result.nomeLoja)
           formRef.current?.setData(result)
         }
@@ -193,8 +195,16 @@ export const DetalheLojasAdm: React.FC = () => {
                     name="rota"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid
+                  display={'flex'}
+                  flexDirection={'column'}
+                  alignItems={'center'}
+                  gap={2}
+                  item
+                  xs={12}
+                >
                   <VImageField name="imgLoja" />
+                  <img width={'300px'} src={String(imagem)}></img>
                 </Grid>
               </Grid>
             </Box>

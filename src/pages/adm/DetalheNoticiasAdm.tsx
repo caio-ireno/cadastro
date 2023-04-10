@@ -28,6 +28,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>()
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
   const [nome, setNome] = useState('')
+  const [imagem, setImagem] = useState<File | string>()
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
@@ -91,11 +92,10 @@ export const DetalheNoticiasAdm: React.FC = () => {
           alert(result.message)
           navigate('/adm-page/noticias')
         } else {
+          console.log(imagem)
+          setImagem(result.imgNoticia)
           setNome(result.nomeNoticia)
-          formRef.current?.setData({
-            nomeNoticia: result.nomeNoticia,
-            imgNoticia: result.imgNoticia,
-          })
+          formRef.current?.setData(result)
         }
       })
     } else {
@@ -152,8 +152,16 @@ export const DetalheNoticiasAdm: React.FC = () => {
                   />
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid
+                  display={'flex'}
+                  flexDirection={'column'}
+                  alignItems={'center'}
+                  gap={2}
+                  item
+                  xs={12}
+                >
                   <VImageField name="imgNoticia" />
+                  <img width={'300px'} src={String(imagem)}></img>
                 </Grid>
               </Grid>
             </Box>
