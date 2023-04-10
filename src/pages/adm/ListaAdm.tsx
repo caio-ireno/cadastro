@@ -26,7 +26,6 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({ to, label }) => {
     navigate(to)
   }
 
-  console.log(localStorage)
   return (
     <Box display={'flex'} onClick={handleClick}>
       <Typography

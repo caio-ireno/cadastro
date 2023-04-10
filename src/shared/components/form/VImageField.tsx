@@ -32,8 +32,16 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
       setPreviewUrl(undefined)
       return
     }
-    const preview = URL.createObjectURL(file)
-    setPreviewUrl(preview)
+    const reader = new FileReader()
+
+    // Callback to be called when file is loaded
+    reader.onload = event => {
+      const base64Image = event.target?.result as string
+      setPreviewUrl(base64Image)
+    }
+
+    // Read file as data URL
+    reader.readAsDataURL(file)
   }
 
   const handleButtonClick = () => {
@@ -42,6 +50,7 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
 
   return (
     <Box
+      width={'100vw'}
       display={'flex'}
       flexDirection="column"
       gap={3}
@@ -57,10 +66,13 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
           },
           borderRadius: '10px',
           border: '2px solid',
+          maxWidth: '1000px',
+          whiteSpace: 'pre-wrap',
+          wordWrap: 'break-word',
         }}
         onClick={handleButtonClick}
       >
-        {previewUrl ? 'Nome do arquivo: ' + previewUrl : 'Escolher uma imagem'}
+        {previewUrl ? 'Imagem selecionada' : 'Escolher uma imagem'}
       </Button>
       <input
         style={{

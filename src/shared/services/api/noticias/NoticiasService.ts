@@ -61,14 +61,20 @@ const getById = async (id: number): Promise<ListaNoticiaProps | Error> => {
 const create = async (
   dados: Omit<ListaNoticiaProps, 'id'>,
 ): Promise<number | Error> => {
+  console.log(dados.imgNoticia)
   try {
-    //console.log({ dados })
-    const { data } = await Api.post<ListaNoticiaProps>('/noticias', dados, {
+    const formData = new FormData()
+    formData.append('nomeNoticia', dados.nomeNoticia)
+    formData.append('imgNoticia', dados.imgNoticia)
+
+    const { data } = await Api.post('/noticias', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
+
     if (data) {
+      console.log(data)
       return data.id
     }
 
@@ -84,8 +90,10 @@ const updateById = async (
   dados: ListaNoticiaProps,
 ): Promise<void | Error> => {
   try {
-    console.log({ dados })
-    await Api.post(`/noticias/${id}?_method=PUT`, dados, {
+    const formData = new FormData()
+    formData.append('nomeNoticia', dados.nomeNoticia)
+    formData.append('imgNoticia', dados.imgNoticia)
+    await Api.put(`/noticias/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -97,28 +105,6 @@ const updateById = async (
     )
   }
 }
-
-// const updateById = async (
-//   id: number,
-//   dados: ListaNoticiaProps,
-// ): Promise<void | Error> => {
-//   try {
-//     const formData = new FormData()
-//     formData.append('nomeNoticia', dados.nomeNoticia)
-//     formData.append('imgNoticia', dados.imgNoticia)
-
-//     await Api.put(`/noticias/${id}`, formData, {
-//       headers: {
-//         'Content-Type': 'multipart/form-data',
-//       },
-//     })
-//   } catch (error) {
-//     console.error(error)
-//     return new Error(
-//       (error as { message: string }).message || 'Erro ao atualizar',
-//     )
-//   }
-// }
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {

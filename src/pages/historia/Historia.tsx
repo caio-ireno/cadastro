@@ -37,7 +37,9 @@ export const Historia: React.FC = () => {
       </Box>
 
       <Box display="flex" flexDirection={'column'} gap={5} mt={5}>
-        <Typography textAlign={'center'}>{rows}</Typography>
+        <Typography p={3} align="justify">
+          {rows}
+        </Typography>
       </Box>
     </LayoutBaseDePagina>
   )
