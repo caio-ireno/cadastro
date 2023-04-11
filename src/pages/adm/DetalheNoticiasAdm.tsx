@@ -15,12 +15,12 @@ import { ListaAdm } from './ListaAdm'
 
 interface FormDataProps {
   nomeNoticia: string
-  imgNoticia: File
+  imgNoticia: string
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nomeNoticia: yup.string().required().min(3),
-  imgNoticia: yup.mixed<File>().required(),
+  imgNoticia: yup.string().required(),
 })
 
 export const DetalheNoticiasAdm: React.FC = () => {
@@ -28,7 +28,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>()
   const { formRef, IsSaveAndClose, save, saveAndClose } = useVForm()
   const [nome, setNome] = useState('')
-  const [imagem, setImagem] = useState<File | string>()
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
@@ -46,6 +45,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
             }
           })
         } else {
+          //console.log(dadosValidados)
           NoticiaServices.updateById(Number(id), {
             id: Number(id),
             ...dadosValidados,
@@ -92,8 +92,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
           alert(result.message)
           navigate('/adm-page/noticias')
         } else {
-          console.log(imagem)
-          setImagem(result.imgNoticia)
+          console.log(result)
           setNome(result.nomeNoticia)
           formRef.current?.setData(result)
         }
@@ -161,7 +160,6 @@ export const DetalheNoticiasAdm: React.FC = () => {
                   xs={12}
                 >
                   <VImageField name="imgNoticia" />
-                  <img width={'300px'} src={String(imagem)}></img>
                 </Grid>
               </Grid>
             </Box>

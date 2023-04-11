@@ -10,7 +10,7 @@ export interface NoticiaProps {
 export interface ListaNoticiaProps {
   id: number
   nomeNoticia: string
-  imgNoticia: File
+  imgNoticia: string
 }
 
 type LojasComTotalCount = {
@@ -61,18 +61,12 @@ const getById = async (id: number): Promise<ListaNoticiaProps | Error> => {
 const create = async (
   dados: Omit<ListaNoticiaProps, 'id'>,
 ): Promise<number | Error> => {
-  console.log(dados.imgNoticia)
   try {
-    const formData = new FormData()
-    formData.append('nomeNoticia', dados.nomeNoticia)
-    formData.append('imgNoticia', dados.imgNoticia)
-
-    const { data } = await Api.post('/noticias', formData, {
+    const { data } = await Api.post('/noticias', dados, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
-
     if (data) {
       console.log(data)
       return data.id
@@ -90,14 +84,12 @@ const updateById = async (
   dados: ListaNoticiaProps,
 ): Promise<void | Error> => {
   try {
-    const formData = new FormData()
-    formData.append('nomeNoticia', dados.nomeNoticia)
-    formData.append('imgNoticia', dados.imgNoticia)
-    await Api.put(`/noticias/${id}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    const { data } = await Api.put(`/noticias/${id}`, dados)
+    console.log(data)
+    if (data) {
+      console.log(data)
+      return data.id
+    }
   } catch (error) {
     console.error(error)
     return new Error(

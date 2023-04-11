@@ -14,20 +14,24 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
   const { fieldName, registerField, defaultValue, error } = useField(name)
   const [previewUrl, setPreviewUrl] = useState<string | undefined>(defaultValue)
 
-  useEffect(() => {
-    registerField({
-      name: fieldName,
-      ref: inputRef.current,
-      path: 'files[0]',
-      clearValue: (ref: HTMLInputElement) => {
-        ref.value = ''
-        setPreviewUrl(undefined)
-      },
-    })
-  }, [fieldName, registerField])
+  useEffect(
+    () =>
+      registerField({
+        name: fieldName,
+        getValue: () => previewUrl,
+        setValue: (_, NewValue) => setPreviewUrl(NewValue),
+        ref: inputRef.current,
+        clearValue: (ref: HTMLInputElement) => {
+          ref.value = ''
+          setPreviewUrl('')
+        },
+      }),
+    [fieldName, registerField, previewUrl],
+  )
 
   const handlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
+
     if (!file) {
       setPreviewUrl(undefined)
       return
@@ -37,7 +41,8 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
     // Callback to be called when file is loaded
     reader.onload = event => {
       const base64Image = event.target?.result as string
-      setPreviewUrl(base64Image)
+      setPreviewUrl(base64Image.replace('data:', '').replace(/^.+,/, ''))
+      //console.log(previewUrl)
     }
 
     // Read file as data URL
@@ -47,7 +52,7 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
   const handleButtonClick = () => {
     inputRef.current?.click()
   }
-
+  console.log(previewUrl)
   return (
     <Box
       width={'100vw'}
@@ -81,13 +86,16 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
 
           position: 'absolute',
         }}
-        accept="image/*"
         required
         type="file"
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
-        onChange={handlePreview}
+        onChange={e => {
+          const newValue = e.target.value
+          setPreviewUrl(newValue)
+          handlePreview
+        }}
         {...rest}
       />
       {previewUrl && (
