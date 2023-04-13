@@ -1,5 +1,4 @@
 /* eslint-disable no-constant-condition */
-import { Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -43,14 +42,7 @@ export const DetalheUser: React.FC = () => {
           />
         }
       >
-        <Box>
-          {rows.map(row => (
-            <Box key={row.id}>
-              <Typography>{row.name}</Typography>
-              <Typography>{row.email}</Typography>
-            </Box>
-          ))}
-        </Box>
+        <Box></Box>
       </LayoutBaseDePagina>
     </ListaAdm>
   )

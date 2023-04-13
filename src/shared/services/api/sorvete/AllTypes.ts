@@ -16,7 +16,7 @@ export interface SorveteProps {
 export interface ListaSorveteProps {
   id: number
   nome: string
-  imagem: File
+  imagem: string
   descricao: string
   sorvete_id: number
 }
@@ -128,8 +128,13 @@ const updateById = async (
   id: number,
   dados: ListaSorveteProps,
 ): Promise<void | Error> => {
+  console.log(dados)
   try {
-    await Api.put(`/sabores/${id}`, dados)
+    const { data } = await Api.put(`/sabores/${id}`, dados)
+    if (data) {
+      console.log(data)
+      return data.id
+    }
   } catch (error) {
     console.error(error)
     return new Error(

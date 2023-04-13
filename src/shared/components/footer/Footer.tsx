@@ -188,6 +188,14 @@ export const Footer: React.FC = () => {
         >
           Urla © Alguns direitos reservados.
         </Typography>
+        <Typography
+          fontSize={mdDown ? 10 : 15}
+          mx={mdDown ? 2 : 3}
+          my={2}
+          p={1}
+        >
+          Desenvolvido por Caio Ireno
+        </Typography>
       </Box>
     </Box>
   )

@@ -29,17 +29,13 @@ export const LojaAdm: React.FC = () => {
   const { debounce } = useDebounce()
   const navigate = useNavigate()
 
-  const busca = useMemo(() => {
-    return searchParams.get('busca') || ''
-  }, [searchParams])
-
   const pagina = useMemo(() => {
     return Number(searchParams.get('pagina') || '1')
   }, [searchParams])
 
   useEffect(() => {
     debounce(() => {
-      LojasServices.getAll(pagina, busca).then(result => {
+      LojasServices.getAll(pagina).then(result => {
         if (result instanceof Error) {
           alert(result.message)
           return
@@ -49,7 +45,7 @@ export const LojaAdm: React.FC = () => {
         }
       })
     })
-  }, [busca, pagina])
+  }, [pagina])
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
@@ -69,11 +65,6 @@ export const LojaAdm: React.FC = () => {
   return (
     <ListaAdm>
       <FerramentasDaLista
-        textoBusca={busca}
-        aoMudarTextoBusca={texto =>
-          setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-        }
-        mostarInputBusca
         textoBotaoNovo="nova"
         aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
       />
@@ -137,10 +128,7 @@ export const LojaAdm: React.FC = () => {
             count={Math.ceil(totalCount / Environment.LIMITE_LINHAS)}
             page={pagina}
             onChange={(_, newPage) =>
-              setSearchParams(
-                { busca, pagina: newPage.toString() },
-                { replace: true },
-              )
+              setSearchParams({ pagina: newPage.toString() }, { replace: true })
             }
           />
         </Box>

@@ -82,7 +82,6 @@ export const SorveteAdm: React.FC = () => {
         aoMudarTextoBusca={texto =>
           setSearchParams({ busca: texto, page: '1' }, { replace: true })
         }
-        mostarInputBusca
         aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
       />
       <Box p={1}>

@@ -129,7 +129,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
           sx={{ backgroundColor: ' #EBF5FB  ' }}
         >
           <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
-            <Box margin={1} display="flex" flexDirection="column">
+            <Box display="flex" flexDirection="column" px={2}>
               <Box textAlign={'center'}>
                 <Typography fontSize={30} fontWeight="bold">
                   {id === 'nova'
@@ -137,8 +137,8 @@ export const DetalheNoticiasAdm: React.FC = () => {
                     : `Editando: ${nome}`}
                 </Typography>
               </Box>
-              <Grid container direction="column" padding={2} spacing={5}>
-                <Grid item xs={12}>
+              <Grid container direction="column" spacing={5}>
+                <Grid item xs={12} width={'100%'}>
                   <VTextField
                     sx={{
                       backgroundColor: '#fff',
@@ -152,6 +152,7 @@ export const DetalheNoticiasAdm: React.FC = () => {
                 </Grid>
 
                 <Grid
+                  width={'100%'}
                   display={'flex'}
                   flexDirection={'column'}
                   alignItems={'center'}

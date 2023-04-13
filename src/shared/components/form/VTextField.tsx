@@ -19,7 +19,6 @@ export const VTextField: React.FC<VTextFieldProps> = ({ name, ...rest }) => {
     })
   }, [registerField, fieldName, value])
 
-  console.log(value)
   return (
     <TextField
       color="primary"

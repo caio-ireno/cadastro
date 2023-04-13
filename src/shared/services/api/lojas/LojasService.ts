@@ -15,7 +15,7 @@ export interface ListaLojasProps {
   telefone: number
   nomeLoja: string
   endereço: string
-  imgLoja: File
+  imgLoja: string
   rota: string
 }
 
@@ -102,11 +102,10 @@ const updateById = async (
   dados: ListaLojasProps,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/lojas/${id}`, dados, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    const { data } = await Api.put(`/lojas/${id}`, dados)
+    if (data) {
+      return data.id
+    }
   } catch (error) {
     console.error(error)
     return new Error(

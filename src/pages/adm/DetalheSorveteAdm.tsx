@@ -10,7 +10,6 @@ import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
 import { VImageField } from '../../shared/components/form/VImageField'
 import { VTextField } from '../../shared/components/form/VTextField'
-import { LayoutBaseDePagina } from '../../shared/layouts'
 import { AllTypes } from '../../shared/services/api/sorvete/AllTypes'
 import { AutoComplet } from './components/AutoComplet'
 import { ListaAdm } from './ListaAdm'
@@ -18,14 +17,14 @@ import { ListaAdm } from './ListaAdm'
 interface FormDataProps {
   nome: string
   descricao: string
-  imagem: File
+  imagem: string
   sorvete_id: number
 }
 
 const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   nome: yup.string().required().min(3),
-  descricao: yup.string().required().min(10),
-  imagem: yup.mixed<File>().required(),
+  descricao: yup.string().required(),
+  imagem: yup.string().required(),
   sorvete_id: yup.number().required().positive().integer(),
 })
 
@@ -52,18 +51,20 @@ export const DetalheSorveteAdm: React.FC = () => {
             }
           })
         } else {
-          AllTypes.updateById(Number(id), {
-            id: Number(id),
-            ...dadosValidados,
-          }).then(result => {
-            if (result instanceof Error) {
-              alert(result.message)
-            } else {
-              if (IsSaveAndClose()) {
-                navigate('/adm-page/sorvetes/')
+          AllTypes.updateById(Number(id), { id: Number(id), ...dadosValidados })
+            .then(result => {
+              console.log(result)
+              if (result instanceof Error) {
+                alert(result.message)
+              } else {
+                if (IsSaveAndClose()) {
+                  navigate('/adm-page/sorvetes/')
+                }
               }
-            }
-          })
+            })
+            .catch(error => {
+              alert(error.message)
+            })
         }
       })
       .catch((errors: yup.ValidationError) => {
@@ -97,97 +98,81 @@ export const DetalheSorveteAdm: React.FC = () => {
           alert(result.message)
           navigate('/adm-page/sorvetes')
         } else {
-          //setDados(result);
           setNome(result.nome)
           formRef.current?.setData(result)
         }
       })
     } else {
-      formRef.current?.setData({
-        nome: '',
-        descricao: '',
-
-        sorvete_id: '',
-      })
+      formRef.current?.setData({})
     }
   }, [id])
 
   return (
     <ListaAdm>
       <Box>
-        <LayoutBaseDePagina
-          barraDeFerramentas={
-            <FerramentasDeDetalhe
-              mostarBotaoSalvarEFechar
-              mostarBotaoApagar={id !== 'nova'}
-              mostarBotaoNovo={id !== 'nova'}
-              TextoBotaoNovo="Novo"
-              aoClicarEmApagar={() => handleDelete(Number(id))}
-              aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
-              aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
-              aoClicarEmSalvar={save}
-              aoClicarEmSalvrEFechar={saveAndClose}
-            />
-          }
-        >
-          <Box
-            py={3}
-            width={'100%'}
-            display={'flex'}
-            justifyContent={'center'}
-            alignItems="center"
-            flexDirection={'column'}
-            sx={{ backgroundColor: ' #EBF5FB  ' }}
-          >
-            <VForm
-              style={{ width: '100%' }}
-              ref={formRef}
-              onSubmit={handleSave}
-            >
-              <Box margin={1} display="flex" flexDirection="column">
-                <Box textAlign={'center'}>
-                  <Typography fontSize={30} fontWeight="bold">
-                    {id === 'nova'
-                      ? 'Criando novo Sorvete'
-                      : `Editando: ${nome}`}
-                  </Typography>
-                </Box>
-                <Grid container direction="column" padding={2} spacing={5}>
-                  <Grid item xs={12}>
-                    <VTextField
-                      sx={{
-                        backgroundColor: '#fff',
-                        borderRadius: 2,
-                        width: '100%',
-                      }}
-                      label="Nome"
-                      name="nome"
-                      onChange={e => setNome(e.target.value)}
-                    />
-                  </Grid>
+        <FerramentasDeDetalhe
+          mostarBotaoSalvarEFechar
+          mostarBotaoApagar={id !== 'nova'}
+          mostarBotaoNovo={id !== 'nova'}
+          TextoBotaoNovo="Novo"
+          aoClicarEmApagar={() => handleDelete(Number(id))}
+          aoClicarEmNovo={() => navigate('/adm-page/sorvetes/nova')}
+          aoClicarEmVoltar={() => navigate('/adm-page/sorvetes')}
+          aoClicarEmSalvar={save}
+          aoClicarEmSalvrEFechar={saveAndClose}
+        />
 
-                  <Grid item xs={12}>
-                    <VTextField
-                      sx={{
-                        backgroundColor: '#fff',
-                        borderRadius: 2,
-                        width: '100%',
-                      }}
-                      label="Descrição"
-                      name="descricao"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <AutoComplet />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <VImageField name="imagem" />
-                  </Grid>
-                </Grid>
+        <Box
+          py={3}
+          width={'100%'}
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems="center"
+          flexDirection={'column'}
+          sx={{ backgroundColor: ' #EBF5FB  ' }}
+        >
+          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+            <Box margin={1} display="flex" flexDirection="column" px={2}>
+              <Box textAlign={'center'}>
+                <Typography fontSize={30} fontWeight="bold">
+                  {id === 'nova' ? 'Criando novo Sorvete' : `Editando: ${nome}`}
+                </Typography>
               </Box>
-            </VForm>
-          </Box>
-        </LayoutBaseDePagina>
+              <Grid container direction="column" padding={2} spacing={5}>
+                <Grid item xs={12} width={'100%'}>
+                  <VTextField
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
+                    label="Nome"
+                    name="nome"
+                    onChange={e => setNome(e.target.value)}
+                  />
+                </Grid>
+
+                <Grid item xs={12} width={'100%'}>
+                  <VTextField
+                    sx={{
+                      backgroundColor: '#fff',
+                      borderRadius: 2,
+                      width: '100%',
+                    }}
+                    label="Descrição"
+                    name="descricao"
+                  />
+                </Grid>
+                <Grid item xs={12} width={'100%'}>
+                  <AutoComplet />
+                </Grid>
+                <Grid item xs={12} width={'100%'}>
+                  <VImageField name="imagem" />
+                </Grid>
+              </Grid>
+            </Box>
+          </VForm>
+        </Box>
       </Box>
     </ListaAdm>
   )

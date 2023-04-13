@@ -10,7 +10,6 @@ import { useVForm } from '../../shared/components/form/useVForm'
 import { VForm } from '../../shared/components/form/VForm'
 import { VImageField } from '../../shared/components/form/VImageField'
 import { VTextField } from '../../shared/components/form/VTextField'
-import { LayoutBaseDePagina } from '../../shared/layouts'
 import { LojasServices } from '../../shared/services/api/lojas/LojasService'
 import { ListaAdm } from './ListaAdm'
 
@@ -18,7 +17,7 @@ interface FormDataProps {
   telefone: number
   nomeLoja: string
   endereço: string
-  imgLoja: File
+  imgLoja: string
   rota: string
 }
 
@@ -26,7 +25,7 @@ const FormValidationSchema: yup.Schema<FormDataProps> = yup.object().shape({
   telefone: yup.number().required(),
   nomeLoja: yup.string().required().min(3),
   endereço: yup.string().required().min(5),
-  imgLoja: yup.mixed<File>().required(),
+  imgLoja: yup.string().required(),
   rota: yup.string().required(),
 })
 
@@ -35,7 +34,6 @@ export const DetalheLojasAdm: React.FC = () => {
   const { id = 'nova' } = useParams<'id'>()
   const [nome, setNome] = useState('')
   const navigate = useNavigate()
-  const [imagem, setImagem] = useState<File | string>()
 
   const handleSave = (dados: FormDataProps) => {
     FormValidationSchema.validate(dados, { abortEarly: false })
@@ -99,7 +97,6 @@ export const DetalheLojasAdm: React.FC = () => {
           alert(result.message)
           navigate('/adm-page/lojas')
         } else {
-          setImagem(result.imgLoja)
           setNome(result.nomeLoja)
           formRef.current?.setData(result)
         }
@@ -116,101 +113,96 @@ export const DetalheLojasAdm: React.FC = () => {
 
   return (
     <ListaAdm>
-      <LayoutBaseDePagina
-        barraDeFerramentas={
-          <FerramentasDeDetalhe
-            mostarBotaoSalvarEFechar
-            mostarBotaoApagar={id !== 'nova'}
-            mostarBotaoNovo={id !== 'nova'}
-            TextoBotaoNovo="Novo"
-            aoClicarEmApagar={() => handleDelete(Number(id))}
-            aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
-            aoClicarEmVoltar={() => navigate('/adm-page/lojas')}
-            aoClicarEmSalvar={save}
-            aoClicarEmSalvrEFechar={saveAndClose}
-          />
-        }
+      <FerramentasDeDetalhe
+        mostarBotaoSalvarEFechar
+        mostarBotaoApagar={id !== 'nova'}
+        mostarBotaoNovo={id !== 'nova'}
+        TextoBotaoNovo="Novo"
+        aoClicarEmApagar={() => handleDelete(Number(id))}
+        aoClicarEmNovo={() => navigate('/adm-page/lojas/nova')}
+        aoClicarEmVoltar={() => navigate('/adm-page/lojas')}
+        aoClicarEmSalvar={save}
+        aoClicarEmSalvrEFechar={saveAndClose}
+      />
+
+      <Box
+        py={3}
+        width={'100%'}
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems="center"
+        flexDirection={'column'}
+        sx={{ backgroundColor: ' #EBF5FB  ' }}
       >
-        <Box
-          py={3}
-          width={'100%'}
-          display={'flex'}
-          justifyContent={'center'}
-          alignItems="center"
-          flexDirection={'column'}
-          sx={{ backgroundColor: ' #EBF5FB  ' }}
-        >
-          <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
-            <Box margin={1} display="flex" flexDirection="column">
-              <Box textAlign={'center'}>
-                <Typography fontSize={30} fontWeight="bold">
-                  {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
-                </Typography>
-              </Box>
-              <Grid container direction="column" padding={2} spacing={5}>
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="Nome"
-                    name="nomeLoja"
-                    onChange={e => setNome(e.target.value)}
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="endereço"
-                    name="endereço"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="telefone"
-                    name="telefone"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <VTextField
-                    sx={{
-                      backgroundColor: '#fff',
-                      borderRadius: 2,
-                      width: '100%',
-                    }}
-                    label="rota"
-                    name="rota"
-                  />
-                </Grid>
-                <Grid
-                  display={'flex'}
-                  flexDirection={'column'}
-                  alignItems={'center'}
-                  gap={2}
-                  item
-                  xs={12}
-                >
-                  <VImageField name="imgLoja" />
-                  <img width={'300px'} src={String(imagem)}></img>
-                </Grid>
-              </Grid>
+        <VForm style={{ width: '100%' }} ref={formRef} onSubmit={handleSave}>
+          <Box display="flex" flexDirection="column" maxWidth={'100%'} px={2}>
+            <Box textAlign={'center'}>
+              <Typography fontSize={30} fontWeight="bold">
+                {id === 'nova' ? 'Criando novo Lojas' : `Editando: ${nome}`}
+              </Typography>
             </Box>
-          </VForm>
-        </Box>
-      </LayoutBaseDePagina>
+            <Grid container direction="column" spacing={5}>
+              <Grid item xs={12} width={'100%'}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="Nome"
+                  name="nomeLoja"
+                  onChange={e => setNome(e.target.value)}
+                />
+              </Grid>
+
+              <Grid item xs={12} width={'100%'}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="endereço"
+                  name="endereço"
+                />
+              </Grid>
+
+              <Grid item xs={12} width={'100%'}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="telefone"
+                  name="telefone"
+                />
+              </Grid>
+              <Grid item xs={12} width={'100%'}>
+                <VTextField
+                  sx={{
+                    backgroundColor: '#fff',
+                    borderRadius: 2,
+                    width: '100%',
+                  }}
+                  label="rota"
+                  name="rota"
+                />
+              </Grid>
+              <Grid
+                display={'flex'}
+                flexDirection={'column'}
+                alignItems={'center'}
+                gap={2}
+                item
+                xs={12}
+              >
+                <VImageField name="imgLoja" />
+              </Grid>
+            </Grid>
+          </Box>
+        </VForm>
+      </Box>
     </ListaAdm>
   )
 }

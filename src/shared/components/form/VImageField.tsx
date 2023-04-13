@@ -13,6 +13,9 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const { fieldName, registerField, defaultValue, error } = useField(name)
   const [previewUrl, setPreviewUrl] = useState<string | undefined>(defaultValue)
+  const [imgPreviewUrl, setImgPreviewUrl] = useState<string | undefined>(
+    defaultValue,
+  )
 
   useEffect(
     () =>
@@ -31,7 +34,8 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
 
   const handlePreview = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
-
+    const newValue = e.target.value
+    setPreviewUrl(newValue)
     if (!file) {
       setPreviewUrl(undefined)
       return
@@ -42,20 +46,18 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
     reader.onload = event => {
       const base64Image = event.target?.result as string
       setPreviewUrl(base64Image.replace('data:', '').replace(/^.+,/, ''))
-      //console.log(previewUrl)
+      setImgPreviewUrl(base64Image)
     }
 
-    // Read file as data URL
     reader.readAsDataURL(file)
   }
 
   const handleButtonClick = () => {
     inputRef.current?.click()
   }
-  console.log(previewUrl)
   return (
     <Box
-      width={'100vw'}
+      width={'100%'}
       display={'flex'}
       flexDirection="column"
       gap={3}
@@ -91,15 +93,19 @@ export const VImageField: React.FC<InputProps> = ({ name, ...rest }) => {
         id={fieldName}
         ref={inputRef}
         defaultValue={defaultValue}
-        onChange={e => {
-          const newValue = e.target.value
-          setPreviewUrl(newValue)
-          handlePreview
-        }}
+        onChange={handlePreview}
         {...rest}
       />
       {previewUrl && (
-        <img src={previewUrl} alt="Preview" style={{ maxWidth: '200px' }} />
+        <img
+          src={
+            typeof previewUrl === 'string' && previewUrl.includes('https')
+              ? previewUrl
+              : imgPreviewUrl
+          }
+          alt="Preview"
+          style={{ maxWidth: '200px' }}
+        />
       )}
       {error && <span>{error}</span>}
     </Box>

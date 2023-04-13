@@ -56,7 +56,7 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
   //const isAuthenticated = localStorage.getItem('authToken') !== null
 
   return (
-    <Box>
+    <Box px={1}>
       <Box
         width={'100%'}
         display={'flex'}
@@ -80,20 +80,19 @@ export const ListaAdm: React.FC<ListaAdmProps> = ({ children }) => {
           <ListItemLink to="/adm-page/tipo-sorvete" label="Tipo Sorvete" />
           <ListItemLink to="/adm-page/historias/1" label="Historia" />
           <ListItemLink to="/adm-page/contato/1" label="Contato" />
-          <ListItemLink to="/adm-page/user" label="Users" />
+          {/* <ListItemLink to="/adm-page/user" label="Users" /> */}
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: '#fff',
+              color: '#1e88e5',
+              fontWeight: 'bold',
+            }}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
         </Box>
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: '#fff',
-            color: '#1e88e5',
-            fontWeight: 'bold',
-            mr: 4,
-          }}
-          onClick={handleLogout}
-        >
-          Logout
-        </Button>
       </Box>
 
       <Box sx={{ width: '100%' }} py={1} pb={4}>
