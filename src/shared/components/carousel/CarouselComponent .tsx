@@ -39,7 +39,7 @@ export const CarouselComponent = () => {
         </Box>
       )}
       {!isLoading && (
-        <Carousel autoPlay navButtonsAlwaysVisible indicators={false}>
+        <Carousel autoPlay indicators={false}>
           {rows.map(row => (
             <Box
               width={'100%'}
